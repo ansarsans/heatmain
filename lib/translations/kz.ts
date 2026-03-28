@@ -1,14 +1,24 @@
 export const kz: Record<string, string> = {
   // Nav
   "nav.home": "Басты бет",
-  "nav.catalog": "Каталог",
-  "nav.about": "Компания туралы",
+  "nav.catalog": "Өнімдер",
+  "nav.about": "Біз туралы",
   "nav.contacts": "Байланыс",
+  "nav.strength": "Күш",
+  "nav.oem": "OEM қызметі",
+  "nav.news": "Жаңалықтар",
+  "nav.inquiry": "Сұраныс",
 
   // Hero
-  "hero.title": "Heat Energy Capital",
-  "hero.subtitle": "Өнеркәсіптік химия, металдар және жабдықтарды сенімді жеткізуші",
-  "hero.description": "Тау-кен, металлургия және қайта өңдеу салалары үшін кешенді жеткізілімдер",
+  "hero.title": "Химиялық заттардың кәсіби өндірушісі",
+  "hero.subtitle": "30 жылдан астам химиялық өнімдерді өндіруге және әзірлеуге маманданғанбыз.",
+  "hero.description": "ISO, REACH, HALAL және KOSHER сертификаттары бар зауыт. Негізгі өнім төрт серияны қамтиды.",
+  "hero.prod1.name": "Натрий метабисульфиті",
+  "hero.prod1.formula": "Na₂S₂O₅",
+  "hero.prod1.tags": "Тағамдық • Өнеркәсіптік • Фотография",
+  "hero.prod2.name": "Натрий бисульфаты",
+  "hero.prod2.formula": "NaHSO₄",
+  "hero.prod2.tags": "Су дайындау • Тағамдық • Металлургия",
   "hero.cta": "Каталогты қарау",
   "hero.contact": "Бізбен байланысу",
 
@@ -21,6 +31,10 @@ export const kz: Record<string, string> = {
   "cat.metals.desc": "Металл прокаты, болат арқандар, ферроқорытпалар, никель, алюминий, графиттелген электродтар.",
   "cat.equipment": "Жабдықтар",
   "cat.equipment.desc": "Тау-кен жабдықтары: бұрғылау қашаулары, ұсатқыштар, диірмендер, сүзгі-престер, сорғылар, компрессорлар.",
+  "products.highlights.title": "Негізгі тауар топтары",
+  "products.highlights.view_all": "Каталогқа өту",
+  "custom.title": "Кез келген күрделіліктегі өнімдер",
+  "custom.text": "Техникалық параметрлер ұсынылған жағдайда біз кез келген күрделіліктегі өнімдерді өңдеуге дайынбыз.",
 
   // About preview
   "about.preview.title": "Компания туралы",
@@ -28,10 +42,14 @@ export const kz: Record<string, string> = {
   "about.preview.link": "Компания туралы толығырақ",
 
   // Stats
-  "stats.products": "Каталогтағы позициялар",
-  "stats.industries": "Салалар",
-  "stats.partners": "Серіктестер",
-  "stats.experience": "Нарықтағы жылдар",
+  "stats.products": "позиция",
+  "stats.industries": "сала",
+  "stats.partners": "серіктестер",
+  "stats.experience": "жыл тәжірибе",
+  "stats.founded": "жылы құрылды",
+  "stats.area": "Өндірістік база",
+  "stats.countries": "Экспорттаушы елдер",
+  "stats.clients": "Клиенттер",
 
   // CTA
   "cta.title": "Жеткізілімді талқылауға дайынсыз ба?",
@@ -40,7 +58,9 @@ export const kz: Record<string, string> = {
 
   // Catalog page
   "catalog.title": "Өнім каталогы",
-  "catalog.subtitle": "Өнеркәсіптік химия, металдар және жабдықтардың толық ассортименті",
+  "catalog.subtitle": "Өнеркәсіптік химияның, металдардың және жабдықтардың толық ассортименті",
+  "homepage.products.title": "Біздің өнімдеріміз",
+  "homepage.products.subtitle": "Біз өнеркәсіптік химияның, металдардың және мамандандырылған жабдықтардың кең спектрін ұсынамыз.",
   "catalog.search": "Каталогтан іздеу...",
   "catalog.all": "Барлығы",
   "catalog.chemistry": "Химия",
@@ -69,6 +89,18 @@ export const kz: Record<string, string> = {
   "contacts.hours": "Жұмыс уақыты",
   "contacts.hours.value": "Дс - Жм: 9:00 - 18:00",
   "contacts.note": "Біз техникалық параметрлер ұсынылған жағдайда кез келген күрделіліктегі бұйымдарды өңдеуге дайынбыз.",
+
+  // Why Us
+  "whyus.title": "Неліктен клиенттер бізді таңдайды?",
+  "whyus.subtitle": "Жоғары сапалы жеке шешімдермен табысты брендті құруға көмектесуге тырысамыз.",
+  "whyus.exp.title": "30 жылдық салалық тәжірибе",
+  "whyus.exp.desc": "Өндірістегі және ҒЗТКЖ саласындағы үш онжылдықтан астам тәжірибе, ISO сертификаты.",
+  "whyus.portfolio.title": "Өнімдердің кешенді портфелі",
+  "whyus.portfolio.desc": "Сульфиттерге, сульфаттарға және арнайы химикаттарға маманданғанбыз.",
+  "whyus.rd.title": "Зерттеулер мен әзірлемелер командасы",
+  "whyus.rd.desc": "Көпжылдық өтілі бар жеке кәсіби ҒЗТКЖ командасы.",
+  "whyus.global.title": "Жаһандық нарық тануы",
+  "whyus.global.desc": "Өнімдер Америкада, Еуропада және Оңтүстік-Шығыс Азияда сәтті сатылуда.",
 
   // Footer
   "footer.rights": "Барлық құқықтар қорғалған.",

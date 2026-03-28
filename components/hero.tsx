@@ -7,71 +7,123 @@ export function Hero() {
   const { t } = useTranslation()
 
   return (
-    <section className="relative overflow-hidden bg-primary">
-      {/* Background image with overlay */}
-      <div className="absolute inset-0">
-        <img
-          src="/images/hero-bg.jpg"
-          alt=""
-          className="h-full w-full object-cover"
-          aria-hidden="true"
+    <section className="relative min-h-[600px] overflow-hidden bg-primary lg:min-h-[700px]">
+      {/* Background image & overlay */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="/main.jpg" 
+          alt="" 
+          className="h-full w-full object-cover opacity-40 mix-blend-overlay"
         />
-        <div className="absolute inset-0 bg-primary/80" />
+        <div className="absolute inset-0 bg-primary/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/40 to-transparent xl:via-primary/20" />
       </div>
 
-      <div className="relative mx-auto flex max-w-7xl flex-col items-start justify-center px-4 py-24 lg:px-8 lg:py-36">
-        <div className="max-w-2xl">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/5 px-4 py-1.5">
-            <div className="h-1.5 w-1.5 rounded-full bg-accent" />
-            <span className="text-xs font-medium uppercase tracking-wider text-primary-foreground/70">
-              B2B Industrial Supply
+      <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-16 px-4 py-20 lg:flex-row lg:items-start lg:px-8 lg:py-32">
+        {/* Left: Content */}
+        <div className="w-full lg:w-[58%]">
+          <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-primary-foreground/20 bg-primary-foreground/5 px-4 py-1.5 backdrop-blur-sm">
+            <span className="flex h-2 w-2 animate-pulse rounded-full bg-accent" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary-foreground/80">
+              ISO 9001:2015 Certified
             </span>
           </div>
 
-          <h1 className="mb-4 text-4xl font-bold tracking-tight text-primary-foreground text-balance lg:text-5xl xl:text-6xl">
+          <h1 className="mb-6 text-4xl font-extrabold tracking-tight text-primary-foreground lg:text-5xl xl:text-6xl">
             {t("hero.title")}
           </h1>
 
-          <p className="mb-2 text-lg font-medium text-primary-foreground/90 text-pretty lg:text-xl">
+          <p className="mb-8 text-lg font-medium leading-relaxed text-primary-foreground/90 lg:text-xl xl:max-w-xl">
             {t("hero.subtitle")}
           </p>
 
-          <p className="mb-8 text-base text-primary-foreground/60 text-pretty lg:text-lg">
-            {t("hero.description")}
-          </p>
-
-          <div className="flex flex-wrap gap-3">
+          <div className="mb-10 flex flex-wrap gap-4">
             <Link
               href="/catalog"
-              className="inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
+              className="group inline-flex items-center gap-2 rounded-md bg-accent px-8 py-4 text-sm font-bold text-accent-foreground transition-all hover:translate-y-[-2px] hover:shadow-lg hover:shadow-accent/20"
             >
               {t("hero.cta")}
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M3.33 8h9.34M8.67 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <span className="transition-transform group-hover:translate-x-1">→</span>
             </Link>
             <Link
               href="/contacts"
-              className="inline-flex items-center gap-2 rounded-md border border-primary-foreground/25 px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10"
+              className="inline-flex items-center gap-2 rounded-md border border-primary-foreground/30 bg-primary-foreground/5 px-8 py-4 text-sm font-bold text-primary-foreground backdrop-blur-sm transition-all hover:bg-primary-foreground/10"
             >
               {t("hero.contact")}
             </Link>
           </div>
+
+          <div className="grid grid-cols-2 gap-8 border-t border-primary-foreground/10 pt-8">
+            <div>
+              <p className="text-3xl font-black text-accent">30+</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-primary-foreground/50">{t("stats.experience")}</p>
+            </div>
+            <div>
+              <p className="text-3xl font-black text-accent">40+</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-primary-foreground/50">{t("stats.countries")}</p>
+            </div>
+          </div>
         </div>
 
-        {/* Stats row */}
-        <div className="mt-16 grid w-full grid-cols-2 gap-6 border-t border-primary-foreground/10 pt-8 lg:grid-cols-4">
-          {[
-            { value: "150+", label: t("stats.products") },
-            { value: "5+", label: t("stats.industries") },
-            { value: "50+", label: t("stats.partners") },
-            { value: "10+", label: t("stats.experience") },
-          ].map((stat) => (
-            <div key={stat.label}>
-              <p className="text-2xl font-bold text-accent lg:text-3xl">{stat.value}</p>
-              <p className="mt-1 text-sm text-primary-foreground/50">{stat.label}</p>
+        {/* Right: Featured Products Detail (Foreve Rich Style) */}
+        <div className="w-full lg:w-1/2">
+          <div className="grid gap-6">
+            {/* Product 1: Sodium Metabisulfite */}
+            <div className="group relative overflow-hidden rounded-2xl border border-primary-foreground/10 bg-white/5 p-6 backdrop-blur-md transition-all hover:bg-white/10">
+              <div className="flex items-start justify-between">
+                <div>
+                  <h3 className="text-xl font-bold text-primary-foreground group-hover:text-accent transition-colors">
+                    {t("hero.prod1.name")}
+                  </h3>
+                  <span className="text-sm font-mono text-primary-foreground/60">
+                    {t("hero.prod1.formula")}
+                  </span>
+                </div>
+                <div className="rounded-lg bg-accent/20 px-3 py-1 text-[10px] font-bold text-accent uppercase tracking-widest">
+                  Featured
+                </div>
+              </div>
+              
+              <div className="mt-6 space-y-3">
+                <div className="flex items-center gap-3 text-sm text-primary-foreground/80">
+                  <div className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  <span>{t("hero.prod1.tags")}</span>
+                </div>
+                <p className="text-xs leading-relaxed text-primary-foreground/50 line-clamp-2 italic">
+                  {t("hero.description")}
+                </p>
+              </div>
+              
+              <Link href="/catalog?q=metabisulfite" className="mt-6 inline-flex items-center text-xs font-bold text-accent hover:underline">
+                {t("products.highlights.view_all")} &rarr;
+              </Link>
             </div>
-          ))}
+
+            {/* Product 2: Sodium Bisulfate */}
+            <div className="group relative overflow-hidden rounded-2xl border border-primary-foreground/10 bg-white/5 p-6 backdrop-blur-md transition-all hover:bg-white/10">
+              <div className="flex items-start justify-between">
+                <div>
+                  <h3 className="text-xl font-bold text-primary-foreground group-hover:text-accent transition-colors">
+                    {t("hero.prod2.name")}
+                  </h3>
+                  <span className="text-sm font-mono text-primary-foreground/60">
+                    {t("hero.prod2.formula")}
+                  </span>
+                </div>
+              </div>
+              
+              <div className="mt-6 space-y-3">
+                <div className="flex items-center gap-3 text-sm text-primary-foreground/80">
+                  <div className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  <span>{t("hero.prod2.tags")}</span>
+                </div>
+              </div>
+
+              <Link href="/catalog?q=bisulfate" className="mt-6 inline-flex items-center text-xs font-bold text-accent hover:underline">
+                {t("products.highlights.view_all")} &rarr;
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>

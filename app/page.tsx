@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useTranslation } from "@/lib/i18n"
 import { Hero } from "@/components/hero"
 import { CategoryCard } from "@/components/category-card"
+import { FeaturedProducts } from "@/components/featured-products"
 
 function FlaskIcon() {
   return (
@@ -35,57 +36,144 @@ function CogIcon() {
 }
 
 export default function HomePage() {
-  const { t } = useTranslation()
+  const { t, locale } = useTranslation()
 
   return (
     <main>
       {/* Hero */}
       <Hero />
 
-      {/* Categories Section */}
-      <section className="py-16 lg:py-24">
+      {/* Stats Section */}
+      <section className="border-b border-border bg-card py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          <div className="mb-10 max-w-xl">
-            <h2 className="mb-3 text-2xl font-bold tracking-tight text-foreground lg:text-3xl text-balance">
-              {t("categories.title")}
+          <div className="grid grid-cols-2 gap-y-12 md:grid-cols-4 md:gap-8">
+            {[
+              { label: t("stats.founded"), value: "1999" },
+              { label: t("stats.area"), value: "20000" },
+              { label: t("stats.countries"), value: "40+" },
+              { label: t("stats.clients"), value: "300+" },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
+                <div className="mb-2 text-4xl font-black text-accent lg:text-5xl">{stat.value}</div>
+                <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.2em]">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="bg-secondary/30 py-20 lg:py-32">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-foreground lg:text-4xl">
+              {t("whyus.title")}
             </h2>
-            <p className="text-base text-muted-foreground text-pretty">
-              {t("categories.subtitle")}
+            <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+              {t("whyus.subtitle")}
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
-            <CategoryCard
-              title={t("cat.chemistry")}
-              description={t("cat.chemistry.desc")}
-              icon={<FlaskIcon />}
-              href="/catalog?category=chemistry"
-            />
-            <CategoryCard
-              title={t("cat.metals")}
-              description={t("cat.metals.desc")}
-              icon={<LayersIcon />}
-              href="/catalog?category=metals"
-            />
-            <CategoryCard
-              title={t("cat.equipment")}
-              description={t("cat.equipment.desc")}
-              icon={<CogIcon />}
-              href="/catalog?category=equipment"
-            />
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {[
+              { key: "exp", icon: "🏆" },
+              { key: "portfolio", icon: "📦" },
+              { key: "rd", icon: "🧪" },
+              { key: "global", icon: "🌍" },
+            ].map((item) => (
+              <div key={item.key} className="group relative rounded-2xl border border-border bg-card p-8 transition-all hover:border-accent/30 hover:shadow-xl">
+                <div className="mb-6 text-4xl">{item.icon}</div>
+                <h3 className="mb-4 text-lg font-bold text-foreground group-hover:text-accent transition-colors">
+                  {t(`whyus.${item.key}.title`)}
+                </h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {t(`whyus.${item.key}.desc`)}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Products */}
+      <FeaturedProducts />
+
+      {/* Product Highlights / Groups */}
+      <section className="py-20 lg:py-32">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+          <div className="mb-16 flex flex-col items-center text-center">
+            <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-foreground lg:text-4xl uppercase tracking-[0.1em]">
+              {t("catalog.title")}
+            </h2>
+            <div className="h-1 w-20 bg-accent" />
+            <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
+              {t("whyus.portfolio.desc")}
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {[
+              { key: "sulfite", title: locale === 'ru' ? 'Серия сульфитов' : locale === 'en' ? 'Sulfite Series' : 'Сульфиттер сериясы', items: ["Безводный сульфит натрия", "Тиосульфат натрия", "Метабисульфит натрия"] },
+              { key: "sulfate", title: locale === 'ru' ? 'Серия сульфатов' : locale === 'en' ? 'Sulfate Series' : 'Сульфаттар сериясы', items: ["Гидросульфат натрия", "Гидросульфат калия", "Гидросульфат аммония"] },
+              { key: "organic", title: locale === 'ru' ? 'Органическая серия' : locale === 'en' ? 'Organic Series' : 'Органикалық серия', items: ["N-этилэтилендиамин", "N,N-диэтилэтилендиамин", "N,N'-диэтилэтилендиамин"] },
+              { key: "others", title: locale === 'ru' ? 'Другие' : locale === 'en' ? 'Others' : 'Басқалар', items: ["Оксид бария", "Силикокальций", "Фурфуриловый спирт"] },
+            ].map((group) => (
+              <div key={group.key} className="flex flex-col rounded-xl border border-border bg-card p-6 transition-all hover:bg-muted/50">
+                <h3 className="mb-4 text-lg font-bold text-foreground border-l-4 border-accent pl-3">
+                  {group.title}
+                </h3>
+                <ul className="mb-6 flex-grow space-y-3 text-sm text-muted-foreground">
+                  {group.items.map(item => (
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="text-accent">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link href={`/catalog?type=${group.key}`} className="text-xs font-bold text-accent uppercase tracking-widest hover:underline">
+                  {t("products.highlights.view_all")}
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Custom Order CTA */}
+      <section className="bg-secondary/50 py-16 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+          <div className="relative overflow-hidden rounded-2xl bg-primary px-8 py-12 shadow-xl lg:px-16 lg:py-20">
+            <div className="relative z-10 max-w-2xl">
+              <h2 className="mb-6 text-3xl font-bold text-primary-foreground lg:text-4xl">
+                {t("custom.title")}
+              </h2>
+              <p className="mb-8 text-lg text-primary-foreground/80">
+                {t("custom.text")}
+              </p>
+              <Link
+                href="/contacts"
+                className="inline-flex items-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
+              >
+                {t("hero.contact")}
+              </Link>
+            </div>
+            {/* Decorative background element */}
+            <div className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
           </div>
         </div>
       </section>
 
       {/* About Preview */}
-      <section className="border-y border-border bg-secondary py-16 lg:py-24">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-16">
             <div className="lg:w-1/2">
-              <h2 className="mb-4 text-2xl font-bold tracking-tight text-foreground lg:text-3xl text-balance">
+              <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground lg:text-4xl text-balance">
                 {t("about.preview.title")}
               </h2>
-              <p className="mb-6 text-base leading-relaxed text-muted-foreground text-pretty">
+              <p className="mb-8 text-lg leading-relaxed text-muted-foreground text-pretty">
                 {t("about.preview.text")}
               </p>
               <Link
@@ -107,32 +195,14 @@ export default function HomePage() {
               ].map((item) => (
                 <div
                   key={item.icon}
-                  className="rounded-lg border border-border bg-card p-5"
+                  className="rounded-xl border border-border bg-card p-6"
                 >
-                  <span className="mb-2 block text-2xl font-bold text-accent/30">{item.icon}</span>
-                  <span className="text-sm font-semibold text-card-foreground">{item.title}</span>
+                  <span className="mb-3 block text-3xl font-bold text-accent/20">{item.icon}</span>
+                  <span className="font-semibold text-card-foreground">{item.title}</span>
                 </div>
               ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* CTA Banner */}
-      <section className="bg-primary py-16 lg:py-20">
-        <div className="mx-auto max-w-7xl px-4 text-center lg:px-8">
-          <h2 className="mb-4 text-2xl font-bold text-primary-foreground lg:text-3xl text-balance">
-            {t("cta.title")}
-          </h2>
-          <p className="mx-auto mb-8 max-w-lg text-base text-primary-foreground/60 text-pretty">
-            {t("cta.text")}
-          </p>
-          <Link
-            href="/contacts"
-            className="inline-flex items-center gap-2 rounded-md bg-accent px-8 py-3.5 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
-          >
-            {t("cta.button")}
-          </Link>
         </div>
       </section>
     </main>

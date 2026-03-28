@@ -1,14 +1,24 @@
 export const ru: Record<string, string> = {
   // Nav
   "nav.home": "Главная",
-  "nav.catalog": "Каталог",
-  "nav.about": "О компании",
+  "nav.catalog": "Продукция",
+  "nav.about": "О нас",
   "nav.contacts": "Контакты",
+  "nav.strength": "Сила",
+  "nav.oem": "Услуга OEM",
+  "nav.news": "Новости",
+  "nav.inquiry": "Запрос",
 
   // Hero
-  "hero.title": "Heat Energy Capital",
-  "hero.subtitle": "Надежный поставщик промышленной химии, металлов и оборудования",
-  "hero.description": "Комплексные поставки для горнодобывающей, металлургической и перерабатывающей отраслей",
+  "hero.title": "Профессиональный производитель химических веществ",
+  "hero.subtitle": "Специализируемся на производстве и разработке химической продукции более 30 лет.",
+  "hero.description": "Завод с сертификацией ISO, REACH, HALAL и KOSHER. Основная продукция включает четыре серии товаров.",
+  "hero.prod1.name": "Метабисульфит натрия",
+  "hero.prod1.formula": "Na₂S₂O₅",
+  "hero.prod1.tags": "Пищевой • Промышленный • Фотография",
+  "hero.prod2.name": "Бисульфат натрия",
+  "hero.prod2.formula": "NaHSO₄",
+  "hero.prod2.tags": "Водоподготовка • Пищевой • Металлургия",
   "hero.cta": "Смотреть каталог",
   "hero.contact": "Связаться с нами",
 
@@ -21,6 +31,10 @@ export const ru: Record<string, string> = {
   "cat.metals.desc": "Металлопрокат, стальные канаты, ферросплавы, никель, алюминий, графитированные электроды и модификаторы стали.",
   "cat.equipment": "Оборудование",
   "cat.equipment.desc": "Горно-шахтное оборудование: буровые долота, дробилки, мельницы, фильтр-прессы, насосы, компрессоры и конвейерные ленты.",
+  "products.highlights.title": "Основные группы товаров",
+  "products.highlights.view_all": "Перейти в каталог",
+  "custom.title": "Продукция любой сложности",
+  "custom.text": "Мы готовы проработать продукцию любой сложности при условии предоставления технических параметров.",
 
   // About preview
   "about.preview.title": "О компании",
@@ -28,10 +42,14 @@ export const ru: Record<string, string> = {
   "about.preview.link": "Подробнее о компании",
 
   // Stats
-  "stats.products": "Позиций в каталоге",
-  "stats.industries": "Отрасли",
-  "stats.partners": "Партнёры",
-  "stats.experience": "Лет на рынке",
+  "stats.products": "позиций",
+  "stats.industries": "отрасли",
+  "stats.partners": "партнёры",
+  "stats.experience": "лет опыта",
+  "stats.founded": "Основано в",
+  "stats.area": "Производственная база",
+  "stats.countries": "Страны-экспортеры",
+  "stats.clients": "Клиенты",
 
   // CTA
   "cta.title": "Готовы обсудить поставку?",
@@ -41,6 +59,8 @@ export const ru: Record<string, string> = {
   // Catalog page
   "catalog.title": "Каталог продукции",
   "catalog.subtitle": "Полный ассортимент промышленной химии, металлов и оборудования",
+  "homepage.products.title": "Наши продукты",
+  "homepage.products.subtitle": "Предлагаем широкий спектр промышленной химии, металлов и специализированного оборудования.",
   "catalog.search": "Поиск по каталогу...",
   "catalog.all": "Все",
   "catalog.chemistry": "Химия",
@@ -72,5 +92,15 @@ export const ru: Record<string, string> = {
 
   // Footer
   "footer.rights": "Все права защищены.",
+  "whyus.title": "Почему клиенты выбирают нас?",
+  "whyus.subtitle": "Стремимся помочь вам создать успешный бренд с высококачественными индивидуальными решениями.",
+  "whyus.exp.title": "30 лет отраслевого опыта",
+  "whyus.exp.desc": "Более трех десятилетий опыта в производстве и НИОКР, сертификация ISO.",
+  "whyus.portfolio.title": "Комплексный портфель продуктов",
+  "whyus.portfolio.desc": "Специализируемся на сульфитах, сульфатах и специализированных химикатах.",
+  "whyus.rd.title": "Команда по исследованиям и разработкам",
+  "whyus.rd.desc": "Собственная профессиональная команда НИОКР с многолетним стажем.",
+  "whyus.global.title": "Глобальное признание рынка",
+  "whyus.global.desc": "Продукция успешно продается в Америке, Европе и Юго-Восточной Азии.",
   "footer.description": "Поставки промышленной химии, металлов и оборудования для горнодобывающей и металлургической промышленности.",
 }
