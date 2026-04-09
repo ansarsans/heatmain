@@ -3,7 +3,7 @@
 import { useTranslation } from "@/lib/i18n"
 import type { Product } from "@/lib/products"
 import type { Locale } from "@/lib/i18n"
-import { cn } from "@/lib/utils"
+import { cn, getAssetPath } from "@/lib/utils"
 
 import Image from "next/image"
 
@@ -29,7 +29,7 @@ export function ProductCard({ product }: { product: Product }) {
       <div className="relative aspect-video overflow-hidden bg-muted">
         {product.image ? (
           <Image
-            src={product.image}
+            src={getAssetPath(product.image)}
             alt={product.name[lang]}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"

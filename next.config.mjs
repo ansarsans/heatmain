@@ -1,10 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Uncomment the line below when deploying to GitHub Pages:
-  // output: 'export',
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  output: 'export',
+  basePath: '/heatmain',
   images: {
     unoptimized: true,
   },
