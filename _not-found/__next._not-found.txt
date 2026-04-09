@@ -1,4 +1,4 @@
 1:"$Sreact.fragment"
-2:I[39756,["/heatmain/_next/static/chunks/a4fdc2cc69f09946.js","/heatmain/_next/static/chunks/d2be314c3ece3fbe.js","/heatmain/_next/static/chunks/a27c3c70d80ffbb8.js"],"default"]
-3:I[37457,["/heatmain/_next/static/chunks/a4fdc2cc69f09946.js","/heatmain/_next/static/chunks/d2be314c3ece3fbe.js","/heatmain/_next/static/chunks/a27c3c70d80ffbb8.js"],"default"]
-0:{"buildId":"bdRt6Wq0QmgOBCAi0ayh9","rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"loading":null,"isPartial":false}
+2:I[39756,["https://ansarsans.github.io/heatmain/_next/static/chunks/a4fdc2cc69f09946.js","https://ansarsans.github.io/heatmain/_next/static/chunks/d2be314c3ece3fbe.js","https://ansarsans.github.io/heatmain/_next/static/chunks/a27c3c70d80ffbb8.js"],"default"]
+3:I[37457,["https://ansarsans.github.io/heatmain/_next/static/chunks/a4fdc2cc69f09946.js","https://ansarsans.github.io/heatmain/_next/static/chunks/d2be314c3ece3fbe.js","https://ansarsans.github.io/heatmain/_next/static/chunks/a27c3c70d80ffbb8.js"],"default"]
+0:{"buildId":"pRAu4Q6nswFBUV179Tby2","rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"loading":null,"isPartial":false}
