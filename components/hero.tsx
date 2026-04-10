@@ -23,13 +23,6 @@ export function Hero() {
       <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-16 px-4 py-20 lg:flex-row lg:items-start lg:px-8 lg:py-32">
         {/* Left: Content */}
         <div className="w-full lg:w-[58%]">
-          <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-primary-foreground/20 bg-primary-foreground/5 px-4 py-1.5 backdrop-blur-sm">
-            <span className="flex h-2 w-2 animate-pulse rounded-full bg-accent" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary-foreground/80">
-              ISO 9001:2015 Certified
-            </span>
-          </div>
-
           <h1 className="mb-6 text-4xl font-extrabold tracking-tight text-primary-foreground lg:text-5xl xl:text-6xl">
             {t("hero.title")}
           </h1>

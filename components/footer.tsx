@@ -34,7 +34,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div className="lg:pt-2">
-            <h4 className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-blue-400">
+            <h4 className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-zinc-400">
               {t("nav.home")}
             </h4>
             <nav className="flex flex-col gap-4" aria-label="Footer navigation">
@@ -53,7 +53,7 @@ export function Footer() {
 
           {/* Contact Info */}
           <div className="lg:pt-2">
-            <h4 className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-blue-400">
+            <h4 className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-zinc-400">
               {t("contacts.title")}
             </h4>
             <div className="space-y-6 text-sm text-white/50">
@@ -74,7 +74,7 @@ export function Footer() {
 
           {/* Quick Inquiry */}
           <div className="lg:pt-2">
-            <h4 className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-blue-400">
+            <h4 className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-zinc-400">
               {t("nav.inquiry")}
             </h4>
             <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
