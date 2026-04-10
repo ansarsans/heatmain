@@ -8,9 +8,9 @@ import { cn, getAssetPath } from "@/lib/utils"
 import Image from "next/image"
 
 const categoryColors: Record<string, string> = {
-  chemistry: "bg-amber-100/80 text-amber-900 border-amber-200",
-  metals: "bg-slate-100/80 text-slate-900 border-slate-200",
-  equipment: "bg-orange-100/80 text-orange-900 border-orange-200",
+  chemistry: "bg-zinc-950/80 text-zinc-300 border-white/10",
+  metals: "bg-zinc-800 text-zinc-300 border-zinc-700",
+  equipment: "bg-zinc-800 text-zinc-300 border-zinc-700",
 }
 
 const categoryLabels: Record<string, Record<string, string>> = {
@@ -24,9 +24,9 @@ export function ProductCard({ product }: { product: Product }) {
   const lang = locale as Locale
 
   return (
-    <div className="group flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-all hover:border-accent/40 hover:shadow-lg">
+    <div className="group flex flex-col overflow-hidden rounded-xl border border-white/10 bg-white/5 backdrop-blur-md transition-all hover:border-white/20 hover:shadow-2xl hover:shadow-black/40">
       {/* Image Container */}
-      <div className="relative aspect-video overflow-hidden bg-muted">
+      <div className="relative aspect-video overflow-hidden bg-zinc-900/50">
         {product.image ? (
           <Image
             src={getAssetPath(product.image)}
@@ -36,9 +36,9 @@ export function ProductCard({ product }: { product: Product }) {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (
-          <div className="flex h-full items-center justify-center bg-muted/50">
+          <div className="flex h-full items-center justify-center bg-zinc-900/50">
             <svg
-              className="text-muted-foreground/20"
+              className="text-white/10"
               width="48"
               height="48"
               viewBox="0 0 24 24"
@@ -65,20 +65,20 @@ export function ProductCard({ product }: { product: Product }) {
       </div>
 
       <div className="flex flex-1 flex-col p-5">
-        <h3 className="mb-2 text-lg font-bold text-card-foreground leading-tight group-hover:text-accent transition-colors">
+        <h3 className="mb-2 text-lg font-bold text-white leading-tight transition-colors">
           {product.name[lang]}
         </h3>
-        <p className="mb-6 text-sm leading-relaxed text-muted-foreground line-clamp-3">
+        <p className="mb-6 text-sm leading-relaxed text-white/50 line-clamp-3">
           {product.description[lang]}
         </p>
-        <div className="mt-auto pt-4 border-t border-border/50">
+        <div className="mt-auto pt-4 border-t border-white/5">
         <a
           href="/contacts"
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-accent transition-colors hover:text-accent/80"
+          className="inline-flex items-center gap-1.5 text-sm font-bold text-white transition-colors hover:underline hover:opacity-80"
         >
-          {t("catalog.inquire")}
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M3.33 8h9.34M8.67 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          {locale === 'ru' ? 'Подробнее' : (locale === 'en' ? 'Learn More' : 'Толығырақ')}
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true" stroke="currentColor">
+            <path d="M3.33 8h9.34M8.67 4l4 4-4 4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </a>
         </div>

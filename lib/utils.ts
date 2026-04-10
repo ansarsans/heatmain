@@ -6,8 +6,9 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function getAssetPath(path: string) {
-  // Replace '/heatmain' with your repository name if it changes
-  const basePath = '/heatmain'
+  const isProd = process.env.NODE_ENV === 'production'
+  const basePath = isProd ? '/heatmain' : ''
+  
   if (path.startsWith('http') || path.startsWith('https') || path.startsWith('data:')) {
     return path
   }

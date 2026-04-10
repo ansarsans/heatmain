@@ -14,24 +14,20 @@ export function LanguageSwitcher({ className }: { className?: string }) {
 
   return (
     <div className={cn("flex items-center gap-1", className)}>
-      {locales.map((l, i) => (
-        <span key={l.code} className="flex items-center">
-          <button
-            onClick={() => setLocale(l.code)}
-            className={cn(
-              "px-1.5 py-0.5 text-sm font-medium transition-colors rounded",
-              locale === l.code
-                ? "text-accent"
-                : "text-muted-foreground hover:text-foreground"
-            )}
-            aria-label={`Switch language to ${l.label}`}
-          >
-            {l.label}
-          </button>
-          {i < locales.length - 1 && (
-            <span className="text-border select-none" aria-hidden="true">|</span>
+      {locales.map((l) => (
+        <button
+          key={l.code}
+          onClick={() => setLocale(l.code)}
+          className={cn(
+            "px-2 py-1 text-xs font-bold transition-colors rounded uppercase tracking-widest",
+            locale === l.code
+              ? "text-white"
+              : "text-white/40 hover:text-white/70"
           )}
-        </span>
+          aria-label={`Switch language to ${l.label}`}
+        >
+          {l.label}
+        </button>
       ))}
     </div>
   )
