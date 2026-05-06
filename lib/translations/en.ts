@@ -89,6 +89,15 @@ export const en: Record<string, string> = {
   "contacts.hours": "Working Hours",
   "contacts.hours.value": "Mon - Fri: 9:00 AM - 6:00 PM",
   "contacts.note": "We are ready to develop products of any complexity given technical parameters.",
+  "contacts.info_title": "Contact Information",
+  "contacts.form_title": "Contact Form",
+  "contacts.name_label": "Your Name",
+  "contacts.phone_label": "Your Phone",
+  "contacts.email_label": "Email",
+  "contacts.message_label": "Your Message",
+  "contacts.send_button": "Send Message",
+  "contacts.location_title": "Location",
+  "contacts.view_map": "View on Google Maps",
 
   // Why Us
   "whyus.title": "Why Clients Choose Us?",

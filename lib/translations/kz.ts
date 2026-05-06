@@ -89,6 +89,15 @@ export const kz: Record<string, string> = {
   "contacts.hours": "Жұмыс уақыты",
   "contacts.hours.value": "Дс - Жм: 9:00 - 18:00",
   "contacts.note": "Біз техникалық параметрлер ұсынылған жағдайда кез келген күрделіліктегі бұйымдарды өңдеуге дайынбыз.",
+  "contacts.info_title": "Байланыс ақпараты",
+  "contacts.form_title": "Байланыс формасы",
+  "contacts.name_label": "Сіздің атыңыз",
+  "contacts.phone_label": "Сіздің телефоныңыз",
+  "contacts.email_label": "Email",
+  "contacts.message_label": "Сіздің хабарламаңыз",
+  "contacts.send_button": "Хабарлама жіберу",
+  "contacts.location_title": "Орналасқан жері",
+  "contacts.view_map": "Google Maps-те қарау",
 
   // Why Us
   "whyus.title": "Неліктен клиенттер бізді таңдайды?",

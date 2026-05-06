@@ -72,7 +72,7 @@ function CatalogContent() {
   }, [activeCategory, search, locale])
 
   return (
-    <main className="relative min-h-screen pt-[84px] pb-24 lg:pt-[100px] lg:pb-32 bg-[#f4f2ee] overflow-hidden">
+    <main className="relative min-h-screen pt-[84px] pb-24 lg:pt-[100px] lg:pb-32 bg-white overflow-hidden">
       <div className="relative z-10 mx-auto max-w-[1500px] px-4 lg:px-8">
         {/* Page header with Search aligned */}
         <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">

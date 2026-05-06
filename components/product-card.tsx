@@ -19,7 +19,12 @@ const categoryLabels: Record<string, Record<string, string>> = {
   equipment: { ru: "Оборудование", kz: "Жабдықтар", en: "Equipment" },
 }
 
-export function ProductCard({ product }: { product: Product }) {
+interface ProductCardProps {
+  product: Product
+  variant?: 'light' | 'dark'
+}
+
+export function ProductCard({ product, variant = 'light' }: ProductCardProps) {
   const { locale, t } = useTranslation()
   const lang = locale as Locale
 
@@ -56,7 +61,9 @@ export function ProductCard({ product }: { product: Product }) {
           <span
             className={cn(
               "inline-block rounded-full border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider",
-              categoryColors[product.category]
+              variant === 'light' 
+                ? "bg-white border-zinc-300 text-zinc-900" 
+                : "bg-zinc-900/80 border-white/20 text-white backdrop-blur-sm"
             )}
           >
             {categoryLabels[product.category]?.[lang] ?? product.category}
@@ -65,17 +72,28 @@ export function ProductCard({ product }: { product: Product }) {
       </div>
 
       <div className="flex flex-1 flex-col py-6">
-        <h3 className="mb-2 text-xl font-semibold text-zinc-900 leading-tight transition-colors">
+        <h3 className={cn(
+          "mb-2 text-xl font-semibold leading-tight transition-colors",
+          variant === 'light' ? "text-zinc-900" : "text-white"
+        )}>
           {product.name[lang]}
         </h3>
-        <p className="mb-6 text-sm leading-relaxed text-zinc-500 line-clamp-3">
+        <p className={cn(
+          "mb-6 text-sm leading-relaxed line-clamp-3",
+          variant === 'light' ? "text-zinc-500" : "text-white/60"
+        )}>
           {product.description[lang]}
         </p>
         <div className="mt-auto flex items-center justify-end gap-2">
           {/* Secondary Button: Learn More */}
           <a
             href="/contacts"
-            className="inline-flex items-center rounded-full border border-zinc-300 bg-transparent px-4 py-2 text-[11px] font-bold text-zinc-900 transition-all hover:bg-zinc-100 active:scale-95"
+            className={cn(
+              "inline-flex items-center rounded-full border px-4 py-2 text-[11px] font-bold transition-all active:scale-95",
+              variant === 'light'
+                ? "border-zinc-300 bg-transparent text-zinc-900 hover:bg-zinc-100"
+                : "border-white/20 bg-white/5 text-white hover:bg-white/10"
+            )}
           >
             {locale === 'ru' ? 'Подробнее' : (locale === 'en' ? 'Learn More' : 'Толығырақ')}
           </a>
@@ -83,7 +101,12 @@ export function ProductCard({ product }: { product: Product }) {
           {/* Primary Button: Order */}
           <a
             href="/contacts"
-            className="inline-flex items-center gap-1.5 rounded-full bg-zinc-900 px-4 py-2 text-[11px] font-bold text-white transition-all hover:bg-zinc-700"
+            className={cn(
+              "inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[11px] font-bold text-white transition-all",
+              variant === 'light'
+                ? "bg-zinc-900 hover:bg-zinc-700"
+                : "bg-[#0241c0] hover:bg-[#0241c0]/80"
+            )}
           >
             {locale === 'ru' ? 'Заказать' : (locale === 'en' ? 'Order' : 'Тапсырыс беру')}
             <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" stroke="currentColor">

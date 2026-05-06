@@ -8,7 +8,7 @@ export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="relative overflow-hidden border-t border-white/5 bg-[#131415] text-white">
+    <footer className="relative overflow-hidden border-t border-white/5 bg-[#1b1d20] text-white">
       {/* Decorative Blur */}
       <div className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-[#0241c0]/5 blur-[120px] pointer-events-none" />
 

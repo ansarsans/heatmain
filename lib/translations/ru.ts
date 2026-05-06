@@ -89,6 +89,15 @@ export const ru: Record<string, string> = {
   "contacts.hours": "Режим работы",
   "contacts.hours.value": "Пн - Пт: 9:00 - 18:00",
   "contacts.note": "Мы готовы прорабатывать изделия любой сложности при предоставлении технических параметров.",
+  "contacts.info_title": "Контактная информация",
+  "contacts.form_title": "Форма обратной связи",
+  "contacts.name_label": "Ваше имя",
+  "contacts.phone_label": "Ваш телефон",
+  "contacts.email_label": "Email",
+  "contacts.message_label": "Ваше сообщение",
+  "contacts.send_button": "Отправить сообщение",
+  "contacts.location_title": "Местоположение",
+  "contacts.view_map": "Смотреть на Google Maps",
 
   // Footer
   "footer.rights": "Все права защищены.",

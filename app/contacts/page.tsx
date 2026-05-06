@@ -1,66 +1,32 @@
 "use client"
 
 import { useTranslation } from "@/lib/i18n"
-
-function PhoneIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-    </svg>
-  )
-}
-
-function MailIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="2" y="4" width="20" height="16" rx="2" />
-      <path d="M22 7l-10 7L2 7" />
-    </svg>
-  )
-}
-
-function MapPinIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" />
-      <circle cx="12" cy="10" r="3" />
-    </svg>
-  )
-}
-
-function ClockIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <circle cx="12" cy="12" r="10" />
-      <path d="M12 6v6l4 2" />
-    </svg>
-  )
-}
+import { Phone, Mail, MapPin, Clock, ExternalLink, Send } from "lucide-react"
 
 export default function ContactsPage() {
   const { t } = useTranslation()
 
   const contactItems = [
     {
-      icon: <PhoneIcon />,
+      icon: <Phone className="h-5 w-5" />,
       label: t("contacts.phone"),
-      value: "+7 (700) 000-00-00",
-      href: "tel:+77000000000",
+      value: "+7 (705) 123-45-12",
+      href: "tel:+77051234512",
     },
     {
-      icon: <MailIcon />,
+      icon: <Mail className="h-5 w-5" />,
       label: t("contacts.email"),
-      value: "info@hec.kz",
-      href: "mailto:info@hec.kz",
+      value: "info@heatenergy.kz",
+      href: "mailto:info@heatenergy.kz",
     },
     {
-      icon: <MapPinIcon />,
+      icon: <MapPin className="h-5 w-5" />,
       label: t("contacts.address"),
-      value: "Kazakhstan",
-      href: undefined,
+      value: "Kazakhstan, Almaty",
+      href: "https://maps.google.com",
     },
     {
-      icon: <ClockIcon />,
+      icon: <Clock className="h-5 w-5" />,
       label: t("contacts.hours"),
       value: t("contacts.hours.value"),
       href: undefined,
@@ -68,63 +34,150 @@ export default function ContactsPage() {
   ]
 
   return (
-    <main className="py-12 lg:py-20">
+    <main className="min-h-screen bg-[#fcfcfc] py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
-        {/* Page header */}
-        <div className="mb-12 max-w-xl">
-          <h1 className="mb-3 text-3xl font-bold tracking-tight text-foreground lg:text-4xl text-balance">
+        {/* Page Header */}
+        <div className="mb-12 border-b border-zinc-200 pb-10">
+          <h1 className="mb-4 text-3xl font-bold tracking-tight text-zinc-900 lg:text-4xl text-balance">
             {t("contacts.title")}
           </h1>
-          <p className="text-base text-muted-foreground text-pretty">
+          <p className="text-lg text-zinc-600 text-pretty">
             {t("contacts.subtitle")}
           </p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-2">
-          {/* Contact cards */}
-          <div className="grid gap-4 sm:grid-cols-2">
-            {contactItems.map((item) => {
-              const content = (
-                <div className="flex flex-col gap-3 rounded-lg border border-border bg-card p-6">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-md bg-accent/10 text-accent">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-3">
+          {/* Section 1: Contact Form */}
+          <div className="flex h-full flex-col rounded-xl border border-border/50 bg-white p-8 shadow-sm transition-all hover:shadow-md">
+            <div className="mb-8">
+              <h2 className="text-xl font-bold text-[#1a1c21]">
+                {t("contacts.form_title")}
+              </h2>
+              <div className="mt-4 border-b-2 border-zinc-200 w-full" />
+            </div>
+
+            <form className="flex flex-1 flex-col space-y-5" onSubmit={(e) => e.preventDefault()}>
+              <div>
+                <input
+                  type="text"
+                  id="name"
+                  className="w-full rounded-md border border-border/60 bg-white px-4 py-2.5 text-sm outline-none transition-colors focus:border-[#1a1c21] focus:ring-1 focus:ring-[#1a1c21]/10"
+                  placeholder={t("contacts.name_label")}
+                />
+              </div>
+
+              <div>
+                <input
+                  type="email"
+                  id="email"
+                  className="w-full rounded-md border border-border/60 bg-white px-4 py-2.5 text-sm outline-none transition-colors focus:border-[#1a1c21] focus:ring-1 focus:ring-[#1a1c21]/10"
+                  placeholder={t("contacts.email_label")}
+                />
+              </div>
+
+              <div>
+                <input
+                  type="tel"
+                  id="phone"
+                  className="w-full rounded-md border border-border/60 bg-white px-4 py-2.5 text-sm outline-none transition-colors focus:border-[#1a1c21] focus:ring-1 focus:ring-[#1a1c21]/10"
+                  placeholder={t("contacts.phone_label")}
+                />
+              </div>
+
+              <div className="flex flex-1 flex-col">
+                <textarea
+                  id="message"
+                  className="w-full flex-1 resize-none rounded-md border border-border/60 bg-white px-4 py-2.5 text-sm outline-none transition-colors focus:border-[#1a1c21] focus:ring-1 focus:ring-[#1a1c21]/10 min-h-[120px]"
+                  placeholder={t("contacts.message_label")}
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="group mt-auto flex w-full items-center justify-center gap-2 rounded-md bg-[#1a1c21] px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-[#2a2d33] active:scale-[0.98]"
+              >
+                <span>{t("contacts.send_button")}</span>
+                <Send className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </button>
+            </form>
+          </div>
+
+          {/* Section 2: Contact Information */}
+          <div className="border-l border-r border-zinc-200 bg-transparent px-8 lg:px-12 pt-8 pb-2">
+            <div className="mb-8">
+              <h2 className="text-xl font-bold text-[#1a1c21]">
+                {t("contacts.info_title")}
+              </h2>
+              <div className="mt-4 border-b-2 border-zinc-200 w-full" />
+            </div>
+
+            <div className="space-y-8">
+              {contactItems.map((item, idx) => (
+                <div key={idx} className="flex items-start gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white text-[#1a1c21] shadow-sm">
                     {item.icon}
                   </div>
                   <div>
-                    <p className="mb-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                    <h3 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">
                       {item.label}
-                    </p>
-                    <p className="text-base font-semibold text-card-foreground">{item.value}</p>
+                    </h3>
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        className="mt-1 block text-sm font-medium text-[#1a1c21] transition-colors hover:text-[#0241c0]"
+                      >
+                        {item.value}
+                      </a>
+                    ) : (
+                      <p className="mt-1 text-sm font-medium text-[#1a1c21]">
+                        {item.value}
+                      </p>
+                    )}
                   </div>
                 </div>
-              )
-
-              if (item.href) {
-                return (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    className="transition-shadow hover:shadow-md rounded-lg"
-                  >
-                    {content}
-                  </a>
-                )
-              }
-              return <div key={item.label}>{content}</div>
-            })}
-          </div>
-
-          {/* Note card */}
-          <div className="flex flex-col justify-between rounded-lg bg-primary p-8 lg:p-10">
-            <div>
-              <h2 className="mb-4 text-xl font-bold text-primary-foreground lg:text-2xl text-balance">
-                Heat Energy Capital
-              </h2>
-              <p className="text-sm leading-relaxed text-primary-foreground/70 text-pretty">
-                {t("contacts.note")}
+              ))}
+            </div>
+            
+            <div className="mt-12 rounded-lg border border-dashed border-border/60 p-5 bg-white/50">
+              <p className="text-sm leading-relaxed text-muted-foreground italic">
+                "{t("contacts.note")}"
               </p>
             </div>
-            <div className="mt-8 border-t border-primary-foreground/10 pt-6">
-              <p className="text-xs text-primary-foreground/40 uppercase tracking-wider">B2B Industrial Supply</p>
+          </div>
+
+          {/* Section 3: Location */}
+          <div className="flex flex-col pt-8">
+            <div className="mb-8">
+               <h2 className="text-xl font-bold text-[#1a1c21]">
+                {t("contacts.location_title")}
+              </h2>
+              <div className="mt-4 border-b-2 border-zinc-200 w-full" />
+            </div>
+            
+            <div className="relative flex-1 overflow-hidden rounded-xl border border-border/40 bg-white shadow-sm">
+              <div className="absolute inset-0 bg-[#eee] flex items-center justify-center">
+                {/* Mock Map Background */}
+                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:20px_20px]" />
+                <div className="relative flex flex-col items-center">
+                  <div className="mb-2 flex h-16 w-16 animate-bounce items-center justify-center rounded-full bg-[#1a1c21]/10">
+                    <MapPin className="h-8 w-8 text-[#1a1c21]" />
+                  </div>
+                  <span className="text-xs font-medium tracking-tighter text-[#1a1c21] uppercase">Heat Energy Capital</span>
+                </div>
+              </div>
+              
+              {/* Actual Map Link / Preview Image overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <a 
+                  href="https://maps.google.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 rounded-lg bg-white/95 backdrop-blur-sm px-4 py-3 text-sm font-bold text-[#1a1c21] shadow-lg transition-all hover:bg-white hover:shadow-xl"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                  {t("contacts.view_map")}
+                </a>
+              </div>
             </div>
           </div>
         </div>
