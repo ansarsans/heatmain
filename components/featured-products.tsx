@@ -9,12 +9,13 @@ import { getAssetPath } from "@/lib/utils"
 export function FeaturedProducts() {
   const { t } = useTranslation()
 
-  // Select a few representative products
-  // 1. Sodium Metabisulfite (chem-11)
-  // 2. Pipes, rounds, sheets (met-1)
-  // 3. Pumps (equip-20)
-  const featuredIds = ["chem-11", "met-1", "equip-20"]
-  const featured = products.filter((p) => featuredIds.includes(p.id))
+  // Select a few representative products (химия / металлы / оборудование)
+  // 3-й слот был equip-20 — такого id в каталоге нет, из-за этого показывались только 2 карточки
+  const featuredIds = ["chem-11", "met-1", "equip-1"] as const
+  const order = new Map<string, number>(featuredIds.map((id, i) => [id, i]))
+  const featured = products
+    .filter((p) => order.has(p.id))
+    .sort((a, b) => (order.get(a.id) ?? 0) - (order.get(b.id) ?? 0))
 
   return (
     <section className="relative overflow-hidden py-20 lg:py-32 bg-[#131415]">

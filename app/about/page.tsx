@@ -6,8 +6,44 @@ import { useTranslation } from "@/lib/i18n"
 import { 
   Search, Factory, ShieldCheck, Truck, 
   FileText, Calculator, PackageCheck, MapPin, 
-  Globe2, Zap, Recycle, Building2, Shield, Users, Hammer
+  Zap, Recycle, Building2, Shield, Users, Hammer
 } from "lucide-react"
+
+/** Orthographic projection (degrees). Center chosen to show EU + Central Asia + China on one face. */
+const GLOBE = { cx: 200, cy: 200, R: 148, lat0: 45, lon0: 72 }
+
+function geoToSvg(lat: number, lon: number): { x: number; y: number } {
+  const φ = (lat * Math.PI) / 180
+  const λ = (lon * Math.PI) / 180
+  const φ0 = (GLOBE.lat0 * Math.PI) / 180
+  const λ0 = (GLOBE.lon0 * Math.PI) / 180
+  const dλ = λ - λ0
+  const cosφ = Math.cos(φ)
+  const x = GLOBE.cx + GLOBE.R * cosφ * Math.sin(dλ)
+  const y =
+    GLOBE.cy -
+    GLOBE.R * (Math.cos(φ0) * Math.sin(φ) - Math.sin(φ0) * cosφ * Math.cos(dλ))
+  return { x, y }
+}
+
+/** True if point is on the visible hemisphere (facing viewer). */
+function isOnNearSide(lat: number, lon: number): boolean {
+  const φ = (lat * Math.PI) / 180
+  const λ = (lon * Math.PI) / 180
+  const φ0 = (GLOBE.lat0 * Math.PI) / 180
+  const λ0 = (GLOBE.lon0 * Math.PI) / 180
+  const z =
+    Math.sin(φ0) * Math.sin(φ) +
+    Math.cos(φ0) * Math.cos(φ) * Math.cos(λ - λ0)
+  return z >= -0.02
+}
+
+const supplyRegionMarkers = [
+  { key: "eu", lat: 50, lon: 10, label: "Европа", fill: "#ffffff", delay: "0ms" },
+  { key: "kz", lat: 51.2, lon: 71.4, label: "Казахстан", fill: "#0241c0", delay: "200ms" },
+  { key: "uz", lat: 41.3, lon: 69.2, label: "Узбекистан", fill: "#ffffff", delay: "400ms" },
+  { key: "cn", lat: 39.9, lon: 116.4, label: "Китай", fill: "#ffffff", delay: "600ms" },
+] as const
 
 export default function AboutPage() {
   const { t } = useTranslation()
@@ -102,26 +138,96 @@ export default function AboutPage() {
                Мы работаем без границ, обеспечивая надежные логистические цепочки между ведущими производственными хабами и предприятиями заказчиков.
              </p>
              <div className="flex flex-wrap gap-4">
-                {['Казахстан', 'Китай', 'Европа', 'Узбекистан'].map(country => (
-                  <span key={country} className="px-6 py-2.5 rounded-full border border-white/10 bg-white/5 text-sm backdrop-blur-md text-white font-semibold flex items-center gap-2 transition-colors hover:bg-white/10 hover:border-white/20 cursor-default">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#0241c0]" />
-                    {country}
+                {[
+                  { name: "Казахстан", dot: "bg-[#0241c0]" },
+                  { name: "Китай", dot: "bg-[#0241c0]" },
+                  { name: "Европа", dot: "bg-[#0241c0]" },
+                  { name: "Узбекистан", dot: "bg-white" },
+                ].map(({ name, dot }) => (
+                  <span key={name} className="px-6 py-2.5 rounded-full border border-white/10 bg-white/5 text-sm backdrop-blur-md text-white font-semibold flex items-center gap-2 transition-colors hover:bg-white/10 hover:border-white/20 cursor-default">
+                    <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${dot}`} />
+                    {name}
                   </span>
                 ))}
              </div>
            </div>
            
-           {/* Abstract Map Visual */}
+           {/* Globe: wireframe + markers from lat/lon (orthographic) */}
            <div className="relative aspect-square lg:aspect-auto lg:h-[400px] w-full flex items-center justify-center">
-             <div className="absolute inset-0 flex items-center justify-center opacity-40">
-               <Globe2 className="w-full h-full text-[#0241c0] max-w-[350px] max-h-[350px]" strokeWidth={0.5} />
-             </div>
-             <div className="relative z-10 grid grid-cols-2 gap-4">
-               {/* Decorative dots indicating regions */}
-               <div className="absolute top-1/4 left-1/4 w-3 h-3 bg-white rounded-full shadow-[0_0_15px_#fff] animate-pulse"></div>
-               <div className="absolute top-1/2 right-1/4 w-3 h-3 bg-[#0241c0] rounded-full shadow-[0_0_15px_#0241c0] animate-pulse delay-700"></div>
-               <div className="absolute bottom-1/3 left-1/2 w-3 h-3 bg-white rounded-full shadow-[0_0_15px_#fff] animate-pulse delay-300"></div>
-             </div>
+             <svg
+               className="w-full max-w-[min(100%,380px)] h-auto text-[#6eb0ff] drop-shadow-[0_0_28px_rgba(110,176,255,0.45)]"
+               viewBox="0 0 400 400"
+               fill="none"
+               xmlns="http://www.w3.org/2000/svg"
+               aria-hidden
+             >
+               <defs>
+                 <radialGradient id="globeFill" cx="32%" cy="28%" r="75%">
+                   <stop offset="0%" stopColor="#a8d4ff" stopOpacity="0.22" />
+                   <stop offset="45%" stopColor="#4d94ff" stopOpacity="0.12" />
+                   <stop offset="100%" stopColor="#0241c0" stopOpacity="0.04" />
+                 </radialGradient>
+                 <filter id="globeGlow" x="-40%" y="-40%" width="180%" height="180%">
+                   <feGaussianBlur stdDeviation="2" result="b" />
+                   <feMerge>
+                     <feMergeNode in="b" />
+                     <feMergeNode in="SourceGraphic" />
+                   </feMerge>
+                 </filter>
+               </defs>
+               {/* Sphere outline + graticule (decorative, matches orthographic view) */}
+               <circle
+                 cx={GLOBE.cx}
+                 cy={GLOBE.cy}
+                 r={GLOBE.R}
+                 fill="url(#globeFill)"
+                 className="stroke-current opacity-95"
+                 strokeWidth="1.85"
+               />
+               <ellipse
+                 cx={GLOBE.cx}
+                 cy={GLOBE.cy}
+                 rx={GLOBE.R * 0.92}
+                 ry={GLOBE.R * 0.36}
+                 className="stroke-current opacity-70"
+                 strokeWidth="1.15"
+               />
+               <ellipse
+                 cx={GLOBE.cx}
+                 cy={GLOBE.cy}
+                 rx={GLOBE.R * 0.35}
+                 ry={GLOBE.R}
+                 className="stroke-current opacity-70"
+                 strokeWidth="1.15"
+               />
+               <ellipse
+                 cx={GLOBE.cx}
+                 cy={GLOBE.cy}
+                 rx={GLOBE.R * 0.72}
+                 ry={GLOBE.R}
+                 className="stroke-current opacity-55"
+                 strokeWidth="1"
+               />
+               {supplyRegionMarkers.map(({ key, lat, lon, label, fill, delay }) => {
+                 if (!isOnNearSide(lat, lon)) return null
+                 const { x, y } = geoToSvg(lat, lon)
+                 const glow = fill === "#0241c0" ? "#0241c0" : "#ffffff"
+                 return (
+                   <g key={key} className="animate-pulse" style={{ animationDelay: delay }}>
+                     <circle cx={x} cy={y} r="14" fill={glow} opacity="0.25" />
+                     <circle
+                       cx={x}
+                       cy={y}
+                       r="5"
+                       fill={fill}
+                       filter="url(#globeGlow)"
+                       className="opacity-95"
+                     />
+                     <title>{label}</title>
+                   </g>
+                 )
+               })}
+             </svg>
            </div>
         </div>
       </section>

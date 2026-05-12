@@ -10,8 +10,8 @@ export const en: Record<string, string> = {
   "nav.inquiry": "Inquiry",
 
   // Hero
-  "hero.title": "Professional Chemical Manufacturer",
-  "hero.subtitle": "Specializing in the production and development of chemical products for over 30 years.",
+  "hero.title": "International supply of industrial chemicals, metals, and equipment",
+  "hero.subtitle": "Reliable B2B solutions for energy, manufacturing, and heavy industry.",
   "hero.description": "Factory with ISO, REACH, HALAL, and KOSHER certifications. Main production includes four series.",
   "hero.prod1.name": "Sodium Metabisulfite",
   "hero.prod1.formula": "Na₂S₂O₅",
@@ -33,6 +33,8 @@ export const en: Record<string, string> = {
   "cat.equipment.desc": "Mining equipment: drill bits, crushers, mills, filter presses, pumps, compressors, and conveyor belts.",
   "products.highlights.title": "Main Product Groups",
   "products.highlights.view_all": "Go to Catalog",
+  "products.learn_more": "Learn more",
+  "products.order": "Order",
   "custom.title": "Products of Any Complexity",
   "custom.text": "We are ready to process products of any complexity given technical parameters.",
 
@@ -86,18 +88,26 @@ export const en: Record<string, string> = {
   "contacts.phone": "Phone",
   "contacts.email": "Email",
   "contacts.address": "Address",
+  "contacts.address_full":
+    "Kazakhstan, Astana, Yesil district, Älıhan Bökeyhan street, building 27/1, office unit 10",
   "contacts.hours": "Working Hours",
   "contacts.hours.value": "Mon - Fri: 9:00 AM - 6:00 PM",
   "contacts.note": "We are ready to develop products of any complexity given technical parameters.",
   "contacts.info_title": "Contact Information",
   "contacts.form_title": "Contact Form",
-  "contacts.name_label": "Your Name",
-  "contacts.phone_label": "Your Phone",
+  "contacts.form_hint": "Enter a message and at least one contact: phone or email.",
+  "contacts.prefill_product": "Product inquiry (id)",
+  "contacts.phone_label": "Your phone",
   "contacts.email_label": "Email",
-  "contacts.message_label": "Your Message",
-  "contacts.send_button": "Send Message",
+  "contacts.message_label": "Your message",
+  "contacts.send_button": "Send message",
+  "feedback.sending": "Sending…",
+  "feedback.sent_ok": "Message sent.",
+  "feedback.fail": "Could not send. Please try again later.",
   "contacts.location_title": "Location",
-  "contacts.view_map": "View on Google Maps",
+  "contacts.map_embed_note":
+    "The map shows a pin at the address. Directions and the building card — in 2GIS via the button below.",
+  "contacts.view_map": "Open in 2GIS",
 
   // Why Us
   "whyus.title": "Why Clients Choose Us?",

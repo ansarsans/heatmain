@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useTranslation } from "@/lib/i18n"
 import type { Product } from "@/lib/products"
 import type { Locale } from "@/lib/i18n"
@@ -21,10 +22,19 @@ const categoryLabels: Record<string, Record<string, string>> = {
 
 interface ProductCardProps {
   product: Product
-  variant?: 'light' | 'dark'
+  variant?: "light" | "dark"
+  /** Если задано, кнопка «Подробнее» открывает модалку (каталог), иначе ведёт на контакты */
+  onDetailsClick?: (product: Product) => void
+  /** Скрыть описание (например, в каталоге — текст только в модалке «Подробнее») */
+  hideDescription?: boolean
 }
 
-export function ProductCard({ product, variant = 'light' }: ProductCardProps) {
+export function ProductCard({
+  product,
+  variant = "light",
+  onDetailsClick,
+  hideDescription = false,
+}: ProductCardProps) {
   const { locale, t } = useTranslation()
   const lang = locale as Locale
 
@@ -71,48 +81,73 @@ export function ProductCard({ product, variant = 'light' }: ProductCardProps) {
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col py-6">
-        <h3 className={cn(
-          "mb-2 text-xl font-semibold leading-tight transition-colors",
-          variant === 'light' ? "text-zinc-900" : "text-white"
-        )}>
+      <div
+        className={cn(
+          "flex flex-1 flex-col",
+          hideDescription ? "pt-3 pb-6 sm:pt-4" : "py-6",
+        )}
+      >
+        <h3
+          className={cn(
+            "font-semibold leading-tight transition-colors",
+            hideDescription ? "mb-4 text-base sm:text-[17px]" : "mb-2 text-xl",
+            variant === "light" ? "text-zinc-900" : "text-white",
+          )}
+        >
           {product.name[lang]}
         </h3>
-        <p className={cn(
-          "mb-6 text-sm leading-relaxed line-clamp-3",
-          variant === 'light' ? "text-zinc-500" : "text-white/60"
-        )}>
-          {product.description[lang]}
-        </p>
+        {!hideDescription && (
+          <p
+            className={cn(
+              "mb-6 text-sm leading-relaxed line-clamp-3",
+              variant === "light" ? "text-zinc-500" : "text-white/60",
+            )}
+          >
+            {product.description[lang]}
+          </p>
+        )}
         <div className="mt-auto flex items-center justify-end gap-2">
-          {/* Secondary Button: Learn More */}
-          <a
-            href="/contacts"
-            className={cn(
-              "inline-flex items-center rounded-full border px-4 py-2 text-[11px] font-bold transition-all active:scale-95",
-              variant === 'light'
-                ? "border-zinc-300 bg-transparent text-zinc-900 hover:bg-zinc-100"
-                : "border-white/20 bg-white/5 text-white hover:bg-white/10"
-            )}
-          >
-            {locale === 'ru' ? 'Подробнее' : (locale === 'en' ? 'Learn More' : 'Толығырақ')}
-          </a>
+          {onDetailsClick ? (
+            <button
+              type="button"
+              onClick={() => onDetailsClick(product)}
+              className={cn(
+                "inline-flex cursor-pointer items-center rounded-full border px-4 py-2 text-[11px] font-bold transition-all active:scale-95",
+                variant === "light"
+                  ? "border-zinc-300 bg-transparent text-zinc-900 hover:bg-zinc-100"
+                  : "border-white/20 bg-white/5 text-white hover:bg-white/10",
+              )}
+            >
+              {t("products.learn_more")}
+            </button>
+          ) : (
+            <Link
+              href="/contacts"
+              className={cn(
+                "inline-flex items-center rounded-full border px-4 py-2 text-[11px] font-bold transition-all active:scale-95",
+                variant === "light"
+                  ? "border-zinc-300 bg-transparent text-zinc-900 hover:bg-zinc-100"
+                  : "border-white/20 bg-white/5 text-white hover:bg-white/10",
+              )}
+            >
+              {t("products.learn_more")}
+            </Link>
+          )}
 
-          {/* Primary Button: Order */}
-          <a
-            href="/contacts"
+          <Link
+            href={`/contacts?product=${encodeURIComponent(product.id)}`}
             className={cn(
-              "inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[11px] font-bold text-white transition-all",
-              variant === 'light'
+              "inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[11px] font-bold text-white transition-all active:scale-95",
+              variant === "light"
                 ? "bg-zinc-900 hover:bg-zinc-700"
-                : "bg-[#0241c0] hover:bg-[#0241c0]/80"
+                : "bg-[#0241c0] hover:bg-[#0241c0]/80",
             )}
           >
-            {locale === 'ru' ? 'Заказать' : (locale === 'en' ? 'Order' : 'Тапсырыс беру')}
+            {t("products.order")}
             <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" stroke="currentColor">
               <path d="M3.33 8h9.34M8.67 4l4 4-4 4" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </div>

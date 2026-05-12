@@ -3,8 +3,9 @@
 import { useState, useMemo, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import { useTranslation, type Locale } from "@/lib/i18n"
-import { products, type Category } from "@/lib/products"
+import { products, type Category, type Product } from "@/lib/products"
 import { ProductCard } from "@/components/product-card"
+import { ProductDetailDialog } from "@/components/product-detail-dialog"
 import { cn } from "@/lib/utils"
 
 const categories: { key: string; value: Category | "all" }[] = [
@@ -56,6 +57,7 @@ function CatalogContent() {
       : "all"
   )
   const [search, setSearch] = useState("")
+  const [detailProduct, setDetailProduct] = useState<Product | null>(null)
 
   const filtered = useMemo(() => {
     const lang = locale as Locale
@@ -73,6 +75,12 @@ function CatalogContent() {
 
   return (
     <main className="relative min-h-screen pt-[84px] pb-24 lg:pt-[100px] lg:pb-32 bg-white overflow-hidden">
+      <ProductDetailDialog
+        product={detailProduct}
+        onOpenChange={(open) => {
+          if (!open) setDetailProduct(null)
+        }}
+      />
       <div className="relative z-10 mx-auto max-w-[1500px] px-4 lg:px-8">
         {/* Page header with Search aligned */}
         <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
@@ -168,7 +176,11 @@ function CatalogContent() {
                     className="animate-card h-full" 
                     style={{ animationDelay: `${index * 60}ms` }}
                   >
-                    <ProductCard product={product} />
+                    <ProductCard
+                      product={product}
+                      hideDescription
+                      onDetailsClick={(p) => setDetailProduct(p)}
+                    />
                   </div>
                 ))}
               </div>

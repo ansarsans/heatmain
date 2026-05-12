@@ -10,8 +10,8 @@ export const ru: Record<string, string> = {
   "nav.inquiry": "Запрос",
 
   // Hero
-  "hero.title": "Профессиональный производитель химических веществ",
-  "hero.subtitle": "Специализируемся на производстве и разработке химической продукции более 30 лет.",
+  "hero.title": "Международные поставки промышленной химии, металлов и оборудования",
+  "hero.subtitle": "Надёжные B2B решения для энергетики, производства и тяжёлой промышленности.",
   "hero.description": "Завод с сертификацией ISO, REACH, HALAL и KOSHER. Основная продукция включает четыре серии товаров.",
   "hero.prod1.name": "Метабисульфит натрия",
   "hero.prod1.formula": "Na₂S₂O₅",
@@ -33,6 +33,8 @@ export const ru: Record<string, string> = {
   "cat.equipment.desc": "Горно-шахтное оборудование: буровые долота, дробилки, мельницы, фильтр-прессы, насосы, компрессоры и конвейерные ленты.",
   "products.highlights.title": "Основные группы товаров",
   "products.highlights.view_all": "Перейти в каталог",
+  "products.learn_more": "Подробнее",
+  "products.order": "Заказать",
   "custom.title": "Продукция любой сложности",
   "custom.text": "Мы готовы проработать продукцию любой сложности при условии предоставления технических параметров.",
 
@@ -86,18 +88,26 @@ export const ru: Record<string, string> = {
   "contacts.phone": "Телефон",
   "contacts.email": "Электронная почта",
   "contacts.address": "Адрес",
+  "contacts.address_full":
+    "Казахстан, город Астана, район Есиль, улица Әлихан Бөкейхан, дом 27/1, н.п. 10",
   "contacts.hours": "Режим работы",
   "contacts.hours.value": "Пн - Пт: 9:00 - 18:00",
   "contacts.note": "Мы готовы прорабатывать изделия любой сложности при предоставлении технических параметров.",
   "contacts.info_title": "Контактная информация",
   "contacts.form_title": "Форма обратной связи",
-  "contacts.name_label": "Ваше имя",
+  "contacts.form_hint": "Укажите сообщение и хотя бы один контакт: телефон или email.",
+  "contacts.prefill_product": "Запрос по товару (код)",
   "contacts.phone_label": "Ваш телефон",
   "contacts.email_label": "Email",
   "contacts.message_label": "Ваше сообщение",
   "contacts.send_button": "Отправить сообщение",
+  "feedback.sending": "Отправка…",
+  "feedback.sent_ok": "Сообщение отправлено.",
+  "feedback.fail": "Не удалось отправить. Попробуйте позже.",
   "contacts.location_title": "Местоположение",
-  "contacts.view_map": "Смотреть на Google Maps",
+  "contacts.map_embed_note":
+    "На карте отмечена точка по адресу. Проезд и карточка здания — в 2ГИС по кнопке ниже.",
+  "contacts.view_map": "Открыть в 2ГИС",
 
   // Footer
   "footer.rights": "Все права защищены.",

@@ -23,7 +23,7 @@ export function Hero() {
       <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-16 px-4 py-20 lg:flex-row lg:items-start lg:px-8 lg:py-32">
         {/* Left: Content */}
         <div className="w-full lg:w-[58%]">
-          <h1 className="mb-6 text-4xl font-extrabold tracking-tight text-primary-foreground lg:text-5xl xl:text-6xl">
+          <h1 className="mb-6 text-3xl font-extrabold tracking-tight text-primary-foreground lg:text-4xl xl:text-5xl">
             {t("hero.title")}
           </h1>
 
@@ -49,7 +49,7 @@ export function Hero() {
         </div>
 
         {/* Right: Featured Products Detail (Foreve Rich Style) */}
-        <div className="w-full lg:w-1/2 lg:pt-[30px]">
+        <div className="w-full lg:w-1/2">
           <div className="grid gap-6">
             {/* Product 1: Sodium Metabisulfite */}
             <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md transition-all hover:bg-white/10">

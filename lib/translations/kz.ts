@@ -10,8 +10,8 @@ export const kz: Record<string, string> = {
   "nav.inquiry": "Сұраныс",
 
   // Hero
-  "hero.title": "Химиялық заттардың кәсіби өндірушісі",
-  "hero.subtitle": "30 жылдан астам химиялық өнімдерді өндіруге және әзірлеуге маманданғанбыз.",
+  "hero.title": "Халықаралық жеткізу: өнеркәсіптік химия, металдар және жабдықтар",
+  "hero.subtitle": "Энергетика, өндіріс және ауыр өнеркәсіп үшін сенімді B2B шешімдер.",
   "hero.description": "ISO, REACH, HALAL және KOSHER сертификаттары бар зауыт. Негізгі өнім төрт серияны қамтиды.",
   "hero.prod1.name": "Натрий метабисульфиті",
   "hero.prod1.formula": "Na₂S₂O₅",
@@ -33,6 +33,8 @@ export const kz: Record<string, string> = {
   "cat.equipment.desc": "Тау-кен жабдықтары: бұрғылау қашаулары, ұсатқыштар, диірмендер, сүзгі-престер, сорғылар, компрессорлар.",
   "products.highlights.title": "Негізгі тауар топтары",
   "products.highlights.view_all": "Каталогқа өту",
+  "products.learn_more": "Толығырақ",
+  "products.order": "Тапсырыс беру",
   "custom.title": "Кез келген күрделіліктегі өнімдер",
   "custom.text": "Техникалық параметрлер ұсынылған жағдайда біз кез келген күрделіліктегі өнімдерді өңдеуге дайынбыз.",
 
@@ -86,18 +88,26 @@ export const kz: Record<string, string> = {
   "contacts.phone": "Телефон",
   "contacts.email": "Электрондық пошта",
   "contacts.address": "Мекенжай",
+  "contacts.address_full":
+    "Қазақстан, Астана қаласы, Есіл ауданы, Әлихан Бөкейхан көшесі, 27/1 үй, н.п. 10",
   "contacts.hours": "Жұмыс уақыты",
   "contacts.hours.value": "Дс - Жм: 9:00 - 18:00",
   "contacts.note": "Біз техникалық параметрлер ұсынылған жағдайда кез келген күрделіліктегі бұйымдарды өңдеуге дайынбыз.",
   "contacts.info_title": "Байланыс ақпараты",
   "contacts.form_title": "Байланыс формасы",
-  "contacts.name_label": "Сіздің атыңыз",
-  "contacts.phone_label": "Сіздің телефоныңыз",
+  "contacts.form_hint": "Хабарлама мен телефон немесе email-дің кемінде біреуін көрсетіңіз.",
+  "contacts.prefill_product": "Өнім бойынша сұрау (код)",
+  "contacts.phone_label": "Телефоныңыз",
   "contacts.email_label": "Email",
-  "contacts.message_label": "Сіздің хабарламаңыз",
+  "contacts.message_label": "Хабарламаңыз",
   "contacts.send_button": "Хабарлама жіберу",
+  "feedback.sending": "Жіберілуде…",
+  "feedback.sent_ok": "Хабарлама жіберілді.",
+  "feedback.fail": "Жіберілмеді. Кейінірек қайталаңыз.",
   "contacts.location_title": "Орналасқан жері",
-  "contacts.view_map": "Google Maps-те қарау",
+  "contacts.map_embed_note":
+    "Картада мекенжай бойынша белгі бар. Жол және ғимарат карточкасы — төмендегі түймемен 2ГИС-те.",
+  "contacts.view_map": "2ГИС-те ашық",
 
   // Why Us
   "whyus.title": "Неліктен клиенттер бізді таңдайды?",
