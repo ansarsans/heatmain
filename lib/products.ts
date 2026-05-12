@@ -83,7 +83,7 @@ export const products: Product[] = [
       kz: "Флотацияға арналған реагент-активатор, антисептик және мыс қосылыстарын алуға арналған шикізат.",
       en: "Reagent-activator for flotation, antiseptic, and raw material for copper compounds.",
     },
-    image: "/images/медныйкупорос1.jpg",
+    image: "/images/Медныйкупорос1.jpg",
   },
   {
     id: "chem-11",
@@ -113,7 +113,7 @@ export const products: Product[] = [
       kz: "Химиялық синтезге и гальваникалық элементтерді өндіруге арналған тотықтырғыш.",
       en: "Oxidant for chemical synthesis and production of galvanic cells.",
     },
-    image: "/images/пероксидмарганца.jpg",
+    image: "/images/Пероксидмарганца.jpg",
   },
   {
     id: "chem-23",
@@ -128,7 +128,7 @@ export const products: Product[] = [
       kz: "Металлургиядағы тотықтырғыш, шыны массасының и пиротехниканың компоненті.",
       en: "Oxidant in metallurgy, component of glass mass and pyrotechnics.",
     },
-    image: "/images/селитранатриевая.jpg",
+    image: "/images/Селитранатриевая.jpg",
   },
 
   // === METALS (9 items) ===
@@ -145,7 +145,7 @@ export const products: Product[] = [
       kz: "Тот баспайтын және конструктивті болаттан жасалған әртүрлі профильдегі прокат.",
       en: "Rolled metal of various profiles from stainless and structural steels.",
     },
-    image: "/images/трубы.jpg",
+    image: "/images/Трубы.jpg",
   },
   {
     id: "met-3",
@@ -175,7 +175,7 @@ export const products: Product[] = [
       kz: "Болатты марганецпен тотықсыздандыруға и легирлеуге арналған ферроқорытпа.",
       en: "Ferroalloy for deoxidizing and alloying steel with manganese.",
     },
-    image: "/images/ферромарганец.jpg",
+    image: "/images/Ферромарганец.jpg",
   },
   {
     id: "met-8",
@@ -190,7 +190,7 @@ export const products: Product[] = [
       kz: "Әртүрлі мақсаттағы прокат стандарына арналған ауыстырмалы құралдар.",
       en: "Replaceable tools for rolling mills of various purposes.",
     },
-    image: "/images/валки.jpg",
+    image: "/images/Валки.jpg",
   },
   {
     id: "met-10",
@@ -205,7 +205,7 @@ export const products: Product[] = [
       kz: "Газобетон, бояу-лак материалдары, металлургия және пиротехника өндірісі үшін.",
       en: "For the production of aerated concrete, paints, metallurgy, and pyrotechnics.",
     },
-    image: "/images/порошокалюминиевый.jpg",
+    image: "/images/Порошокалюминиевый.jpg",
   },
   {
     id: "met-11",
@@ -265,7 +265,7 @@ export const products: Product[] = [
       kz: "Доғалы болат балқыту және кен-термиялық пештер үшін.",
       en: "For electric arc steelmaking and ore-thermal furnaces.",
     },
-    image: "/images/электродыграфитированные.jpg",
+    image: "/images/Электродыграфитированные.jpg",
   },
 
   // === EQUIPMENT (8 items) ===
@@ -282,7 +282,7 @@ export const products: Product[] = [
       kz: "Кез келген қаттылықтағы жыныстарда ұңғымаларды бұрғылау үшін.",
       en: "For drilling wells in rocks of any hardness.",
     },
-    image: "/images/шарошечныедолота.jpg",
+    image: "/images/Шарошечныедолота.jpg",
   },
   {
     id: "equip-2",
@@ -297,7 +297,7 @@ export const products: Product[] = [
       kz: "Карьерлер мен шахталардағы ауыр пайдалану жағдайларына арналған мамандандырылған шиналар.",
       en: "Specialized tires for high-intensity operations in quarries and mines.",
     },
-    image: "/images/автошины.jpg",
+    image: "/images/Автошины.jpg",
   },
   {
     id: "equip-4",
@@ -312,7 +312,7 @@ export const products: Product[] = [
       kz: "Керамика және химия өнеркәсібіндегі өте жұқа ұнтақтауға арналған ұнтағыш денелер.",
       en: "Grinding media for ultra-fine grinding in the ceramic and chemical industries.",
     },
-    image: "/images/керамическиешары.jpg",
+    image: "/images/Керамическиешары.jpg",
   },
   {
     id: "equip-7",
@@ -327,7 +327,7 @@ export const products: Product[] = [
       kz: "Диірмендер мен барабандарға арналған жетектердің ірі габаритті бөлшектері.",
       en: "Large drive parts for mills and drums.",
     },
-    image: "/images/венцызубчатые.jpg",
+    image: "/images/Венцызубчатые.jpg",
   },
   {
     id: "equip-8",
@@ -357,7 +357,7 @@ export const products: Product[] = [
       kz: "Жалпы өнеркәсіптік және арнайы жоғары қуатты қозғалтқыштар.",
       en: "General industrial and special high-power motors.",
     },
-    image: "/images/электродвигатели.jpg",
+    image: "/images/Электродвигатели.jpg",
   },
   {
     id: "equip-16",
@@ -372,7 +372,7 @@ export const products: Product[] = [
       kz: "Ауыр өнеркәсіптік жабдықтарға арналған компоненттердің толық спектрі.",
       en: "A full range of components for heavy industrial equipment.",
     },
-    image: "/images/запчасти.jpg",
+    image: "/images/Запчасти.jpg",
   },
   {
     id: "equip-18",
@@ -387,7 +387,7 @@ export const products: Product[] = [
       kz: "Пештер мен жылу агрегаттарын футеровкалауға арналған материалдар.",
       en: "Materials for lining furnaces and thermal units.",
     },
-    image: "images/огнеупорныеизделия.jpg",
+    image: "/images/Огнеупорныеизделия.jpg",
   },
 ]
 
