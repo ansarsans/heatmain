@@ -95,13 +95,13 @@ export default function HomePage() {
             {[
               { label: t("stats.founded"), value: "1999" },
               { label: t("stats.area"), value: "20000" },
-              { label: t("stats.countries"), value: "40+" },
+              { label: t("stats.countries"), value: "5+" },
               { label: t("stats.clients"), value: "300+" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className={cn(
                   "mb-2 text-4xl font-black lg:text-5xl",
-                  stat.value === "40+" ? "text-[#0241c0]" : "text-zinc-900"
+                  stat.value === "5+" ? "text-[#0241c0]" : "text-zinc-900"
                 )}>
                   {stat.value}
                 </div>
