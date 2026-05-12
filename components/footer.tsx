@@ -5,6 +5,7 @@ import { useState, type FormEvent } from "react"
 import { useTranslation } from "@/lib/i18n"
 import { TWO_GIS_GEO_PAGE } from "@/components/two-gis-embed"
 import { submitFeedback } from "@/lib/feedback-api"
+import { BrandLogo } from "@/components/brand-logo"
 
 export function Footer() {
   const { t } = useTranslation()
@@ -58,9 +59,7 @@ export function Footer() {
           {/* Brand & Description */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[#0241c0]">
-                <span className="text-sm font-bold text-white tracking-tight">HE</span>
-              </div>
+              <BrandLogo size={36} className="ring-1 ring-white/15 bg-white/5" />
               <span className="text-lg font-bold tracking-tight">Heat Energy Capital</span>
             </Link>
             <p className="mt-6 text-sm leading-relaxed text-white/50">

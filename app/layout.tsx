@@ -8,26 +8,21 @@ const _inter = Inter({
   variable: "--font-inter",
 })
 
+const iconBase = process.env.NODE_ENV === "production" ? "/heatmain" : ""
+
 export const metadata: Metadata = {
   title: 'Heat Energy Capital | Industrial Supply',
   description: 'Reliable supplier of industrial chemicals, metals, alloys, and equipment for mining, metallurgical, and processing industries.',
   keywords: ['industrial supply', 'mining chemicals', 'ferroalloys', 'mining equipment', 'Kazakhstan', 'B2B'],
   icons: {
     icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
+      { url: `${iconBase}/logo.jpg`, type: "image/jpeg", sizes: "any" },
+      { url: `${iconBase}/icon.svg`, type: "image/svg+xml" },
     ],
-    apple: '/apple-icon.png',
+    apple: `${iconBase}/logo.jpg`,
+  },
+  openGraph: {
+    images: [{ url: `${iconBase}/logo.jpg`, alt: "Heat Energy Capital" }],
   },
 }
 

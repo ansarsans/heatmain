@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation"
 import { useTranslation } from "@/lib/i18n"
 import { LanguageSwitcher } from "@/components/language-switcher"
 import { cn } from "@/lib/utils"
+import { BrandLogo } from "@/components/brand-logo"
 
 const navLinks = [
   { href: "/", key: "nav.home" },
@@ -66,9 +67,7 @@ export function Header() {
       )}>
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3" onClick={() => setMobileOpen(false)}>
-          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[#0241c0]">
-            <span className="text-sm font-bold text-white tracking-tight">HE</span>
-          </div>
+          <BrandLogo size={36} priority={isHome} className="ring-1 ring-white/15 bg-white/5" />
           <div className="hidden sm:block">
             <span className="text-base font-semibold tracking-tight text-white">
               Heat Energy Capital
