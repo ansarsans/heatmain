@@ -32,7 +32,6 @@ export function Footer() {
         message: m,
         phone: p || undefined,
         email: em || undefined,
-        source: "footer",
       })
       if (res.ok) {
         setStatus("ok")

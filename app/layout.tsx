@@ -11,6 +11,7 @@ const _inter = Inter({
 const iconBase = process.env.NODE_ENV === "production" ? "/heatmain" : ""
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://ansarsans.github.io/heatmain'),
   title: 'Heat Energy Capital | Industrial Supply',
   description: 'Reliable supplier of industrial chemicals, metals, alloys, and equipment for mining, metallurgical, and processing industries.',
   keywords: ['industrial supply', 'mining chemicals', 'ferroalloys', 'mining equipment', 'Kazakhstan', 'B2B'],

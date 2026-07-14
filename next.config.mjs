@@ -3,6 +3,9 @@ const isProd = process.env.NODE_ENV === 'production'
 const nextConfig = {
   output: 'export',
   basePath: isProd ? '/heatmain' : '',
+  turbopack: {
+    root: process.cwd(),
+  },
   images: {
     unoptimized: true,
   },

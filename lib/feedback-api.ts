@@ -1,20 +1,16 @@
-/** DigitalOcean Serverless — отправка заявок в Telegram */
+/** DigitalOcean Serverless — отправка заявок на email */
 export const FEEDBACK_WEBHOOK_URL =
-  "https://faas-fra1-afec6ce7.doserverless.co/api/v1/web/fn-a58468d6-3418-4e73-9aff-b9949a1efe5d/openai/ansar_send_feedback_ansar"
+  "https://faas-fra1-afec6ce7.doserverless.co/api/v1/web/fn-a58468d6-3418-4e73-9aff-b9949a1efe5d/openai/ansar_send_mail_ansar"
 
 export type FeedbackPayload = {
   message: string
   phone?: string
   email?: string
-  /** например id товара из ?product= */
-  source?: string
 }
 
 export type FeedbackResponse = {
   ok: boolean
   message?: string
-  whatsapp_url?: string | null
-  whatsapp_url_digits?: string | null
   error?: string
 }
 
@@ -22,7 +18,6 @@ export async function submitFeedback(payload: FeedbackPayload): Promise<Feedback
   const phone = (payload.phone ?? "").trim()
   const email = (payload.email ?? "").trim()
   const message = (payload.message ?? "").trim()
-  const source = (payload.source ?? "").trim()
 
   const res = await fetch(FEEDBACK_WEBHOOK_URL, {
     method: "POST",
@@ -31,7 +26,6 @@ export async function submitFeedback(payload: FeedbackPayload): Promise<Feedback
       client_phone: phone,
       email,
       additional_info: message,
-      source,
     }),
   })
 

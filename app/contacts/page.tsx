@@ -65,7 +65,6 @@ export default function ContactsPage() {
         message: m,
         phone: p || undefined,
         email: em || undefined,
-        source: new URLSearchParams(window.location.search).get("product") ?? undefined,
       })
       if (res.ok) {
         setStatus("ok")
