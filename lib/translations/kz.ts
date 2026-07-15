@@ -6,7 +6,6 @@ export const kz: Record<string, string> = {
   "nav.contacts": "Байланыс",
   "nav.strength": "Күш",
   "nav.oem": "OEM қызметі",
-  "nav.news": "Жаңалықтар",
   "nav.inquiry": "Сұраныс",
 
   // Hero

@@ -6,7 +6,6 @@ export const en: Record<string, string> = {
   "nav.contacts": "Contacts",
   "nav.strength": "Strength",
   "nav.oem": "OEM Service",
-  "nav.news": "News",
   "nav.inquiry": "Inquiry",
 
   // Hero

@@ -80,7 +80,6 @@ export function Footer() {
               {[
                 { href: "/catalog", label: t("nav.catalog") },
                 { href: "/about", label: t("nav.about") },
-                { href: "/news", label: t("nav.news") },
                 { href: "/contacts", label: t("nav.contacts") }
               ].map(link => (
                 <Link key={link.href} href={link.href} className="text-sm text-white/50 transition-colors hover:text-white">
