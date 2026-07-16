@@ -21,8 +21,8 @@ export function LanguageSwitcher({ className }: { className?: string }) {
           className={cn(
             "px-2 py-1 text-xs font-bold transition-colors rounded uppercase tracking-widest",
             locale === l.code
-              ? "text-white"
-              : "text-white/40 hover:text-white/70"
+              ? "bg-blue-50 text-[#0756b8]"
+              : "text-slate-400 hover:text-[#0756b8]"
           )}
           aria-label={`Switch language to ${l.label}`}
         >

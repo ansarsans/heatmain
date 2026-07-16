@@ -49,7 +49,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="relative overflow-hidden border-t border-white/5 bg-[#1b1d20] text-white">
+    <footer className="relative overflow-hidden border-t border-blue-100 bg-[#eaf4ff] text-slate-900">
       {/* Decorative Blur */}
       <div className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-[#0241c0]/5 blur-[120px] pointer-events-none" />
 
@@ -58,22 +58,22 @@ export function Footer() {
           {/* Brand & Description */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3">
-              <BrandLogo size={36} className="ring-1 ring-white/15 bg-white/5" />
+              <BrandLogo size={36} className="bg-white ring-1 ring-blue-100" />
               <span className="text-lg font-bold tracking-tight">Heat Energy Capital</span>
             </Link>
-            <p className="mt-6 text-sm leading-relaxed text-white/50">
+            <p className="mt-6 text-sm leading-relaxed text-slate-600">
               {t("footer.description")}
             </p>
             <div className="mt-8 flex gap-5">
               {["FB", "LI", "TW", "IN"].map(social => (
-                <a key={social} href="#" className="text-xs font-bold text-white/30 hover:text-[#0241c0] transition-colors">{social}</a>
+                <a key={social} href="#" className="text-xs font-bold text-slate-400 transition-colors hover:text-[#0756b8]">{social}</a>
               ))}
             </div>
           </div>
 
           {/* Quick Links */}
           <div className="lg:pt-2">
-            <h4 className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-zinc-400">
+            <h4 className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-slate-500">
               {t("nav.home")}
             </h4>
             <nav className="flex flex-col gap-4" aria-label="Footer navigation">
@@ -82,7 +82,7 @@ export function Footer() {
                 { href: "/about", label: t("nav.about") },
                 { href: "/contacts", label: t("nav.contacts") }
               ].map(link => (
-                <Link key={link.href} href={link.href} className="text-sm text-white/50 transition-colors hover:text-white">
+                <Link key={link.href} href={link.href} className="text-sm text-slate-600 transition-colors hover:text-[#0756b8]">
                   {link.label}
                 </Link>
               ))}
@@ -91,41 +91,41 @@ export function Footer() {
 
           {/* Contact Info */}
           <div className="lg:pt-2">
-            <h4 className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-zinc-400">
+            <h4 className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-slate-500">
               {t("contacts.title")}
             </h4>
-            <div className="space-y-6 text-sm text-white/50">
+            <div className="space-y-6 text-sm text-slate-600">
               <div className="flex flex-col gap-1.5">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-white/20">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
                   {t("contacts.phone")}
                 </span>
                 <a
                   href="tel:+77051234512"
-                  className="text-white hover:text-[#0241c0] transition-colors font-medium"
+                  className="font-medium text-slate-900 transition-colors hover:text-[#0756b8]"
                 >
                   +7 (705) 123-45-12
                 </a>
               </div>
               <div className="flex flex-col gap-1.5">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-white/20">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
                   {t("contacts.email")}
                 </span>
                 <a
                   href="mailto:info@heatenergy.kz"
-                  className="text-white hover:text-[#0241c0] transition-colors font-medium"
+                  className="font-medium text-slate-900 transition-colors hover:text-[#0756b8]"
                 >
                   info@heatenergy.kz
                 </a>
               </div>
               <div className="flex flex-col gap-1.5">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-white/20">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
                   {t("contacts.address")}
                 </span>
                 <a
                   href={TWO_GIS_GEO_PAGE}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="leading-relaxed text-white transition-colors hover:text-[#0241c0]"
+                  className="leading-relaxed text-slate-900 transition-colors hover:text-[#0756b8]"
                 >
                   {t("contacts.address_full")}
                 </a>
@@ -135,10 +135,10 @@ export function Footer() {
 
           {/* Quick Inquiry */}
           <div className="lg:pt-2">
-            <h4 className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-zinc-400">
+            <h4 className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-slate-500">
               {t("nav.inquiry")}
             </h4>
-            <p className="mb-3 text-[11px] leading-relaxed text-white/40">{t("contacts.form_hint")}</p>
+            <p className="mb-3 text-[11px] leading-relaxed text-slate-500">{t("contacts.form_hint")}</p>
             <form className="space-y-4" onSubmit={onInquirySubmit}>
               <input
                 type="tel"
@@ -147,7 +147,7 @@ export function Footer() {
                 value={phone}
                 onChange={e => setPhone(e.target.value)}
                 placeholder={t("contacts.phone_label")}
-                className="w-full rounded-md border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition-all placeholder:text-white/35 focus:border-[#0241c0]"
+                className="w-full rounded-md border border-blue-100 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-[#0756b8]"
               />
               <input
                 type="email"
@@ -156,7 +156,7 @@ export function Footer() {
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 placeholder={t("contacts.email_label")}
-                className="w-full rounded-md border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition-all placeholder:text-white/35 focus:border-[#0241c0]"
+                className="w-full rounded-md border border-blue-100 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-[#0756b8]"
               />
               <textarea
                 name="message"
@@ -164,7 +164,7 @@ export function Footer() {
                 onChange={e => setMessage(e.target.value)}
                 placeholder={t("contacts.message_label")}
                 rows={3}
-                className="w-full resize-none rounded-md border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition-all placeholder:text-white/35 focus:border-[#0241c0]"
+                className="w-full resize-none rounded-md border border-blue-100 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-[#0756b8]"
               />
               {hint ? <p className="text-[11px] text-red-300">{hint}</p> : null}
               {status === "ok" ? (
@@ -181,14 +181,14 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-20 border-t border-white/5 pt-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <p className="text-[11px] font-medium text-white/30">
+        <div className="mt-20 flex flex-col gap-6 border-t border-blue-100 pt-10 md:flex-row md:items-center md:justify-between">
+          <p className="text-[11px] font-medium text-slate-500">
             © {year} Heat Energy Capital. {t("footer.rights")}
           </p>
-          <div className="flex gap-8 text-[10px] font-bold uppercase tracking-[0.3em] text-white/20">
-            <span className="hover:text-white/40 transition-colors cursor-default tracking-tighter sm:tracking-[0.3em]">ISO Certified</span>
-            <span className="hover:text-white/40 transition-colors cursor-default tracking-tighter sm:tracking-[0.3em]">REACH</span>
-            <span className="hover:text-white/40 transition-colors cursor-default tracking-tighter sm:tracking-[0.3em]">HALAL</span>
+          <div className="flex gap-8 text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400">
+            <span className="cursor-default tracking-tighter transition-colors hover:text-[#0756b8] sm:tracking-[0.3em]">ISO Certified</span>
+            <span className="cursor-default tracking-tighter transition-colors hover:text-[#0756b8] sm:tracking-[0.3em]">REACH</span>
+            <span className="cursor-default tracking-tighter transition-colors hover:text-[#0756b8] sm:tracking-[0.3em]">HALAL</span>
           </div>
         </div>
       </div>

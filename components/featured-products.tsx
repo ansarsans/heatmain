@@ -18,15 +18,15 @@ export function FeaturedProducts() {
     .sort((a, b) => (order.get(a.id) ?? 0) - (order.get(b.id) ?? 0))
 
   return (
-    <section className="relative overflow-hidden py-20 lg:py-32 bg-[#131415]">
+    <section className="relative overflow-hidden border-y border-blue-100 bg-[#f5faff] py-20 lg:py-32">
       {/* Background Image with Blur */}
       <div className="absolute inset-0 z-0">
         <img 
           src={getAssetPath("/main.jpg")} 
           alt="" 
-          className="h-full w-full object-cover opacity-40 grayscale blur-[8px]"
+          className="h-full w-full object-cover opacity-[0.07] blur-[8px]"
         />
-        <div className="absolute inset-0 bg-[#131415]/40" />
+        <div className="absolute inset-0 bg-white/55" />
       </div>
 
       {/* Blurry Spots for depth */}
@@ -35,17 +35,17 @@ export function FeaturedProducts() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 lg:px-8">
         <div className="mb-12 flex flex-col items-center text-center">
-          <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-white lg:text-4xl">
+          <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-slate-950 lg:text-4xl">
             {t("homepage.products.title")}
           </h2>
-          <p className="max-w-2xl text-lg text-white/50">
+          <p className="max-w-2xl text-lg text-slate-600">
             {t("homepage.products.subtitle")}
           </p>
         </div>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((product) => (
-            <ProductCard key={product.id} product={product} variant="dark" />
+            <ProductCard key={product.id} product={product} variant="light" />
           ))}
         </div>
 

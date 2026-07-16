@@ -139,7 +139,7 @@ export function ProductCard({
             className={cn(
               "inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[11px] font-bold text-white transition-all active:scale-95",
               variant === "light"
-                ? "bg-zinc-900 hover:bg-zinc-700"
+                ? "bg-[#0756b8] hover:bg-[#064a9d]"
                 : "bg-[#0241c0] hover:bg-[#0241c0]/80",
             )}
           >

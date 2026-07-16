@@ -36,26 +36,26 @@ export function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]",
         !isHome 
-          ? "left-2 right-2 md:left-3 md:right-3 lg:left-4 lg:right-4 mx-auto max-w-[1500px] bg-zinc-900/90 backdrop-blur-md shadow-2xl border-x border-b border-white/10 rounded-b-3xl" 
-          : (scrolled ? "bg-zinc-900/90 backdrop-blur-md shadow-lg" : "bg-transparent")
+          ? "left-2 right-2 md:left-3 md:right-3 lg:left-4 lg:right-4 mx-auto max-w-[1500px] bg-white/95 backdrop-blur-md shadow-lg border-x border-b border-blue-100 rounded-b-3xl" 
+          : (scrolled ? "border-b border-blue-100 bg-white/95 backdrop-blur-md shadow-lg" : "bg-white/70 backdrop-blur-sm")
       )}
     >
       {/* Top Bar */}
       <div 
         className={cn(
-          "transition-all duration-300 border-b border-white/5",
-          (scrolled || !isHome) ? "h-0 opacity-0 overflow-hidden py-0" : "bg-black/10 py-1.5 opacity-100"
+          "border-b border-blue-100 transition-all duration-300",
+          (scrolled || !isHome) ? "h-0 opacity-0 overflow-hidden py-0" : "bg-blue-50/80 py-1.5 opacity-100"
         )}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between text-[11px] font-medium text-white/70 uppercase tracking-wider px-4 lg:px-8">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 text-[11px] font-medium uppercase tracking-wider text-slate-600 lg:px-8">
           <div className="flex items-center gap-4">
-            <a href="tel:111111" className="hover:text-white italic transition-colors">111111</a>
-            <a href="mailto:test@test.com" className="hover:text-white transition-colors">test@test.com</a>
+            <a href="tel:111111" className="italic transition-colors hover:text-[#0756b8]">111111</a>
+            <a href="mailto:test@test.com" className="transition-colors hover:text-[#0756b8]">test@test.com</a>
           </div>
           <div className="flex items-center gap-3">
-            <a href="#" className="hover:text-white transition-colors">Facebook</a>
-            <a href="#" className="hover:text-white transition-colors">Linkedin</a>
-            <a href="#" className="hover:text-white transition-colors">Twitter</a>
+            <a href="#" className="transition-colors hover:text-[#0756b8]">Facebook</a>
+            <a href="#" className="transition-colors hover:text-[#0756b8]">Linkedin</a>
+            <a href="#" className="transition-colors hover:text-[#0756b8]">Twitter</a>
           </div>
         </div>
       </div>
@@ -66,9 +66,9 @@ export function Header() {
       )}>
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3" onClick={() => setMobileOpen(false)}>
-          <BrandLogo size={36} priority={isHome} className="ring-1 ring-white/15 bg-white/5" />
+          <BrandLogo size={36} priority={isHome} className="bg-white ring-1 ring-blue-100" />
           <div className="hidden sm:block">
-            <span className="text-base font-semibold tracking-tight text-white">
+            <span className="text-base font-semibold tracking-tight text-slate-900">
               Heat Energy Capital
             </span>
           </div>
@@ -85,7 +85,7 @@ export function Header() {
                   href={link.href}
                   className={cn(
                     "text-[13px] font-semibold transition-colors",
-                    isActive ? "text-white" : "text-white/70 hover:text-white"
+                    isActive ? "text-[#0756b8]" : "text-slate-600 hover:text-[#0756b8]"
                   )}
                 >
                   {t(link.key)}
@@ -108,7 +108,7 @@ export function Header() {
 
           {/* Mobile hamburger */}
           <button
-            className="flex h-9 w-9 items-center justify-center rounded-md border border-border xl:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-md border border-blue-100 bg-white xl:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle navigation menu"
             aria-expanded={mobileOpen}
@@ -118,7 +118,7 @@ export function Header() {
               height="18"
               viewBox="0 0 18 18"
               fill="none"
-              className="text-white"
+              className="text-slate-800"
               aria-hidden="true"
             >
               {mobileOpen ? (
@@ -138,7 +138,7 @@ export function Header() {
       <div
         className={cn(
           "overflow-hidden transition-all duration-300 xl:hidden",
-          mobileOpen ? "max-h-[500px] border-t border-white/10 bg-zinc-900" : "max-h-0"
+          mobileOpen ? "max-h-[500px] border-t border-blue-100 bg-white" : "max-h-0"
         )}
       >
         <nav className="flex flex-col gap-1 px-4 py-3" aria-label="Mobile navigation">
@@ -147,12 +147,12 @@ export function Header() {
               key={link.key}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="rounded-md px-3 py-2.5 text-sm font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+              className="rounded-md px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-blue-50 hover:text-[#0756b8]"
             >
               {t(link.key)}
             </Link>
           ))}
-          <div className="mt-2 flex flex-col gap-3 border-t border-white/10 pt-4 pb-2">
+          <div className="mt-2 flex flex-col gap-3 border-t border-blue-100 pt-4 pb-2">
             <LanguageSwitcher />
             <Link
               href="/contacts?type=inquiry"
