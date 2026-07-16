@@ -41,13 +41,13 @@ export function ProductCard({
   return (
     <div className="group flex h-full flex-col overflow-hidden transition-all">
       {/* Image Container */}
-      <div className="relative aspect-video overflow-hidden rounded-xl bg-stone-200">
+      <div className="relative aspect-video overflow-hidden rounded-[1.15rem] bg-stone-200">
         {product.image ? (
           <Image
             src={getAssetPath(product.image)}
             alt={product.name[lang]}
             fill
-            className="object-cover transition-transform duration-500"
+            className="object-cover transition-transform duration-700 group-hover:scale-[1.025]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (
@@ -72,7 +72,7 @@ export function ProductCard({
             className={cn(
               "inline-block rounded-full border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider",
               variant === 'light' 
-                ? "bg-white border-zinc-300 text-zinc-900" 
+                ? "border-blue-100 bg-white/90 text-[#0756b8] backdrop-blur-sm" 
                 : "bg-zinc-900/80 border-white/20 text-white backdrop-blur-sm"
             )}
           >
@@ -120,19 +120,7 @@ export function ProductCard({
             >
               {t("products.learn_more")}
             </button>
-          ) : (
-            <Link
-              href="/contacts"
-              className={cn(
-                "inline-flex items-center rounded-full border px-4 py-2 text-[11px] font-bold transition-all active:scale-95",
-                variant === "light"
-                  ? "border-zinc-300 bg-transparent text-zinc-900 hover:bg-zinc-100"
-                  : "border-white/20 bg-white/5 text-white hover:bg-white/10",
-              )}
-            >
-              {t("products.learn_more")}
-            </Link>
-          )}
+          ) : null}
 
           <Link
             href={`/contacts?product=${encodeURIComponent(product.id)}`}

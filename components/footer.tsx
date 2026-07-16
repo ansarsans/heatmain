@@ -49,11 +49,11 @@ export function Footer() {
   }
 
   return (
-    <footer className="relative overflow-hidden bg-[#eaf4ff] text-slate-900">
+    <footer className="relative overflow-hidden bg-gradient-to-b from-[#eaf4ff] to-[#dcecff] text-slate-900 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]">
       {/* Decorative Blur */}
       <div className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-[#0241c0]/5 blur-[120px] pointer-events-none" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-14 lg:px-8 lg:py-18">
         <div className="grid gap-12 lg:grid-cols-4">
           {/* Brand & Description */}
           <div className="lg:col-span-1">
@@ -131,7 +131,7 @@ export function Footer() {
                 value={phone}
                 onChange={e => setPhone(e.target.value)}
                 placeholder={t("contacts.phone_label")}
-                className="w-full rounded-md border border-blue-100 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-[#0756b8]"
+                className="w-full rounded-xl border border-blue-100 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-[#0756b8] focus:ring-2 focus:ring-blue-100"
               />
               <input
                 type="email"
@@ -140,7 +140,7 @@ export function Footer() {
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 placeholder={t("contacts.email_label")}
-                className="w-full rounded-md border border-blue-100 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-[#0756b8]"
+                className="w-full rounded-xl border border-blue-100 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-[#0756b8] focus:ring-2 focus:ring-blue-100"
               />
               <textarea
                 name="message"
@@ -148,16 +148,16 @@ export function Footer() {
                 onChange={e => setMessage(e.target.value)}
                 placeholder={t("contacts.message_label")}
                 rows={3}
-                className="w-full resize-none rounded-md border border-blue-100 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-[#0756b8]"
+                className="w-full resize-none rounded-xl border border-blue-100 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-[#0756b8] focus:ring-2 focus:ring-blue-100"
               />
-              {hint ? <p className="text-[11px] text-red-300">{hint}</p> : null}
+              {hint ? <p className="text-[11px] text-red-600">{hint}</p> : null}
               {status === "ok" ? (
-                <p className="text-[11px] font-medium text-emerald-400">{t("feedback.sent_ok")}</p>
+                <p className="text-[11px] font-medium text-emerald-700">{t("feedback.sent_ok")}</p>
               ) : null}
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="w-full rounded-md bg-[#0241c0] px-4 py-3 text-sm font-bold text-white transition-all hover:opacity-90 active:scale-[0.98] disabled:opacity-60"
+                className="w-full rounded-xl bg-[#0756b8] px-4 py-3 text-sm font-bold text-white transition-all hover:bg-[#064a9d] active:scale-[0.98] disabled:opacity-60"
               >
                 {status === "sending" ? t("feedback.sending") : t("contacts.send_button")}
               </button>
@@ -165,7 +165,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-20 flex flex-col gap-6 border-t border-blue-100 pt-10 md:flex-row md:items-center md:justify-between">
+        <div className="mt-14 flex flex-col gap-6 border-t border-blue-100 pt-8 md:flex-row md:items-center md:justify-between">
           <p className="text-[11px] font-medium text-slate-500">
             © {year} Heat Energy Capital. {t("footer.rights")}
           </p>

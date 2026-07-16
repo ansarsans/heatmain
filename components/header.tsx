@@ -23,11 +23,11 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-blue-100 bg-white shadow-sm">
-      <div className="mx-auto flex max-w-[1500px] items-center justify-between px-4 py-3 lg:px-8">
+    <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-blue-100/80 bg-white/95 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3" onClick={() => setMobileOpen(false)}>
-          <BrandLogo size={36} priority={isHome} className="bg-white ring-1 ring-blue-100" />
+          <BrandLogo size={36} priority={isHome} className="bg-white" />
           <div className="hidden sm:block">
             <span className="text-base font-semibold tracking-tight text-slate-900">
               Heat Energy Capital
@@ -45,8 +45,8 @@ export function Header() {
                   key={link.key}
                   href={link.href}
                   className={cn(
-                    "text-[13px] font-semibold transition-colors",
-                    isActive ? "text-[#0756b8]" : "text-slate-600 hover:text-[#0756b8]"
+                    "rounded-full px-3 py-2 text-[13px] font-semibold transition-colors",
+                    isActive ? "bg-blue-50 text-[#0756b8]" : "text-slate-600 hover:bg-slate-50 hover:text-[#0756b8]"
                   )}
                 >
                   {t(link.key)}
@@ -60,7 +60,7 @@ export function Header() {
 
             <Link
               href="/contacts?type=inquiry"
-              className="hidden items-center justify-center rounded-md bg-[#0241c0] px-4 py-2 text-xs font-bold text-white transition-all hover:opacity-90 sm:flex"
+              className="hidden items-center justify-center rounded-full bg-[#0756b8] px-5 py-2.5 text-xs font-bold text-white transition-all hover:bg-[#064a9d] sm:flex"
             >
               {t("nav.inquiry")}
             </Link>
@@ -69,7 +69,7 @@ export function Header() {
 
           {/* Mobile hamburger */}
           <button
-            className="flex h-9 w-9 items-center justify-center rounded-md border border-blue-100 bg-white xl:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-blue-100 bg-white xl:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle navigation menu"
             aria-expanded={mobileOpen}
