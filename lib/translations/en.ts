@@ -11,13 +11,6 @@ export const en: Record<string, string> = {
   // Hero
   "hero.title": "International supply of industrial chemicals, metals, and equipment",
   "hero.subtitle": "Reliable B2B solutions for energy, manufacturing, and heavy industry.",
-  "hero.description": "The product range includes several series developed for industrial applications.",
-  "hero.prod1.name": "Sodium Metabisulfite",
-  "hero.prod1.formula": "Na₂S₂O₅",
-  "hero.prod1.tags": "Food • Industrial • Photo",
-  "hero.prod2.name": "Sodium Bisulfate",
-  "hero.prod2.formula": "NaHSO₄",
-  "hero.prod2.tags": "Water Treatment • Food • Metallurgy",
   "hero.cta": "View Catalog",
   "hero.contact": "Contact Us",
 

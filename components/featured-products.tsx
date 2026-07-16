@@ -4,7 +4,6 @@ import Link from "next/link"
 import { useTranslation } from "@/lib/i18n"
 import { products } from "@/lib/products"
 import { ProductCard } from "@/components/product-card"
-import { getAssetPath } from "@/lib/utils"
 
 export function FeaturedProducts() {
   const { t } = useTranslation()
@@ -18,23 +17,14 @@ export function FeaturedProducts() {
     .sort((a, b) => (order.get(a.id) ?? 0) - (order.get(b.id) ?? 0))
 
   return (
-    <section className="relative overflow-hidden border-y border-blue-100 bg-[#f5faff] py-20 lg:py-32">
-      {/* Background Image with Blur */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src={getAssetPath("/main.jpg")} 
-          alt="" 
-          className="h-full w-full object-cover opacity-[0.07] blur-[8px]"
-        />
-        <div className="absolute inset-0 bg-white/55" />
-      </div>
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#f8fbff] via-[#edf6ff] to-[#f8fbff] py-14 lg:py-20">
 
       {/* Blurry Spots for depth */}
       <div className="absolute -left-24 top-1/4 h-96 w-96 rounded-full bg-[#0241c0]/10 blur-[120px] pointer-events-none z-0" />
       <div className="absolute -right-24 bottom-1/4 h-96 w-96 rounded-full bg-zinc-500/5 blur-[120px] pointer-events-none" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 lg:px-8">
-        <div className="mb-12 flex flex-col items-center text-center">
+        <div className="mb-10 flex flex-col items-center text-center">
           <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-slate-950 lg:text-4xl">
             {t("homepage.products.title")}
           </h2>
@@ -45,11 +35,13 @@ export function FeaturedProducts() {
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((product) => (
-            <ProductCard key={product.id} product={product} variant="light" />
+            <div key={product.id} className="rounded-2xl border border-white bg-white/90 p-4 shadow-[0_24px_60px_-35px_rgba(2,65,192,0.5)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_30px_70px_-30px_rgba(2,65,192,0.45)]">
+              <ProductCard product={product} variant="light" />
+            </div>
           ))}
         </div>
 
-        <div className="mt-16 text-center">
+        <div className="mt-12 text-center">
           <Link
             href="/catalog"
             className="inline-flex items-center gap-2 rounded-md bg-[#0241c0] px-8 py-3 text-base font-bold text-white transition-all hover:opacity-90 hover:shadow-lg active:scale-95"

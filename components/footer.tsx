@@ -49,7 +49,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="relative overflow-hidden border-t border-blue-100 bg-[#eaf4ff] text-slate-900">
+    <footer className="relative overflow-hidden bg-[#eaf4ff] text-slate-900">
       {/* Decorative Blur */}
       <div className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-[#0241c0]/5 blur-[120px] pointer-events-none" />
 
