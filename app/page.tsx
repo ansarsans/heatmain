@@ -9,7 +9,7 @@ export default function HomePage() {
   const { t } = useTranslation()
 
   return (
-    <main className="bg-[linear-gradient(180deg,#ffffff_0%,#eef7ff_18%,#f8fbff_38%,#e9f4ff_60%,#f8fbff_80%,#eaf4ff_100%)]">
+    <main className="landing-surface">
       {/* Hero */}
       <Hero />
 
@@ -17,30 +17,30 @@ export default function HomePage() {
       <FeaturedProducts />
 
       {/* Product Highlights / Groups */}
-      <section className="py-12 lg:py-18">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          <div className="mb-10 max-w-3xl">
-            <h2 className="text-3xl font-extrabold tracking-tight text-slate-950 lg:text-4xl">
-              {t("catalog.title")}
+      <section className="border-y border-white/70 bg-white/40 py-10 backdrop-blur-[2px] lg:py-14">
+        <div className="mx-auto max-w-6xl px-4 lg:px-8">
+          <div className="mb-7 max-w-2xl">
+            <h2 className="text-2xl font-extrabold tracking-tight text-slate-950 lg:text-3xl">
+              {t("products.highlights.title")}
             </h2>
-            <p className="mt-3 text-base leading-7 text-slate-600 lg:text-lg">
+            <p className="mt-2 text-sm leading-6 text-slate-600 lg:text-base">
               {t("whyus.portfolio.desc")}
             </p>
           </div>
 
-          <div className="grid gap-px overflow-hidden rounded-3xl border border-blue-100 bg-blue-100/70 shadow-[0_18px_55px_-45px_rgba(7,86,184,0.45)] md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
             {[
               { key: "sulfite", title: t("home.groups.sulfite.title"), items: [t("home.groups.sulfite.item1"), t("home.groups.sulfite.item2"), t("home.groups.sulfite.item3")] },
               { key: "sulfate", title: t("home.groups.sulfate.title"), items: [t("home.groups.sulfate.item1"), t("home.groups.sulfate.item2"), t("home.groups.sulfate.item3")] },
               { key: "organic", title: t("home.groups.organic.title"), items: [t("home.groups.organic.item1"), t("home.groups.organic.item2"), t("home.groups.organic.item3")] },
               { key: "others", title: t("home.groups.others.title"), items: [t("home.groups.others.item1"), t("home.groups.others.item2"), t("home.groups.others.item3")] },
             ].map((group, index) => (
-              <div key={group.key} className="flex min-h-[270px] flex-col bg-white p-7 transition-colors hover:bg-[#fbfdff]">
-                <span className="mb-8 text-xs font-black tracking-[0.18em] text-blue-300">{String(index + 1).padStart(2, "0")}</span>
-                <h3 className="mb-4 text-lg font-bold text-slate-950">
+              <div key={group.key} className="flex min-h-[220px] flex-col rounded-xl border border-blue-100/90 bg-white/95 p-5 shadow-[0_12px_30px_-25px_rgba(15,67,120,0.55)] transition-colors hover:border-blue-200 hover:bg-white">
+                <span className="mb-5 text-[10px] font-black tracking-[0.18em] text-slate-400">{String(index + 1).padStart(2, "0")}</span>
+                <h3 className="mb-3 text-base font-bold text-slate-950">
                   {group.title}
                 </h3>
-                <ul className="mb-6 flex-grow space-y-3 text-sm leading-6 text-slate-500">
+                <ul className="mb-4 flex-grow space-y-2 text-[13px] leading-5 text-slate-500">
                   {group.items.map(item => (
                     <li key={item} className="flex items-start gap-2">
                       <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[#0756b8]" />
@@ -59,21 +59,21 @@ export default function HomePage() {
 
       {/* Custom Order CTA */}
       <section className="py-8 lg:py-10">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl border border-blue-100 bg-[#f6faff] px-7 py-9 shadow-[0_18px_55px_-44px_rgba(7,86,184,0.5)] sm:px-10 lg:flex lg:items-center lg:justify-between lg:gap-12 lg:px-12 lg:py-11">
+        <div className="mx-auto max-w-6xl px-4 lg:px-8">
+          <div className="relative overflow-hidden rounded-xl border border-blue-100/90 bg-white/95 px-6 py-7 shadow-[0_14px_36px_-28px_rgba(15,67,120,0.6)] sm:px-8 lg:flex lg:items-center lg:justify-between lg:gap-10 lg:px-9 lg:py-8">
             <div className="absolute inset-y-0 left-0 w-1 bg-[#0756b8]" />
             <div className="max-w-2xl">
-              <h2 className="text-2xl font-bold tracking-tight text-slate-950 lg:text-3xl">
+              <h2 className="text-xl font-bold tracking-tight text-slate-950 lg:text-2xl">
                 {t("custom.title")}
               </h2>
-              <p className="mt-3 text-base leading-7 text-slate-600">
+              <p className="mt-2 text-sm leading-6 text-slate-600">
                 {t("custom.text")}
               </p>
             </div>
-            <div className="mt-7 shrink-0 lg:mt-0">
+            <div className="mt-5 shrink-0 lg:mt-0">
               <Link
                 href="/contacts"
-                className="inline-flex items-center gap-2 rounded-full bg-[#0756b8] px-7 py-3 text-sm font-bold text-white shadow-[0_12px_28px_-16px_rgba(7,86,184,0.75)] transition-all hover:-translate-y-0.5 hover:bg-[#064a9d] active:scale-95"
+                className="inline-flex items-center gap-2 rounded-full bg-[#0756b8] px-5 py-2.5 text-xs font-bold text-white transition-colors hover:bg-[#064a9d] active:scale-95"
               >
                 {t("hero.contact")}
                 <span aria-hidden="true">→</span>
@@ -84,19 +84,19 @@ export default function HomePage() {
       </section>
 
       {/* About Preview */}
-      <section className="py-12 lg:py-18">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[.85fr_1.15fr] lg:items-center lg:gap-16">
+      <section id="about-preview" className="border-t border-white/80 bg-white/50 py-12 backdrop-blur-[2px] lg:py-16">
+        <div className="mx-auto max-w-6xl px-4 lg:px-8">
+          <div className="grid gap-8 lg:grid-cols-[.9fr_1.1fr] lg:items-center lg:gap-12">
             <div>
-              <h2 className="text-3xl font-bold tracking-tight text-slate-950 lg:text-4xl text-balance">
+              <h2 className="text-2xl font-bold tracking-tight text-slate-950 lg:text-3xl text-balance">
                 {t("about.preview.title")}
               </h2>
-              <p className="mb-7 mt-4 text-base leading-7 text-slate-600 text-pretty lg:text-lg">
+              <p className="mb-5 mt-3 text-sm leading-6 text-slate-600 text-pretty lg:text-base">
                 {t("about.preview.text")}
               </p>
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 text-sm font-bold text-[#0241c0] transition-colors hover:opacity-80"
+                className="inline-flex items-center gap-2 text-xs font-bold text-[#0241c0] transition-colors hover:opacity-80"
               >
                 {t("about.preview.link")}
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -104,7 +104,7 @@ export default function HomePage() {
                 </svg>
               </Link>
             </div>
-            <div className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-blue-100 bg-blue-100">
+            <div className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-blue-100 bg-blue-100 shadow-[0_12px_30px_-26px_rgba(15,67,120,0.5)]">
               {[
                 { icon: "01", title: t("about.mission.title") },
                 { icon: "02", title: t("about.industries.title") },
@@ -114,10 +114,10 @@ export default function HomePage() {
                 <Link
                   key={item.icon}
                   href="/about"
-                  className="group min-h-[150px] bg-white p-6 transition-colors hover:bg-[#f8fbff] active:scale-[0.99] sm:p-7"
+                  className="group min-h-[120px] bg-white/95 p-5 transition-colors hover:bg-white active:scale-[0.99]"
                 >
-                  <span className="mb-8 block text-xs font-black tracking-[0.16em] text-blue-300 transition-colors group-hover:text-[#0756b8]">{item.icon}</span>
-                  <span className="font-bold leading-snug text-slate-900">{item.title}</span>
+                  <span className="mb-5 block text-[10px] font-black tracking-[0.16em] text-slate-400 transition-colors group-hover:text-[#0756b8]">{item.icon}</span>
+                  <span className="text-sm font-bold leading-snug text-slate-900">{item.title}</span>
                 </Link>
               ))}
             </div>

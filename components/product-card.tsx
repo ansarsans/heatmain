@@ -23,6 +23,7 @@ const categoryLabels: Record<string, Record<string, string>> = {
 interface ProductCardProps {
   product: Product
   variant?: "light" | "dark"
+  compact?: boolean
   /** Если задано, кнопка «Подробнее» открывает модалку (каталог), иначе ведёт на контакты */
   onDetailsClick?: (product: Product) => void
   /** Скрыть описание (например, в каталоге — текст только в модалке «Подробнее») */
@@ -32,6 +33,7 @@ interface ProductCardProps {
 export function ProductCard({
   product,
   variant = "light",
+  compact = false,
   onDetailsClick,
   hideDescription = false,
 }: ProductCardProps) {
@@ -41,7 +43,7 @@ export function ProductCard({
   return (
     <div className="group flex h-full flex-col overflow-hidden transition-all">
       {/* Image Container */}
-      <div className="relative aspect-video overflow-hidden rounded-[1.15rem] bg-stone-200">
+      <div className={cn("relative aspect-video overflow-hidden bg-stone-200", compact ? "rounded-xl" : "rounded-[1.15rem]")}>
         {product.image ? (
           <Image
             src={getAssetPath(product.image)}
@@ -84,13 +86,13 @@ export function ProductCard({
       <div
         className={cn(
           "flex flex-1 flex-col",
-          hideDescription ? "pt-3 pb-6 sm:pt-4" : "py-6",
+          hideDescription ? "pt-3 pb-6 sm:pt-4" : compact ? "px-1 py-4" : "py-6",
         )}
       >
         <h3
           className={cn(
             "font-semibold leading-tight transition-colors",
-            hideDescription ? "mb-4 text-base sm:text-[17px]" : "mb-2 text-xl",
+            hideDescription ? "mb-4 text-base sm:text-[17px]" : compact ? "mb-1.5 text-base" : "mb-2 text-xl",
             variant === "light" ? "text-zinc-900" : "text-white",
           )}
         >
@@ -99,7 +101,7 @@ export function ProductCard({
         {!hideDescription && (
           <p
             className={cn(
-              "mb-6 text-sm leading-relaxed line-clamp-3",
+              compact ? "mb-4 text-xs leading-5 line-clamp-2" : "mb-6 text-sm leading-relaxed line-clamp-3",
               variant === "light" ? "text-zinc-500" : "text-white/60",
             )}
           >
@@ -125,7 +127,8 @@ export function ProductCard({
           <Link
             href={`/contacts?product=${encodeURIComponent(product.id)}`}
             className={cn(
-              "inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[11px] font-bold text-white transition-all active:scale-95",
+              "inline-flex items-center gap-1.5 rounded-full font-bold text-white transition-all active:scale-95",
+              compact ? "px-3.5 py-1.5 text-[10px]" : "px-4 py-2 text-[11px]",
               variant === "light"
                 ? "bg-[#0756b8] hover:bg-[#064a9d]"
                 : "bg-[#0241c0] hover:bg-[#0241c0]/80",
