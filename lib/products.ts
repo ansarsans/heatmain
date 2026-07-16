@@ -131,22 +131,7 @@ export const products: Product[] = [
     image: "/images/Селитранатриевая.jpg",
   },
 
-  // === METALS (9 items) ===
-  {
-    id: "met-1",
-    category: "metals",
-    name: {
-      ru: "Трубы, круги, листы",
-      kz: "Құбырлар, үйірмелер, парақтар",
-      en: "Pipes, rounds, sheets",
-    },
-    description: {
-      ru: "Прокат различного профиля из нержавеющих и конструкционных сталей.",
-      kz: "Тот баспайтын және конструктивті болаттан жасалған әртүрлі профильдегі прокат.",
-      en: "Rolled metal of various profiles from stainless and structural steels.",
-    },
-    image: "/images/Трубы.jpg",
-  },
+  // === METALS (8 items) ===
   {
     id: "met-3",
     category: "metals",
@@ -181,14 +166,14 @@ export const products: Product[] = [
     id: "met-8",
     category: "metals",
     name: {
-      ru: "Чугунные валки, прокатные валки",
-      kz: "Шойын біліктер, прокат біліктері",
-      en: "Cast iron rolls, rolling rolls",
+      ru: "Валы",
+      kz: "Біліктер",
+      en: "Shafts",
     },
     description: {
-      ru: "Сменные инструменты для прокатных станов различного назначения.",
-      kz: "Әртүрлі мақсаттағы прокат стандарына арналған ауыстырмалы құралдар.",
-      en: "Replaceable tools for rolling mills of various purposes.",
+      ru: "Валы для прокатных станов и другого промышленного оборудования.",
+      kz: "Прокат стандарына және басқа өнеркәсіптік жабдықтарға арналған біліктер.",
+      en: "Shafts for rolling mills and other industrial equipment.",
     },
     image: "/images/Валки.jpg",
   },

@@ -11,7 +11,7 @@ export function FeaturedProducts() {
 
   // Select a few representative products (химия / металлы / оборудование)
   // 3-й слот был equip-20 — такого id в каталоге нет, из-за этого показывались только 2 карточки
-  const featuredIds = ["chem-11", "met-1", "equip-1"] as const
+  const featuredIds = ["chem-11", "met-8", "equip-1"] as const
   const order = new Map<string, number>(featuredIds.map((id, i) => [id, i]))
   const featured = products
     .filter((p) => order.has(p.id))

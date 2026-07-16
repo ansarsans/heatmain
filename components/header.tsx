@@ -47,16 +47,10 @@ export function Header() {
           (scrolled || !isHome) ? "h-0 opacity-0 overflow-hidden py-0" : "bg-blue-50/80 py-1.5 opacity-100"
         )}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 text-[11px] font-medium uppercase tracking-wider text-slate-600 lg:px-8">
-          <div className="flex items-center gap-4">
-            <a href="tel:111111" className="italic transition-colors hover:text-[#0756b8]">111111</a>
-            <a href="mailto:test@test.com" className="transition-colors hover:text-[#0756b8]">test@test.com</a>
-          </div>
-          <div className="flex items-center gap-3">
-            <a href="#" className="transition-colors hover:text-[#0756b8]">Facebook</a>
-            <a href="#" className="transition-colors hover:text-[#0756b8]">Linkedin</a>
-            <a href="#" className="transition-colors hover:text-[#0756b8]">Twitter</a>
-          </div>
+        <div className="mx-auto flex max-w-7xl items-center justify-end px-4 text-[11px] font-medium uppercase tracking-wider text-slate-600 lg:px-8">
+          <a href="mailto:heatenergy.website@mail.ru" className="transition-colors hover:text-[#0756b8]">
+            heatenergy.website@mail.ru
+          </a>
         </div>
       </div>
 

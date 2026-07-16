@@ -3,11 +3,8 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useTranslation } from "@/lib/i18n"
-import { 
-  Search, Factory, ShieldCheck, Truck, 
-  FileText, Calculator, PackageCheck, MapPin, 
-  Zap, Recycle, Building2, Shield, Users, Hammer
-} from "lucide-react"
+import { Search, Factory, ShieldCheck, Truck } from "lucide-react"
+import { getAssetPath } from "@/lib/utils"
 
 /** Orthographic projection (degrees). Center chosen to show EU + Central Asia + China on one face. */
 const GLOBE = { cx: 200, cy: 200, R: 148, lat0: 45, lon0: 72 }
@@ -39,10 +36,10 @@ function isOnNearSide(lat: number, lon: number): boolean {
 }
 
 const supplyRegionMarkers = [
-  { key: "eu", lat: 50, lon: 10, label: "Европа", fill: "#ffffff", delay: "0ms" },
-  { key: "kz", lat: 51.2, lon: 71.4, label: "Казахстан", fill: "#0241c0", delay: "200ms" },
-  { key: "uz", lat: 41.3, lon: 69.2, label: "Узбекистан", fill: "#ffffff", delay: "400ms" },
-  { key: "cn", lat: 39.9, lon: 116.4, label: "Китай", fill: "#ffffff", delay: "600ms" },
+  { key: "eu", lat: 50, lon: 10, labelKey: "about.page.region.europe", fill: "#ffffff", delay: "0ms" },
+  { key: "kz", lat: 51.2, lon: 71.4, labelKey: "about.page.region.kazakhstan", fill: "#0241c0", delay: "200ms" },
+  { key: "uz", lat: 41.3, lon: 69.2, labelKey: "about.page.region.uzbekistan", fill: "#ffffff", delay: "400ms" },
+  { key: "cn", lat: 39.9, lon: 116.4, labelKey: "about.page.region.china", fill: "#ffffff", delay: "600ms" },
 ] as const
 
 export default function AboutPage() {
@@ -56,8 +53,8 @@ export default function AboutPage() {
         {/* Background Layer */}
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/images/hero-bg.jpg" 
-            alt="Industrial Background" 
+            src={getAssetPath("/images/hero-bg.jpg")}
+            alt={t("about.page.image_alt")}
             fill 
             className="object-cover opacity-[0.15] grayscale" 
           />
@@ -73,16 +70,15 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-4 lg:px-8 relative z-10 flex flex-col items-center">
           <div className="mb-8 inline-flex items-center rounded-full border border-white/10 bg-white/5 px-5 py-2 backdrop-blur-md shadow-2xl">
              <span className="flex h-2 w-2 rounded-full bg-[#0241c0] mr-3 animate-pulse"></span>
-             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/90">О компании</span>
+             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/90">{t("about.title")}</span>
           </div>
           
           <h1 className="mb-6 max-w-4xl text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl text-balance">
-            Надежный партнер в поставках промышленной химии и оборудования
+            {t("about.page.hero.title")}
           </h1>
           
           <p className="max-w-2xl text-base lg:text-lg leading-relaxed text-zinc-400 text-pretty">
-            Обеспечиваем бесперебойную работу промышленных предприятий по всему миру. 
-            Прямые контракты с производителями, строгий контроль качества и логистика "под ключ".
+            {t("about.page.hero.description")}
           </p>
         </div>
       </section>
@@ -91,18 +87,18 @@ export default function AboutPage() {
       <section className="py-24 lg:py-32 bg-[#fcfcfc] relative">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
            <div className="mb-16 text-center">
-             <span className="text-[#0241c0] font-bold tracking-widest uppercase text-[10px] mb-4 block">Экспертиза</span>
+             <span className="text-[#0241c0] font-bold tracking-widest uppercase text-[10px] mb-4 block">{t("about.page.expertise.eyebrow")}</span>
              <h2 className="text-3xl lg:text-4xl font-extrabold text-zinc-900 tracking-tight">
-               Чем мы полезны вашему бизнесу
+               {t("about.page.expertise.title")}
              </h2>
            </div>
             
            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
                {[
-                 { icon: <Search className="w-8 h-8 text-[#0241c0]" />, title: "Подбор продукции", desc: "Точный подбор по ТЗ и строгим техническим параметрам заказчика." },
-                 { icon: <Factory className="w-8 h-8 text-[#0241c0]" />, title: "Прямые поставки", desc: "Эксклюзивные контракты напрямую с ведущими мировыми производителями." },
-                 { icon: <ShieldCheck className="w-8 h-8 text-[#0241c0]" />, title: "Контроль качества", desc: "Многоуровневая проверка и сертификация каждой партии перед отгрузкой." },
-                 { icon: <Truck className="w-8 h-8 text-[#0241c0]" />, title: "Логистика под ключ", desc: "Организация доставки до вашего склада с полным таможенным оформлением." }
+                 { icon: <Search className="w-8 h-8 text-[#0241c0]" />, title: t("about.page.expertise.selection.title"), desc: t("about.page.expertise.selection.description") },
+                 { icon: <Factory className="w-8 h-8 text-[#0241c0]" />, title: t("about.page.expertise.supply.title"), desc: t("about.page.expertise.supply.description") },
+                 { icon: <ShieldCheck className="w-8 h-8 text-[#0241c0]" />, title: t("about.page.expertise.quality.title"), desc: t("about.page.expertise.quality.description") },
+                 { icon: <Truck className="w-8 h-8 text-[#0241c0]" />, title: t("about.page.expertise.logistics.title"), desc: t("about.page.expertise.logistics.description") }
                ].map((card, idx) => (
                  <div key={idx} className="group relative overflow-hidden rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-transparent">
                    <div className="absolute inset-0 bg-gradient-to-br from-[#0241c0]/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -130,19 +126,19 @@ export default function AboutPage() {
         
         <div className="mx-auto max-w-7xl px-4 lg:px-8 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
            <div>
-             <span className="text-[#0241c0] font-bold tracking-widest uppercase text-[10px] mb-4 block">Масштаб</span>
+             <span className="text-[#0241c0] font-bold tracking-widest uppercase text-[10px] mb-4 block">{t("about.page.geography.eyebrow")}</span>
              <h2 className="text-3xl lg:text-4xl font-extrabold text-white mb-6 text-balance tracking-tight">
-                Международная география поставок
+                {t("about.page.geography.title")}
              </h2>
              <p className="text-zinc-400 leading-relaxed text-lg mb-10 text-pretty">
-               Мы работаем без границ, обеспечивая надежные логистические цепочки между ведущими производственными хабами и предприятиями заказчиков.
+               {t("about.page.geography.description")}
              </p>
              <div className="flex flex-wrap gap-4">
                 {[
-                  { name: "Казахстан", dot: "bg-[#0241c0]" },
-                  { name: "Китай", dot: "bg-[#0241c0]" },
-                  { name: "Европа", dot: "bg-[#0241c0]" },
-                  { name: "Узбекистан", dot: "bg-white" },
+                  { name: t("about.page.region.kazakhstan"), dot: "bg-[#0241c0]" },
+                  { name: t("about.page.region.china"), dot: "bg-[#0241c0]" },
+                  { name: t("about.page.region.europe"), dot: "bg-[#0241c0]" },
+                  { name: t("about.page.region.uzbekistan"), dot: "bg-white" },
                 ].map(({ name, dot }) => (
                   <span key={name} className="px-6 py-2.5 rounded-full border border-white/10 bg-white/5 text-sm backdrop-blur-md text-white font-semibold flex items-center gap-2 transition-colors hover:bg-white/10 hover:border-white/20 cursor-default">
                     <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${dot}`} />
@@ -208,7 +204,7 @@ export default function AboutPage() {
                  className="stroke-current opacity-55"
                  strokeWidth="1"
                />
-               {supplyRegionMarkers.map(({ key, lat, lon, label, fill, delay }) => {
+               {supplyRegionMarkers.map(({ key, lat, lon, labelKey, fill, delay }) => {
                  if (!isOnNearSide(lat, lon)) return null
                  const { x, y } = geoToSvg(lat, lon)
                  const glow = fill === "#0241c0" ? "#0241c0" : "#ffffff"
@@ -223,7 +219,7 @@ export default function AboutPage() {
                        filter="url(#globeGlow)"
                        className="opacity-95"
                      />
-                     <title>{label}</title>
+                     <title>{t(labelKey)}</title>
                    </g>
                  )
                })}
@@ -238,35 +234,35 @@ export default function AboutPage() {
       <section className="py-12 bg-[#fcfcfc] border-y border-zinc-100">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <div className="rounded-3xl border border-zinc-200 bg-white p-8 lg:p-12 shadow-sm">
-            <h2 className="mb-8 text-2xl font-bold tracking-tight text-zinc-900">ТОО "Heat Energy Capital"</h2>
+            <h2 className="mb-8 text-2xl font-bold tracking-tight text-zinc-900">{t("about.page.details.company")}</h2>
             <div className="grid lg:grid-cols-5 gap-12">
                <div className="lg:col-span-2">
-                  <h3 className="mb-4 text-[10px] font-bold uppercase tracking-widest text-[#0241c0]">Реквизиты</h3>
+                  <h3 className="mb-4 text-[10px] font-bold uppercase tracking-widest text-[#0241c0]">{t("about.page.details.requisites")}</h3>
                   <div className="space-y-3 text-sm text-zinc-800">
-                    <p className="flex justify-between border-b border-zinc-100 pb-2"><span className="text-zinc-500">БИН:</span> <span className="font-semibold">240240013512</span></p>
-                    <p className="flex justify-between border-b border-zinc-100 pb-2"><span className="text-zinc-500">ИИК:</span> <span className="font-semibold">KZ33601A871023954571 <span className="text-zinc-400 font-medium">KZT</span></span></p>
-                    <p className="flex justify-between border-b border-zinc-100 pb-2"><span className="text-zinc-500">БИК:</span> <span className="font-semibold">HSBKKZKX</span></p>
-                    <p className="flex flex-col gap-1 border-b border-zinc-100 pb-2"><span className="text-zinc-500">Банк:</span> <span className="font-semibold">АО “Народный Банк Казахстана”</span></p>
+                    <p className="flex justify-between border-b border-zinc-100 pb-2"><span className="text-zinc-500">{t("about.page.details.bin")}:</span> <span className="font-semibold">240240013512</span></p>
+                    <p className="flex justify-between border-b border-zinc-100 pb-2"><span className="text-zinc-500">{t("about.page.details.iban")}:</span> <span className="font-semibold">KZ33601A871023954571 <span className="text-zinc-400 font-medium">KZT</span></span></p>
+                    <p className="flex justify-between border-b border-zinc-100 pb-2"><span className="text-zinc-500">{t("about.page.details.bic")}:</span> <span className="font-semibold">HSBKKZKX</span></p>
+                    <p className="flex flex-col gap-1 border-b border-zinc-100 pb-2"><span className="text-zinc-500">{t("about.page.details.bank")}:</span> <span className="font-semibold">{t("about.page.details.bank_name")}</span></p>
                   </div>
                </div>
                
                <div className="lg:col-span-3">
-                 <h3 className="mb-4 text-[10px] font-bold uppercase tracking-widest text-[#0241c0]">Адреса и деятельность</h3>
+                 <h3 className="mb-4 text-[10px] font-bold uppercase tracking-widest text-[#0241c0]">{t("about.page.details.addresses_title")}</h3>
                  <div className="grid sm:grid-cols-2 gap-8 text-sm text-zinc-800 bg-zinc-50 p-6 rounded-2xl border border-zinc-100">
                     <div>
-                      <span className="block text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-2">Юридический адрес</span>
-                      <span className="font-medium">г. Астана, район Есиль, ул. Әлихан Бөкейхан, д. 11, н.п. 1</span>
-                      <span className="block mt-1 text-xs text-zinc-500">Индекс: 010000</span>
+                      <span className="block text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-2">{t("about.page.details.legal_address")}</span>
+                      <span className="font-medium">{t("about.page.details.legal_address_value")}</span>
+                      <span className="block mt-1 text-xs text-zinc-500">{t("about.page.details.postal_code")}: 010000</span>
                     </div>
                     <div>
-                      <span className="block text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-2">Фактический адрес</span>
-                      <span className="font-medium">г. Астана, район Есиль, ул. Әлихан Бөкейхан, д. 27/1, н.п. 10</span>
+                      <span className="block text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-2">{t("about.page.details.actual_address")}</span>
+                      <span className="font-medium">{t("about.page.details.actual_address_value")}</span>
                     </div>
                     <div className="sm:col-span-2 pt-4 border-t border-zinc-200/60">
-                       <span className="block text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-3">ОКЭД</span>
+                       <span className="block text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-3">{t("about.page.details.activity_code")}</span>
                        <div className="space-y-2">
-                         <p className="flex gap-2 items-start"><span className="font-bold whitespace-nowrap">46.90.9</span> <span className="text-zinc-600">— оптовая торговля широким ассортиментом товаров</span></p>
-                         <p className="flex gap-2 items-start"><span className="font-bold whitespace-nowrap">33.12.2</span> <span className="text-zinc-600">— ремонт машин и оборудования</span></p>
+                         <p className="flex gap-2 items-start"><span className="font-bold whitespace-nowrap">46.90.9</span> <span className="text-zinc-600">— {t("about.page.details.activity_wholesale")}</span></p>
+                         <p className="flex gap-2 items-start"><span className="font-bold whitespace-nowrap">33.12.2</span> <span className="text-zinc-600">— {t("about.page.details.activity_repair")}</span></p>
                        </div>
                     </div>
                  </div>
@@ -290,10 +286,10 @@ export default function AboutPage() {
 
               <div className="relative z-10 flex flex-col items-center">
                  <h2 className="mb-6 max-w-3xl text-3xl font-extrabold tracking-tight text-white lg:text-5xl text-balance">
-                    Рассчитаем поставку под вашу задачу
+                    {t("about.page.cta.title")}
                  </h2>
                  <p className="mb-12 max-w-xl text-lg leading-relaxed text-zinc-400 text-pretty">
-                    Оставьте заявку, и наши специалисты подготовят персональное коммерческое предложение с оптимальными условиями и логистикой.
+                    {t("about.page.cta.description")}
                  </p>
                  
                  <style>{`
@@ -309,7 +305,7 @@ export default function AboutPage() {
                     className="inline-flex items-center justify-center rounded-full bg-[#0241c0] px-12 py-5 text-sm font-bold uppercase tracking-widest text-white transition-colors hover:bg-[#023190]"
                     style={{ animation: 'ctaPulse 3s ease-in-out infinite' }}
                  >
-                    Получить расчёт
+                    {t("about.page.cta.button")}
                  </Link>
               </div>
            </div>

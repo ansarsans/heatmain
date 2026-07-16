@@ -6,7 +6,7 @@ import { Hero } from "@/components/hero"
 import { FeaturedProducts } from "@/components/featured-products"
 
 export default function HomePage() {
-  const { t, locale } = useTranslation()
+  const { t } = useTranslation()
 
   return (
     <main>
@@ -51,10 +51,10 @@ export default function HomePage() {
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {[
-              { key: "sulfite", title: locale === 'ru' ? 'Серия сульфитов' : locale === 'en' ? 'Sulfite Series' : 'Сульфиттер сериясы', items: ["Безводный сульфит натрия", "Тиосульфат натрия", "Метабисульфит натрия"] },
-              { key: "sulfate", title: locale === 'ru' ? 'Серия сульфатов' : locale === 'en' ? 'Sulfate Series' : 'Сульфаттар сериясы', items: ["Гидросульфат натрия", "Гидросульфат калия", "Гидросульфат аммония"] },
-              { key: "organic", title: locale === 'ru' ? 'Органическая серия' : locale === 'en' ? 'Organic Series' : 'Органикалық серия', items: ["N-этилэтилендиамин", "N,N-диэтилэтилендиамин", "N,N'-диэтилэтилендиамин"] },
-              { key: "others", title: locale === 'ru' ? 'Другие' : locale === 'en' ? 'Others' : 'Басқалар', items: ["Оксид бария", "Силикокальций", "Фурфуриловый спирт"] },
+              { key: "sulfite", title: t("home.groups.sulfite.title"), items: [t("home.groups.sulfite.item1"), t("home.groups.sulfite.item2"), t("home.groups.sulfite.item3")] },
+              { key: "sulfate", title: t("home.groups.sulfate.title"), items: [t("home.groups.sulfate.item1"), t("home.groups.sulfate.item2"), t("home.groups.sulfate.item3")] },
+              { key: "organic", title: t("home.groups.organic.title"), items: [t("home.groups.organic.item1"), t("home.groups.organic.item2"), t("home.groups.organic.item3")] },
+              { key: "others", title: t("home.groups.others.title"), items: [t("home.groups.others.item1"), t("home.groups.others.item2"), t("home.groups.others.item3")] },
             ].map((group) => (
               <div key={group.key} className="flex flex-col min-h-[280px] rounded-xl border border-zinc-100 bg-white p-6 shadow-[-10px_10px_30px_-15px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[-15px_15px_40px_-10px_rgba(0,0,0,0.2)]">
                 <h3 className="mb-4 text-lg font-bold text-foreground">

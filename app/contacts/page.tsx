@@ -3,7 +3,7 @@
 import { useEffect, useState, type FormEvent } from "react"
 import { useTranslation } from "@/lib/i18n"
 import { TwoGisEmbed, TWO_GIS_GEO_PAGE } from "@/components/two-gis-embed"
-import { Phone, Mail, MapPin, Clock, ExternalLink, Send } from "lucide-react"
+import { Mail, MapPin, Clock, ExternalLink, Send } from "lucide-react"
 import { submitFeedback } from "@/lib/feedback-api"
 
 export default function ContactsPage() {
@@ -24,16 +24,10 @@ export default function ContactsPage() {
 
   const contactItems = [
     {
-      icon: <Phone className="h-5 w-5" />,
-      label: t("contacts.phone"),
-      value: "+7 (705) 123-45-12",
-      href: "tel:+77051234512",
-    },
-    {
       icon: <Mail className="h-5 w-5" />,
       label: t("contacts.email"),
-      value: "info@heatenergy.kz",
-      href: "mailto:info@heatenergy.kz",
+      value: "heatenergy.website@mail.ru",
+      href: "mailto:heatenergy.website@mail.ru",
     },
     {
       icon: <MapPin className="h-5 w-5" />,

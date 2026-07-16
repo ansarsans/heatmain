@@ -64,11 +64,6 @@ export function Footer() {
             <p className="mt-6 text-sm leading-relaxed text-slate-600">
               {t("footer.description")}
             </p>
-            <div className="mt-8 flex gap-5">
-              {["FB", "LI", "TW", "IN"].map(social => (
-                <a key={social} href="#" className="text-xs font-bold text-slate-400 transition-colors hover:text-[#0756b8]">{social}</a>
-              ))}
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -97,24 +92,13 @@ export function Footer() {
             <div className="space-y-6 text-sm text-slate-600">
               <div className="flex flex-col gap-1.5">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                  {t("contacts.phone")}
-                </span>
-                <a
-                  href="tel:+77051234512"
-                  className="font-medium text-slate-900 transition-colors hover:text-[#0756b8]"
-                >
-                  +7 (705) 123-45-12
-                </a>
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
                   {t("contacts.email")}
                 </span>
                 <a
-                  href="mailto:info@heatenergy.kz"
+                  href="mailto:heatenergy.website@mail.ru"
                   className="font-medium text-slate-900 transition-colors hover:text-[#0756b8]"
                 >
-                  info@heatenergy.kz
+                  heatenergy.website@mail.ru
                 </a>
               </div>
               <div className="flex flex-col gap-1.5">
