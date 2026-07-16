@@ -25,7 +25,7 @@ export default function CatalogPage() {
 
 function CatalogSkeleton() {
   return (
-    <main className="py-12 lg:py-20 min-h-screen bg-[#f4f2ee]">
+    <main className="min-h-screen bg-[#f4f2ee] pb-12 pt-24 lg:pb-20 lg:pt-28">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <div className="mb-10 max-w-xl">
           <div className="mb-3 h-9 w-48 animate-pulse rounded bg-zinc-200" />
@@ -74,7 +74,7 @@ function CatalogContent() {
   }, [activeCategory, search, locale])
 
   return (
-    <main className="relative min-h-screen pt-[84px] pb-24 lg:pt-[100px] lg:pb-32 bg-white overflow-hidden">
+    <main className="relative min-h-screen overflow-hidden bg-white pb-24 pt-24 lg:pb-32 lg:pt-28">
       <ProductDetailDialog
         product={detailProduct}
         onOpenChange={(open) => {

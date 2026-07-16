@@ -95,10 +95,10 @@ export function Footer() {
                   {t("contacts.email")}
                 </span>
                 <a
-                  href="mailto:heatenergy.website@mail.ru"
+                  href="mailto:heatenergy@inbox.ru"
                   className="font-medium text-slate-900 transition-colors hover:text-[#0756b8]"
                 >
-                  heatenergy.website@mail.ru
+                  heatenergy@inbox.ru
                 </a>
               </div>
               <div className="flex flex-col gap-1.5">
@@ -169,11 +169,6 @@ export function Footer() {
           <p className="text-[11px] font-medium text-slate-500">
             © {year} Heat Energy Capital. {t("footer.rights")}
           </p>
-          <div className="flex gap-8 text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400">
-            <span className="cursor-default tracking-tighter transition-colors hover:text-[#0756b8] sm:tracking-[0.3em]">ISO Certified</span>
-            <span className="cursor-default tracking-tighter transition-colors hover:text-[#0756b8] sm:tracking-[0.3em]">REACH</span>
-            <span className="cursor-default tracking-tighter transition-colors hover:text-[#0756b8] sm:tracking-[0.3em]">HALAL</span>
-          </div>
         </div>
       </div>
     </footer>

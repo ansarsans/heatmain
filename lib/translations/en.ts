@@ -11,7 +11,7 @@ export const en: Record<string, string> = {
   // Hero
   "hero.title": "International supply of industrial chemicals, metals, and equipment",
   "hero.subtitle": "Reliable B2B solutions for energy, manufacturing, and heavy industry.",
-  "hero.description": "Factory with ISO, REACH, HALAL, and KOSHER certifications. Main production includes four series.",
+  "hero.description": "The product range includes several series developed for industrial applications.",
   "hero.prod1.name": "Sodium Metabisulfite",
   "hero.prod1.formula": "Na₂S₂O₅",
   "hero.prod1.tags": "Food • Industrial • Photo",

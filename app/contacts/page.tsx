@@ -26,8 +26,8 @@ export default function ContactsPage() {
     {
       icon: <Mail className="h-5 w-5" />,
       label: t("contacts.email"),
-      value: "heatenergy.website@mail.ru",
-      href: "mailto:heatenergy.website@mail.ru",
+      value: "heatenergy@inbox.ru",
+      href: "mailto:heatenergy@inbox.ru",
     },
     {
       icon: <MapPin className="h-5 w-5" />,
@@ -76,7 +76,7 @@ export default function ContactsPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#fcfcfc] py-16 lg:py-24">
+    <main className="min-h-screen bg-[#fcfcfc] pb-16 pt-24 lg:pb-24 lg:pt-28">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <div className="mb-12 border-b border-zinc-200 pb-10">
           <h1 className="mb-4 text-3xl font-bold tracking-tight text-zinc-900 lg:text-4xl text-balance">

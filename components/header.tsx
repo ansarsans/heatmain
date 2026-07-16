@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { usePathname } from "next/navigation"
 import { useTranslation } from "@/lib/i18n"
 import { LanguageSwitcher } from "@/components/language-switcher"
@@ -21,43 +21,10 @@ export function Header() {
   const isHome = pathname === "/"
   
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
 
   return (
-    <header 
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]",
-        !isHome 
-          ? "left-2 right-2 md:left-3 md:right-3 lg:left-4 lg:right-4 mx-auto max-w-[1500px] bg-white/95 backdrop-blur-md shadow-lg border-x border-b border-blue-100 rounded-b-3xl" 
-          : (scrolled ? "border-b border-blue-100 bg-white/95 backdrop-blur-md shadow-lg" : "bg-white/70 backdrop-blur-sm")
-      )}
-    >
-      {/* Top Bar */}
-      <div 
-        className={cn(
-          "border-b border-blue-100 transition-all duration-300",
-          (scrolled || !isHome) ? "h-0 opacity-0 overflow-hidden py-0" : "bg-blue-50/80 py-1.5 opacity-100"
-        )}
-      >
-        <div className="mx-auto flex max-w-7xl items-center justify-end px-4 text-[11px] font-medium uppercase tracking-wider text-slate-600 lg:px-8">
-          <a href="mailto:heatenergy.website@mail.ru" className="transition-colors hover:text-[#0756b8]">
-            heatenergy.website@mail.ru
-          </a>
-        </div>
-      </div>
-
-      <div className={cn(
-        "mx-auto flex max-w-[1500px] items-center justify-between py-3",
-        isHome ? "px-4 lg:px-8" : "px-6 lg:px-10"
-      )}>
+    <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-blue-100 bg-white shadow-sm">
+      <div className="mx-auto flex max-w-[1500px] items-center justify-between px-4 py-3 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3" onClick={() => setMobileOpen(false)}>
           <BrandLogo size={36} priority={isHome} className="bg-white ring-1 ring-blue-100" />
