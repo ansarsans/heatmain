@@ -17,7 +17,7 @@ export function FeaturedProducts() {
     .sort((a, b) => (order.get(a.id) ?? 0) - (order.get(b.id) ?? 0))
 
   return (
-    <section className="py-9 lg:py-12">
+    <section className="bg-[linear-gradient(180deg,rgba(204,228,253,0.72)_0%,rgba(226,240,255,0.58)_48%,rgba(241,247,253,0.32)_100%)] py-9 lg:py-12">
       <div className="mx-auto max-w-6xl px-4 lg:px-8">
         <div className="mb-7 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>

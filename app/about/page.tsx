@@ -48,43 +48,43 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-[#fcfcfc] overflow-hidden">
       
-      {/* 1. Hero Section (Dark, Industrial) */}
-      <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-24 bg-zinc-950 overflow-hidden text-center">
+      {/* 1. Hero Section */}
+      <section className="relative overflow-hidden bg-[#e7f2ff] pb-24 pt-32 text-center lg:pb-32 lg:pt-40">
         {/* Background Layer */}
         <div className="absolute inset-0 z-0">
           <Image 
             src={getAssetPath("/images/hero-bg.jpg")}
             alt={t("about.page.image_alt")}
             fill 
-            className="object-cover opacity-[0.15] grayscale" 
+            className="object-cover opacity-[0.24] grayscale" 
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/40 via-zinc-950/80 to-zinc-950" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(239,247,255,0.7)_0%,rgba(219,237,255,0.84)_55%,rgba(231,242,255,0.98)_100%)]" />
         </div>
         
         {/* Noise Texture */}
         <div 
-          className="absolute inset-0 opacity-[0.15] z-0 mix-blend-overlay pointer-events-none" 
+          className="absolute inset-0 z-0 opacity-[0.08] mix-blend-multiply pointer-events-none" 
           style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
         ></div>
 
         <div className="mx-auto max-w-7xl px-4 lg:px-8 relative z-10 flex flex-col items-center">
-          <div className="mb-8 inline-flex items-center rounded-full border border-white/10 bg-white/5 px-5 py-2 backdrop-blur-md shadow-2xl">
-             <span className="flex h-2 w-2 rounded-full bg-[#0241c0] mr-3 animate-pulse"></span>
-             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/90">{t("about.title")}</span>
+          <div className="mb-6 inline-flex items-center rounded-full border border-blue-200/80 bg-white/70 px-5 py-2 shadow-sm backdrop-blur-md">
+             <span className="mr-3 flex h-2 w-2 animate-pulse rounded-full bg-[#0756b8]"></span>
+             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0756b8]">{t("about.title")}</span>
           </div>
           
-          <h1 className="mb-6 max-w-4xl text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl text-balance">
+          <h1 className="mb-5 max-w-4xl text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl text-balance">
             {t("about.page.hero.title")}
           </h1>
           
-          <p className="max-w-2xl text-base lg:text-lg leading-relaxed text-zinc-400 text-pretty">
+          <p className="max-w-2xl text-base leading-relaxed text-slate-600 text-pretty lg:text-lg">
             {t("about.page.hero.description")}
           </p>
         </div>
       </section>
 
       {/* 2. Кто мы и чем полезны (Light Section with Glass Dark Cards) */}
-      <section className="py-24 lg:py-32 bg-[#fcfcfc] relative">
+      <section className="relative bg-[#fcfcfc] pb-24 pt-[42px] sm:pt-[50px] lg:pb-32 lg:pt-[58px]">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
            <div className="mb-16 text-center">
              <span className="text-[#0241c0] font-bold tracking-widest uppercase text-[10px] mb-4 block">{t("about.page.expertise.eyebrow")}</span>
@@ -116,21 +116,21 @@ export default function AboutPage() {
       </section>
 
 
-      {/* 5. География (Dark Section with Visualization) */}
-      <section className="py-24 lg:py-32 bg-zinc-950 relative overflow-hidden">
+      {/* 5. География */}
+      <section className="relative overflow-hidden bg-[linear-gradient(180deg,#e4f1ff_0%,#f4f9ff_52%,#e8f3ff_100%)] py-24 lg:py-32">
         {/* Glows and Map Pattern */}
-        <div className="absolute inset-0 opacity-[0.03]">
-          <div className="w-full h-full" style={{ backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)', backgroundSize: '32px 32px' }}></div>
+        <div className="absolute inset-0 opacity-[0.16]">
+          <div className="w-full h-full" style={{ backgroundImage: 'radial-gradient(circle, #4b8fd4 1px, transparent 1px)', backgroundSize: '32px 32px' }}></div>
         </div>
-        <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-[#0241c0]/20 blur-[150px] rounded-full pointer-events-none"></div>
+        <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-[#6eb0ff]/25 blur-[150px] rounded-full pointer-events-none"></div>
         
         <div className="mx-auto max-w-7xl px-4 lg:px-8 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
            <div>
              <span className="text-[#0241c0] font-bold tracking-widest uppercase text-[10px] mb-4 block">{t("about.page.geography.eyebrow")}</span>
-             <h2 className="text-3xl lg:text-4xl font-extrabold text-white mb-6 text-balance tracking-tight">
+             <h2 className="mb-6 text-3xl font-extrabold tracking-tight text-slate-950 text-balance lg:text-4xl">
                 {t("about.page.geography.title")}
              </h2>
-             <p className="text-zinc-400 leading-relaxed text-lg mb-10 text-pretty">
+             <p className="mb-10 text-lg leading-relaxed text-slate-600 text-pretty">
                {t("about.page.geography.description")}
              </p>
              <div className="flex flex-wrap gap-4">
@@ -138,9 +138,9 @@ export default function AboutPage() {
                   { name: t("about.page.region.kazakhstan"), dot: "bg-[#0241c0]" },
                   { name: t("about.page.region.china"), dot: "bg-[#0241c0]" },
                   { name: t("about.page.region.europe"), dot: "bg-[#0241c0]" },
-                  { name: t("about.page.region.uzbekistan"), dot: "bg-white" },
+                  { name: t("about.page.region.uzbekistan"), dot: "bg-[#6eb0ff]" },
                 ].map(({ name, dot }) => (
-                  <span key={name} className="px-6 py-2.5 rounded-full border border-white/10 bg-white/5 text-sm backdrop-blur-md text-white font-semibold flex items-center gap-2 transition-colors hover:bg-white/10 hover:border-white/20 cursor-default">
+                  <span key={name} className="flex cursor-default items-center gap-2 rounded-full border border-blue-200/80 bg-white/75 px-6 py-2.5 text-sm font-semibold text-slate-800 shadow-sm transition-colors hover:border-blue-300 hover:bg-white">
                     <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${dot}`} />
                     {name}
                   </span>
@@ -151,7 +151,7 @@ export default function AboutPage() {
            {/* Globe: wireframe + markers from lat/lon (orthographic) */}
            <div className="relative aspect-square lg:aspect-auto lg:h-[400px] w-full flex items-center justify-center">
              <svg
-               className="w-full max-w-[min(100%,380px)] h-auto text-[#6eb0ff] drop-shadow-[0_0_28px_rgba(110,176,255,0.45)]"
+               className="w-full max-w-[min(100%,380px)] h-auto text-[#0756b8] drop-shadow-[0_0_24px_rgba(7,86,184,0.28)]"
                viewBox="0 0 400 400"
                fill="none"
                xmlns="http://www.w3.org/2000/svg"
@@ -159,9 +159,9 @@ export default function AboutPage() {
              >
                <defs>
                  <radialGradient id="globeFill" cx="32%" cy="28%" r="75%">
-                   <stop offset="0%" stopColor="#a8d4ff" stopOpacity="0.22" />
-                   <stop offset="45%" stopColor="#4d94ff" stopOpacity="0.12" />
-                   <stop offset="100%" stopColor="#0241c0" stopOpacity="0.04" />
+                   <stop offset="0%" stopColor="#6eb0ff" stopOpacity="0.3" />
+                   <stop offset="45%" stopColor="#2f7fce" stopOpacity="0.2" />
+                   <stop offset="100%" stopColor="#0756b8" stopOpacity="0.1" />
                  </radialGradient>
                  <filter id="globeGlow" x="-40%" y="-40%" width="180%" height="180%">
                    <feGaussianBlur stdDeviation="2" result="b" />
@@ -272,38 +272,37 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 8. Final CTA (Dark card, premium) */}
+      {/* 8. Final CTA */}
       <section className="py-24 bg-[#fcfcfc]">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
-           <div className="relative overflow-hidden rounded-[2.5rem] bg-zinc-950 px-8 py-20 text-center shadow-2xl lg:px-16 lg:py-28 border border-zinc-800">
+           <div
+              className="relative overflow-hidden rounded-[2.5rem] border border-slate-300/80 bg-[#f4f9ff] px-8 py-20 text-center shadow-[0_24px_70px_-46px_rgba(7,86,184,0.5)] lg:px-16 lg:py-28"
+              style={{
+                backgroundImage: [
+                  "radial-gradient(circle at 10% 18%, rgba(110,176,255,0.52), transparent 28%)",
+                  "radial-gradient(circle at 82% 16%, rgba(186,230,253,0.68), transparent 27%)",
+                  "radial-gradient(circle at 68% 88%, rgba(147,197,253,0.48), transparent 31%)",
+                  "radial-gradient(circle at 25% 76%, rgba(219,234,254,0.72), transparent 26%)",
+                  "linear-gradient(180deg, #ffffff 0%, #edf6ff 52%, #e4f1ff 100%)",
+                ].join(", "),
+              }}
+           >
               {/* Noise and Glow Layers */}
               <div 
-                className="absolute inset-0 opacity-[0.1] z-0 pointer-events-none mix-blend-overlay" 
+                className="absolute inset-0 z-0 opacity-[0.05] pointer-events-none mix-blend-multiply" 
                 style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
               ></div>
-              <div className="absolute -top-48 -left-48 w-96 h-96 bg-[#0241c0]/20 rounded-full blur-[120px] pointer-events-none"></div>
-              <div className="absolute -bottom-48 -right-48 w-96 h-96 bg-[#0241c0]/20 rounded-full blur-[120px] pointer-events-none"></div>
-
               <div className="relative z-10 flex flex-col items-center">
-                 <h2 className="mb-6 max-w-3xl text-3xl font-extrabold tracking-tight text-white lg:text-5xl text-balance">
+                 <h2 className="mb-6 max-w-3xl text-[1.7rem] font-bold tracking-tight text-slate-950 text-balance lg:text-[2.65rem]">
                     {t("about.page.cta.title")}
                  </h2>
-                 <p className="mb-12 max-w-xl text-lg leading-relaxed text-zinc-400 text-pretty">
+                 <p className="mb-12 max-w-xl text-lg leading-relaxed text-slate-600 text-pretty">
                     {t("about.page.cta.description")}
                  </p>
-                 
-                 <style>{`
-                  @keyframes ctaPulse {
-                    0% { box-shadow: 0 0 15px rgba(2, 65, 192, 0.4); opacity: 1; transform: scale(1); }
-                    50% { box-shadow: 0 0 40px rgba(2, 65, 192, 0.7); opacity: 0.95; transform: scale(1.02); }
-                    100% { box-shadow: 0 0 15px rgba(2, 65, 192, 0.4); opacity: 1; transform: scale(1); }
-                  }
-                 `}</style>
                  
                  <Link
                     href="/contacts"
                     className="inline-flex items-center justify-center rounded-full bg-[#0241c0] px-12 py-5 text-sm font-bold uppercase tracking-widest text-white transition-colors hover:bg-[#023190]"
-                    style={{ animation: 'ctaPulse 3s ease-in-out infinite' }}
                  >
                     {t("about.page.cta.button")}
                  </Link>
