@@ -9,8 +9,8 @@ export const en: Record<string, string> = {
   "nav.inquiry": "Inquiry",
 
   // Hero
-  "hero.title": "International supply of industrial chemicals, metals, and equipment",
-  "hero.subtitle": "Reliable B2B solutions for energy, manufacturing, and heavy industry.",
+  "hero.title": "Your reliable partner in international industrial supply",
+  "hero.subtitle": "We organize international B2B supply of industrial products, connecting manufacturers with corporate customers worldwide.",
   "hero.cta": "View Catalog",
   "hero.contact": "Contact Us",
 

@@ -27,7 +27,7 @@ export function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3" onClick={() => setMobileOpen(false)}>
-          <BrandLogo size={36} priority={isHome} className="bg-white" />
+          <BrandLogo size={44} priority={isHome} className="bg-white" />
           <div className="hidden sm:block">
             <span className="text-base font-semibold tracking-tight text-slate-900">
               Heat Energy Capital
