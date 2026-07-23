@@ -3,7 +3,6 @@
 import Link from "next/link"
 import { useTranslation } from "@/lib/i18n"
 import { getAssetPath } from "@/lib/utils"
-import { CalendarDays, Globe2 } from "lucide-react"
 
 function ArrowIcon() {
   return (
@@ -28,14 +27,18 @@ function WorldMapBackdrop() {
   ]
 
   return (
-    <div className="pointer-events-none absolute -right-[280px] top-24 z-[1] aspect-[3/2] w-[660px] sm:-right-[210px] sm:top-16 sm:w-[820px] lg:-right-[100px] lg:top-4 lg:w-[1020px] xl:-right-[40px] xl:top-0 xl:w-[1120px]">
+    <div className="pointer-events-none absolute -right-[160px] top-24 z-[1] aspect-[3/2] w-[660px] sm:-right-[70px] sm:top-16 sm:w-[820px] lg:right-16 lg:top-4 lg:w-[1020px] xl:right-24 xl:top-0 xl:w-[1120px]">
       <img
         src={getAssetPath("/images/worldmap.svg")}
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-contain opacity-[0.11] sm:opacity-[0.14] lg:opacity-[0.19]"
+        className="absolute inset-0 h-full w-full object-contain opacity-[0.18] sm:opacity-[0.25] lg:opacity-[0.34]"
         style={{
-          filter: "brightness(0) saturate(100%) invert(34%) sepia(91%) saturate(1474%) hue-rotate(204deg) brightness(88%) contrast(97%) blur(0.3px)",
+          filter: "brightness(0) saturate(100%) invert(24%) sepia(98%) saturate(2850%) hue-rotate(211deg) brightness(66%) contrast(118%) blur(0.3px)",
+          maskImage:
+            "radial-gradient(ellipse 108% 118% at 100% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,.96) 30%, rgba(0,0,0,.7) 53%, rgba(0,0,0,.34) 76%, rgba(0,0,0,.1) 100%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 108% 118% at 100% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,.96) 30%, rgba(0,0,0,.7) 53%, rgba(0,0,0,.34) 76%, rgba(0,0,0,.1) 100%)",
         }}
       />
 
@@ -69,11 +72,6 @@ function WorldMapBackdrop() {
 
 export function Hero() {
   const { t } = useTranslation()
-
-  const stats = [
-    { value: "2024", label: t("stats.founded"), icon: CalendarDays },
-    { value: "5+", label: t("stats.countries"), icon: Globe2 },
-  ]
 
   return (
     <section className="relative overflow-hidden bg-transparent pb-20 pt-28 sm:pb-24 sm:pt-32 lg:pb-28 lg:pt-40">
@@ -118,34 +116,6 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-sm lg:translate-x-16 lg:translate-y-12 xl:translate-x-24 xl:translate-y-16">
-          <div className="pointer-events-none absolute -inset-4 rounded-[2rem] border border-white/95" />
-          <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-blue-200/45 blur-3xl" />
-
-          <div className="relative overflow-hidden rounded-2xl border border-white/90 bg-white/68 py-5 pl-3 pr-5 shadow-[0_-10px_24px_-18px_rgba(7,62,132,0.28),0_30px_75px_-34px_rgba(7,62,132,0.62)] backdrop-blur-xl sm:py-7 sm:pl-4 sm:pr-7">
-            <div className="absolute -right-16 -top-20 h-56 w-56 rounded-full border border-blue-200/55" />
-            <div className="absolute -right-8 -top-12 h-36 w-36 rounded-full border border-blue-100" />
-
-            <div className="relative grid grid-cols-2 divide-x divide-blue-100">
-              {stats.map((stat) => (
-                <div key={stat.label} className="flex min-w-0 items-center gap-3 first:pr-3 last:pl-3 sm:gap-4 sm:first:pr-4 sm:last:pl-4">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#e7f0ff] text-[#0756b8] sm:h-12 sm:w-12">
-                    <stat.icon aria-hidden="true" className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={2} />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="text-3xl font-black leading-none tracking-[-0.05em] text-[#0756b8] sm:text-4xl">
-                      {stat.value}
-                    </div>
-                    <div className="mt-2 max-w-[8rem] text-[8px] font-bold uppercase leading-3 tracking-[0.12em] text-slate-500 sm:text-[9px] sm:leading-4 sm:tracking-[0.15em]">
-                      {stat.label}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-          </div>
-        </div>
       </div>
     </section>
   )
