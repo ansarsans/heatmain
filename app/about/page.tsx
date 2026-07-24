@@ -1,10 +1,58 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
 import { useTranslation } from "@/lib/i18n"
-import { Search, Factory, ShieldCheck, Truck } from "lucide-react"
-import { getAssetPath } from "@/lib/utils"
+import {
+  Factory,
+  Search,
+  ShieldCheck,
+  Truck,
+} from "lucide-react"
+
+function ArrowIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M3 8h9.5M8.5 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+function AbstractHeroArtwork() {
+  const dots = Array.from({ length: 48 })
+
+  return (
+    <div className="relative mx-auto aspect-[1.05/1] w-full max-w-[500px]" aria-hidden="true">
+      <div className="absolute left-[8%] top-[8%] h-[68%] w-[68%] rounded-full bg-blue-300/25 blur-[85px]" />
+      <div className="absolute bottom-[2%] right-[-8%] h-[62%] w-[62%] rounded-full bg-cyan-200/35 blur-[95px]" />
+      <div className="absolute right-[7%] top-[12%] h-[38%] w-[38%] rounded-full bg-blue-500/10 blur-[60px]" />
+
+      <svg className="absolute inset-0 h-full w-full text-[#0756b8]" viewBox="0 0 500 480" fill="none">
+        <circle cx="292" cy="235" r="172" stroke="currentColor" strokeOpacity="0.09" />
+        <circle cx="292" cy="235" r="128" stroke="currentColor" strokeOpacity="0.12" />
+        <circle cx="292" cy="235" r="82" stroke="currentColor" strokeOpacity="0.1" />
+        <path d="M26 356C114 229 219 176 344 196C410 207 453 187 490 135" stroke="currentColor" strokeOpacity="0.13" strokeWidth="1.2" />
+        <path d="M48 404C139 313 226 293 314 329C384 358 437 349 487 300" stroke="currentColor" strokeOpacity="0.08" strokeWidth="1.2" />
+        <path d="M102 92C182 123 232 119 285 73C330 34 385 26 462 57" stroke="currentColor" strokeOpacity="0.08" strokeWidth="1" />
+        <circle cx="344" cy="196" r="4" fill="currentColor" fillOpacity="0.22" />
+        <circle cx="314" cy="329" r="3" fill="currentColor" fillOpacity="0.18" />
+      </svg>
+
+      <div className="absolute right-[4%] top-[22%] grid grid-cols-8 gap-2.5 opacity-25">
+        {dots.map((_, index) => (
+          <span key={index} className="h-1 w-1 rounded-full bg-[#0756b8]" />
+        ))}
+      </div>
+      <div className="absolute bottom-[12%] left-[10%] grid grid-cols-5 gap-3 opacity-15">
+        {dots.slice(0, 20).map((_, index) => (
+          <span key={index} className="h-1 w-1 rounded-full bg-[#0756b8]" />
+        ))}
+      </div>
+
+      <div className="absolute left-[31%] top-[31%] h-32 w-32 rounded-full border border-white/80 bg-white/15 shadow-[0_28px_75px_-38px_rgba(7,86,184,0.7)] backdrop-blur-[2px]" />
+      <div className="absolute left-[40%] top-[40%] h-16 w-16 rounded-full border border-blue-200/70 bg-white/25" />
+    </div>
+  )
+}
 
 /** Orthographic projection (degrees). Center chosen to show EU + Central Asia + China on one face. */
 const GLOBE = { cx: 200, cy: 200, R: 148, lat0: 45, lon0: 72 }
@@ -49,80 +97,156 @@ export default function AboutPage() {
     <main className="min-h-screen bg-[#fcfcfc] overflow-hidden">
       
       {/* 1. Hero Section */}
-      <section className="relative overflow-hidden bg-[#e7f2ff] pb-24 pt-32 text-center lg:pb-32 lg:pt-40">
-        {/* Background Layer */}
-        <div className="absolute inset-0 z-0">
-          <Image 
-            src={getAssetPath("/images/hero-bg.jpg")}
-            alt={t("about.page.image_alt")}
-            fill 
-            className="object-cover opacity-[0.24] grayscale" 
-          />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(239,247,255,0.7)_0%,rgba(219,237,255,0.84)_55%,rgba(231,242,255,0.98)_100%)]" />
-        </div>
-        
-        {/* Noise Texture */}
-        <div 
-          className="absolute inset-0 z-0 opacity-[0.08] mix-blend-multiply pointer-events-none" 
+      <section className="relative overflow-hidden bg-[#f4f9ff] pb-16 pt-28 sm:pb-20 sm:pt-32 lg:pb-24 lg:pt-36">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: [
+              "radial-gradient(circle at 8% 18%, rgba(147,197,253,0.55), transparent 29%)",
+              "radial-gradient(circle at 83% 20%, rgba(186,230,253,0.68), transparent 30%)",
+              "radial-gradient(circle at 72% 82%, rgba(96,165,250,0.28), transparent 34%)",
+              "linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(232,243,255,0.72) 58%, rgba(244,249,255,0.15) 100%)",
+            ].join(", "),
+          }}
+        />
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.045] mix-blend-multiply"
           style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
-        ></div>
+        />
+        <div className="pointer-events-none absolute -left-52 top-24 h-[30rem] w-[30rem] rounded-full border border-blue-200/45" />
+        <div className="pointer-events-none absolute -left-32 top-44 h-[20rem] w-[20rem] rounded-full border border-white/70" />
+        <div className="pointer-events-none absolute left-[12%] top-[18%] h-px w-[42%] rotate-[13deg] bg-gradient-to-r from-transparent via-blue-300/30 to-transparent" />
 
-        <div className="mx-auto max-w-7xl px-4 lg:px-8 relative z-10 flex flex-col items-center">
-          <div className="mb-6 inline-flex items-center rounded-full border border-blue-200/80 bg-white/70 px-5 py-2 shadow-sm backdrop-blur-md">
-             <span className="mr-3 flex h-2 w-2 animate-pulse rounded-full bg-[#0756b8]"></span>
-             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0756b8]">{t("about.title")}</span>
+        <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-14 px-4 lg:grid-cols-[1.08fr_.92fr] lg:gap-16 lg:px-8">
+          <div>
+            <div className="mb-6 inline-flex items-center rounded-full border border-blue-200/80 bg-white/75 px-4 py-2 shadow-sm backdrop-blur-md">
+              <span className="mr-2.5 h-1.5 w-1.5 rounded-full bg-[#0756b8]" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#0756b8]">{t("about.title")}</span>
+            </div>
+
+            <h1 className="max-w-3xl text-[2.1rem] font-extrabold leading-[1.08] tracking-[-0.04em] text-slate-950 text-balance sm:text-[2.6rem] lg:text-[3rem]">
+              {t("about.page.hero.title")}
+            </h1>
+
+            <p className="mt-6 max-w-2xl text-base font-medium leading-7 text-slate-600 text-pretty lg:text-lg">
+              {t("about.page.hero.description")}
+            </p>
+
+            <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+              <Link
+                href="/catalog"
+                className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-[#0756b8] px-6 py-3 text-xs font-bold text-white shadow-[0_12px_28px_-17px_rgba(7,86,184,0.75)] transition-colors hover:bg-[#064a9d]"
+              >
+                {t("hero.cta")}
+                <span className="transition-transform group-hover:translate-x-1"><ArrowIcon /></span>
+              </Link>
+              <Link
+                href="/contacts"
+                className="inline-flex items-center justify-center rounded-full border border-blue-200 bg-white/75 px-6 py-3 text-xs font-bold text-slate-800 backdrop-blur-sm transition-colors hover:border-blue-300 hover:bg-white hover:text-[#0756b8]"
+              >
+                {t("hero.contact")}
+              </Link>
+            </div>
+
           </div>
-          
-          <h1 className="mb-5 max-w-4xl text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl text-balance">
-            {t("about.page.hero.title")}
-          </h1>
-          
-          <p className="max-w-2xl text-base leading-relaxed text-slate-600 text-pretty lg:text-lg">
-            {t("about.page.hero.description")}
-          </p>
+
+          <div className="hidden lg:block">
+            <AbstractHeroArtwork />
+          </div>
         </div>
+
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent via-white/55 to-[#fcfcfc]" />
+        <svg className="pointer-events-none absolute -bottom-px left-0 h-16 w-full text-[#fcfcfc]" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 56C266 92 475 14 745 46C1000 76 1198 87 1440 37V90H0Z" fill="currentColor" />
+        </svg>
       </section>
 
       {/* 2. Кто мы и чем полезны (Light Section with Glass Dark Cards) */}
-      <section className="relative bg-[#fcfcfc] pb-24 pt-[42px] sm:pt-[50px] lg:pb-32 lg:pt-[58px]">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
-           <div className="mb-16 text-center">
-             <span className="text-[#0241c0] font-bold tracking-widest uppercase text-[10px] mb-4 block">{t("about.page.expertise.eyebrow")}</span>
-             <h2 className="text-3xl lg:text-4xl font-extrabold text-zinc-900 tracking-tight">
-               {t("about.page.expertise.title")}
-             </h2>
-           </div>
-            
-           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-               {[
-                 { icon: <Search className="w-8 h-8 text-[#0241c0]" />, title: t("about.page.expertise.selection.title"), desc: t("about.page.expertise.selection.description") },
-                 { icon: <Factory className="w-8 h-8 text-[#0241c0]" />, title: t("about.page.expertise.supply.title"), desc: t("about.page.expertise.supply.description") },
-                 { icon: <ShieldCheck className="w-8 h-8 text-[#0241c0]" />, title: t("about.page.expertise.quality.title"), desc: t("about.page.expertise.quality.description") },
-                 { icon: <Truck className="w-8 h-8 text-[#0241c0]" />, title: t("about.page.expertise.logistics.title"), desc: t("about.page.expertise.logistics.description") }
-               ].map((card, idx) => (
-                 <div key={idx} className="group relative overflow-hidden rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-transparent">
-                   <div className="absolute inset-0 bg-gradient-to-br from-[#0241c0]/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                   <div className="relative z-10">
-                     <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-xl bg-zinc-50 border border-zinc-100 transition-colors group-hover:bg-white group-hover:border-[#0241c0]/20">
-                       {card.icon}
-                     </div>
-                     <h3 className="mb-3 text-lg font-bold text-zinc-900">{card.title}</h3>
-                     <p className="text-sm leading-relaxed text-zinc-600">{card.desc}</p>
-                   </div>
-                 </div>
-               ))}
-           </div>
+      <section className="relative bg-[#fcfcfc] pb-14 pt-10 lg:pb-20 lg:pt-14">
+        <div className="mx-auto max-w-6xl px-4 lg:px-8">
+          <div className="mb-14 max-w-2xl lg:mb-16">
+            <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.18em] text-[#0756b8]">{t("about.page.expertise.eyebrow")}</span>
+            <h2 className="text-3xl font-extrabold tracking-tight text-slate-950 lg:text-4xl">
+              {t("about.page.expertise.title")}
+            </h2>
+          </div>
+
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+            {[
+              { icon: Search, title: t("about.page.expertise.selection.title"), desc: t("about.page.expertise.selection.description") },
+              { icon: Factory, title: t("about.page.expertise.supply.title"), desc: t("about.page.expertise.supply.description") },
+              { icon: ShieldCheck, title: t("about.page.expertise.quality.title"), desc: t("about.page.expertise.quality.description") },
+              { icon: Truck, title: t("about.page.expertise.logistics.title"), desc: t("about.page.expertise.logistics.description") },
+            ].map((card) => (
+              <article
+                key={card.title}
+                className="group relative min-h-[300px] overflow-hidden rounded-[22px] border border-slate-200/90 bg-white p-8 shadow-[0_18px_45px_-36px_rgba(15,67,120,0.65)] transition-[transform,box-shadow,border-color] duration-300 ease-out hover:-translate-y-1.5 hover:border-blue-200 hover:shadow-[0_28px_65px_-38px_rgba(7,86,184,0.55)]"
+              >
+                <card.icon
+                  aria-hidden="true"
+                  strokeWidth={1.7}
+                  className="pointer-events-none absolute -bottom-4 -right-4 h-28 w-28 text-[#0756b8] opacity-[0.08] transition-[opacity,transform] duration-300 group-hover:scale-[1.04] group-hover:opacity-[0.12]"
+                />
+                <div className="relative z-10 flex h-full flex-col">
+                  <div className="mb-8 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-blue-100 bg-blue-50/80 text-[#0756b8] transition-colors duration-300 group-hover:border-blue-200 group-hover:bg-blue-50">
+                    <card.icon className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" />
+                  </div>
+                  <h3 className="mb-4 text-lg font-bold tracking-tight text-slate-950">{card.title}</h3>
+                  <p className="max-w-[15rem] text-sm leading-6 text-slate-600">{card.desc}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
 
       {/* 5. География */}
-      <section className="relative overflow-hidden bg-[linear-gradient(180deg,#e4f1ff_0%,#f4f9ff_52%,#e8f3ff_100%)] py-24 lg:py-32">
-        {/* Glows and Map Pattern */}
-        <div className="absolute inset-0 opacity-[0.16]">
-          <div className="w-full h-full" style={{ backgroundImage: 'radial-gradient(circle, #4b8fd4 1px, transparent 1px)', backgroundSize: '32px 32px' }}></div>
-        </div>
-        <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-[#6eb0ff]/25 blur-[150px] rounded-full pointer-events-none"></div>
+      <section className="relative overflow-hidden bg-[#f7fbff] pb-24 pt-16 lg:pb-32 lg:pt-20">
+        {/* Premium ambient background */}
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage: [
+              "radial-gradient(ellipse 62% 78% at 82% 46%, rgba(186,230,253,0.42) 0%, rgba(219,234,254,0.22) 42%, transparent 74%)",
+              "radial-gradient(circle at 8% 28%, rgba(191,219,254,0.32) 0%, transparent 32%)",
+              "radial-gradient(circle at 48% 94%, rgba(147,197,253,0.18) 0%, transparent 28%)",
+              "linear-gradient(180deg, #ffffff 0%, #f1f8ff 48%, #eaf5ff 100%)",
+            ].join(", "),
+          }}
+        />
+        <div className="pointer-events-none absolute -left-52 -top-48 h-[34rem] w-[34rem] rounded-full bg-blue-200/20 blur-[120px]" />
+        <div className="pointer-events-none absolute -bottom-44 left-[32%] h-[30rem] w-[30rem] rounded-full bg-cyan-200/15 blur-[130px]" />
+        <div className="pointer-events-none absolute -right-32 top-[8%] h-[42rem] w-[42rem] rounded-full bg-blue-300/15 blur-[145px]" />
+
+        <div className="pointer-events-none absolute -left-48 top-[8%] h-[38rem] w-[38rem] rounded-full border border-blue-200/30" />
+        <div className="pointer-events-none absolute -left-24 top-[24%] h-[24rem] w-[24rem] rounded-full border border-white/80" />
+        <div className="pointer-events-none absolute -right-56 -top-36 h-[44rem] w-[44rem] rounded-full border border-blue-200/25" />
+        <div className="pointer-events-none absolute -right-20 top-[8%] h-[30rem] w-[30rem] rounded-full border border-white/75" />
+
+        <svg className="pointer-events-none absolute inset-0 h-full w-full text-[#0756b8]" viewBox="0 0 1440 720" preserveAspectRatio="none" fill="none" aria-hidden="true">
+          <path d="M-80 530C186 286 389 235 624 333C854 429 1068 362 1518 63" stroke="currentColor" strokeOpacity="0.08" strokeWidth="1.2" />
+          <path d="M-45 610C226 399 435 381 660 457C899 538 1131 453 1498 198" stroke="currentColor" strokeOpacity="0.055" strokeWidth="1" />
+          <path d="M240 -35C461 113 675 136 872 69C1042 12 1215 35 1468 189" stroke="currentColor" strokeOpacity="0.055" strokeWidth="1" />
+        </svg>
+
+        <div
+          className="pointer-events-none absolute left-[7%] top-[17%] h-24 w-36 opacity-[0.16]"
+          style={{ backgroundImage: "radial-gradient(circle, #0756b8 1.2px, transparent 1.4px)", backgroundSize: "17px 17px" }}
+        />
+        <div
+          className="pointer-events-none absolute bottom-[14%] left-[43%] h-20 w-28 opacity-[0.1]"
+          style={{ backgroundImage: "radial-gradient(circle, #0756b8 1px, transparent 1.3px)", backgroundSize: "20px 20px" }}
+        />
+        <div
+          className="pointer-events-none absolute right-[5%] top-[16%] h-28 w-40 opacity-[0.14]"
+          style={{ backgroundImage: "radial-gradient(circle, #0756b8 1.2px, transparent 1.5px)", backgroundSize: "18px 18px" }}
+        />
+
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.035] mix-blend-multiply"
+          style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
+        />
         
         <div className="mx-auto max-w-7xl px-4 lg:px-8 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
            <div>
@@ -135,10 +259,10 @@ export default function AboutPage() {
              </p>
              <div className="flex flex-wrap gap-4">
                 {[
-                  { name: t("about.page.region.kazakhstan"), dot: "bg-[#0241c0]" },
+                  { name: t("about.page.region.kazakhstan"), dot: "bg-[#6eb0ff]" },
                   { name: t("about.page.region.china"), dot: "bg-[#0241c0]" },
                   { name: t("about.page.region.europe"), dot: "bg-[#0241c0]" },
-                  { name: t("about.page.region.uzbekistan"), dot: "bg-[#6eb0ff]" },
+                  { name: t("about.page.region.uzbekistan"), dot: "bg-[#0241c0]" },
                 ].map(({ name, dot }) => (
                   <span key={name} className="flex cursor-default items-center gap-2 rounded-full border border-blue-200/80 bg-white/75 px-6 py-2.5 text-sm font-semibold text-slate-800 shadow-sm transition-colors hover:border-blue-300 hover:bg-white">
                     <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${dot}`} />
@@ -150,8 +274,16 @@ export default function AboutPage() {
            
            {/* Globe: wireframe + markers from lat/lon (orthographic) */}
            <div className="relative aspect-square lg:aspect-auto lg:h-[400px] w-full flex items-center justify-center">
+             <div className="pointer-events-none absolute left-1/2 top-1/2 h-[88%] w-[88%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-300/20 blur-[90px]" />
+             <div className="pointer-events-none absolute left-[16%] top-[15%] h-32 w-32 rounded-full bg-cyan-100/35 blur-[50px]" />
+             <div className="pointer-events-none absolute bottom-[8%] right-[10%] h-40 w-40 rounded-full bg-blue-200/25 blur-[65px]" />
+             <div className="pointer-events-none absolute left-1/2 top-1/2 h-[92%] w-[92%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-blue-200/35" />
+             <div className="pointer-events-none absolute left-1/2 top-1/2 h-[72%] w-[72%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/85" />
+             <div className="pointer-events-none absolute left-[14%] top-[22%] h-1.5 w-1.5 rounded-full bg-white shadow-[0_0_14px_4px_rgba(255,255,255,0.9)]" />
+             <div className="pointer-events-none absolute right-[12%] top-[38%] h-1 w-1 rounded-full bg-[#6eb0ff]/70 shadow-[0_0_12px_3px_rgba(110,176,255,0.55)]" />
+             <div className="pointer-events-none absolute bottom-[18%] left-[20%] h-1 w-1 rounded-full bg-white shadow-[0_0_12px_3px_rgba(255,255,255,0.85)]" />
              <svg
-               className="w-full max-w-[min(100%,380px)] h-auto text-[#0756b8] drop-shadow-[0_0_24px_rgba(7,86,184,0.28)]"
+               className="relative z-10 w-full max-w-[min(100%,380px)] h-auto text-[#0756b8] drop-shadow-[0_0_24px_rgba(7,86,184,0.28)]"
                viewBox="0 0 400 400"
                fill="none"
                xmlns="http://www.w3.org/2000/svg"
@@ -226,6 +358,10 @@ export default function AboutPage() {
              </svg>
            </div>
         </div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-b from-transparent via-white/45 to-[#fcfcfc]" />
+        <svg className="pointer-events-none absolute -bottom-px left-0 h-12 w-full text-[#fcfcfc]" viewBox="0 0 1440 72" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 37C253 69 462 17 720 36C994 56 1190 66 1440 25V72H0Z" fill="currentColor" />
+        </svg>
       </section>
 
 
