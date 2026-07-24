@@ -9,14 +9,6 @@ import {
   Truck,
 } from "lucide-react"
 
-function ArrowIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M3 8h9.5M8.5 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
-}
-
 function AbstractHeroArtwork() {
   const dots = Array.from({ length: 48 })
 
@@ -97,7 +89,7 @@ export default function AboutPage() {
     <main className="min-h-screen bg-[#fcfcfc] overflow-hidden">
       
       {/* 1. Hero Section */}
-      <section className="relative overflow-hidden bg-[#f4f9ff] pb-16 pt-28 sm:pb-20 sm:pt-32 lg:pb-24 lg:pt-36">
+      <section className="relative overflow-hidden bg-[#f4f9ff] pb-20 pt-28 sm:pb-24 sm:pt-32 lg:pb-28 lg:pt-36">
         <div
           className="absolute inset-0"
           style={{
@@ -132,22 +124,6 @@ export default function AboutPage() {
               {t("about.page.hero.description")}
             </p>
 
-            <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-              <Link
-                href="/catalog"
-                className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-[#0756b8] px-6 py-3 text-xs font-bold text-white shadow-[0_12px_28px_-17px_rgba(7,86,184,0.75)] transition-colors hover:bg-[#064a9d]"
-              >
-                {t("hero.cta")}
-                <span className="transition-transform group-hover:translate-x-1"><ArrowIcon /></span>
-              </Link>
-              <Link
-                href="/contacts"
-                className="inline-flex items-center justify-center rounded-full border border-blue-200 bg-white/75 px-6 py-3 text-xs font-bold text-slate-800 backdrop-blur-sm transition-colors hover:border-blue-300 hover:bg-white hover:text-[#0756b8]"
-              >
-                {t("hero.contact")}
-              </Link>
-            </div>
-
           </div>
 
           <div className="hidden lg:block">
@@ -162,7 +138,7 @@ export default function AboutPage() {
       </section>
 
       {/* 2. Кто мы и чем полезны (Light Section with Glass Dark Cards) */}
-      <section className="relative bg-[#fcfcfc] pb-14 pt-10 lg:pb-20 lg:pt-14">
+      <section className="relative bg-[#fcfcfc] pb-14 pt-12 lg:pb-20 lg:pt-16">
         <div className="mx-auto max-w-6xl px-4 lg:px-8">
           <div className="mb-14 max-w-2xl lg:mb-16">
             <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.18em] text-[#0756b8]">{t("about.page.expertise.eyebrow")}</span>
