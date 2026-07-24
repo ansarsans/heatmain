@@ -100,6 +100,14 @@ export function Footer() {
               </div>
               <div className="flex flex-col gap-1.5">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                  {t("contacts.phone")}
+                </span>
+                <span className="font-semibold text-white">
+                  {t("contacts.phone_placeholder")}
+                </span>
+              </div>
+              <div className="flex flex-col gap-1.5">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
                   {t("contacts.address")}
                 </span>
                 <a

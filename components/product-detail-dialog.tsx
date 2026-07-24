@@ -70,9 +70,16 @@ export function ProductDetailDialog({ product, onOpenChange }: ProductDetailDial
                     {categoryLabels[product.category]?.[lang] ?? product.category}
                   </span>
                 </div>
-                <DialogTitle className="pr-2 text-xl font-semibold leading-snug text-zinc-900 sm:text-2xl">
-                  {product.name[lang]}
-                </DialogTitle>
+                <div className="space-y-2">
+                  <DialogTitle className="pr-2 text-xl font-semibold leading-snug text-zinc-900 sm:text-2xl">
+                    {product.name[lang]}
+                  </DialogTitle>
+                  {product.category === "chemistry" && product.formula ? (
+                    <p className="font-mono text-sm font-semibold tracking-wide text-[#0756b8] sm:text-base">
+                      {product.formula}
+                    </p>
+                  ) : null}
+                </div>
                 <DialogDescription className="text-left text-sm leading-relaxed text-zinc-600 sm:text-[15px]">
                   {product.description[lang]}
                 </DialogDescription>

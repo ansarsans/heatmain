@@ -5,6 +5,7 @@ export interface Product {
   category: Category
   name: { ru: string; kz: string; en: string }
   description: { ru: string; kz: string; en: string }
+  formula?: string
   image?: string
 }
 
@@ -23,6 +24,7 @@ export const products: Product[] = [
       kz: "Өнеркәсіптегі сілтілеу, бейтараптандыру және рН реттеу процестеріне арналған сілті.",
       en: "Alkalies for leaching, neutralization, and pH regulation in industry.",
     },
+    formula: "NaOH / Na₂CO₃",
     image: "/images/causticsoda1.jpg",
   },
   {
@@ -38,6 +40,7 @@ export const products: Product[] = [
       kz: "Алтынды сорбциялау (CIP/CIL), газдарды тазарту және суды дайындау процестері үшін.",
       en: "For gold sorption processes (CIP/CIL), gas purification, and water treatment.",
     },
+    formula: "C",
     image: "/images/coal1.jpg",
   },
   {
@@ -49,10 +52,11 @@ export const products: Product[] = [
       en: "Sodium cyanide",
     },
     description: {
-      ru: "Основной реагент для извлечения золота методом цианирования. Поставки в брикетах.",
-      kz: "Цианидтеу әдісімен алтын алудың негізгі реагенті. Брикеттерде жеткізу.",
-      en: "Primary reagent for gold extraction by cyanidation. Supplied in briquettes.",
+      ru: "Основной реагент для извлечения золота методом цианирования. Поставляется в таблетированной форме.",
+      kz: "Цианидтеу әдісімен алтын алуға арналған негізгі реагент. Таблетка түрінде жеткізіледі.",
+      en: "Primary reagent for gold extraction by cyanidation. Supplied in tablet form.",
     },
+    formula: "NaCN",
     image: "/images/цианистыйнатрий1.jpg",
   },
   {
@@ -68,6 +72,7 @@ export const products: Product[] = [
       kz: "Су тазартуда, химия өнеркәсібінде және флотациялық реагент ретінде қолданылады.",
       en: "Used in water treatment, chemical industry, and as a flotation reagent.",
     },
+    formula: "FeSO₄·7H₂O",
     image: "/images/Железныйкупорос1.jpg",
   },
   {
@@ -83,6 +88,7 @@ export const products: Product[] = [
       kz: "Флотацияға арналған реагент-активатор, антисептик және мыс қосылыстарын алуға арналған шикізат.",
       en: "Reagent-activator for flotation, antiseptic, and raw material for copper compounds.",
     },
+    formula: "CuSO₄·5H₂O",
     image: "/images/Медныйкупорос1.jpg",
   },
   {
@@ -98,6 +104,7 @@ export const products: Product[] = [
       kz: "Әртүрлі өнеркәсіп салаларына арналған тотықсыздандырғыш, консервант және дезинфекциялаушы.",
       en: "Reducing agent, preservative, and disinfectant for various industries.",
     },
+    formula: "Na₂S₂O₅",
     image: "/images/метабисульфитнатрия.jpg",
   },
   {
@@ -113,6 +120,7 @@ export const products: Product[] = [
       kz: "Химиялық синтезге и гальваникалық элементтерді өндіруге арналған тотықтырғыш.",
       en: "Oxidant for chemical synthesis and production of galvanic cells.",
     },
+    formula: "MnO₂",
     image: "/images/Пероксидмарганца.jpg",
   },
   {
@@ -128,6 +136,7 @@ export const products: Product[] = [
       kz: "Металлургиядағы тотықтырғыш, шыны массасының и пиротехниканың компоненті.",
       en: "Oxidant in metallurgy, component of glass mass and pyrotechnics.",
     },
+    formula: "NaNO₃",
     image: "/images/Селитранатриевая.jpg",
   },
 

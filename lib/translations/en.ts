@@ -10,7 +10,7 @@ export const en: Record<string, string> = {
 
   // Hero
   "hero.title": "Your reliable partner in the international supply of industrial and technological products",
-  "hero.subtitle": "We organize international B2B supply of industrial and technological products, connecting manufacturers with corporate customers worldwide.",
+  "hero.subtitle": "We specialize in the international supply of industrial and technological products, delivering reliable solutions for manufacturing enterprises.",
   "hero.cta": "View Catalog",
   "hero.contact": "Contact Us",
 
@@ -74,7 +74,7 @@ export const en: Record<string, string> = {
   // Catalog page
   "catalog.title": "Product Catalog",
   "catalog.subtitle": "Full range of industrial chemicals, metals, and equipment",
-  "homepage.products.title": "Our Products",
+  "homepage.products.title": "Our Product Range",
   "homepage.products.subtitle": "We offer a wide range of industrial chemicals, metals, and specialized equipment.",
   "catalog.search": "Search catalog...",
   "catalog.all": "All",
@@ -96,7 +96,7 @@ export const en: Record<string, string> = {
   "about.geography.text": "Primary market is the Republic of Kazakhstan. We cooperate with leading manufacturers from Russia, Kazakhstan, Europe, and other countries to ensure the best supply conditions.",
   "about.page.image_alt": "Industrial production",
   "about.page.hero.title": "A reliable partner for industrial chemicals and equipment supply",
-  "about.page.hero.description": "We keep industrial enterprises running worldwide through direct manufacturer contracts, strict quality control, and turnkey logistics.",
+  "about.page.hero.description": "We supply enterprises with industrial and technological products, combining direct manufacturer supply, quality control, and integrated logistics solutions.",
   "about.page.expertise.eyebrow": "Expertise",
   "about.page.expertise.title": "How we help your business",
   "about.page.expertise.selection.title": "Product selection",
@@ -150,6 +150,7 @@ export const en: Record<string, string> = {
   "contacts.form_hint": "Enter a message and at least one contact: phone or email.",
   "contacts.prefill_product": "Product inquiry (id)",
   "contacts.phone_label": "Your phone",
+  "contacts.phone_placeholder": "+7 (___) ___-__-__",
   "contacts.email_label": "Email",
   "contacts.message_label": "Your message",
   "contacts.send_button": "Send message",
