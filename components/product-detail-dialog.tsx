@@ -3,8 +3,9 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useTranslation, type Locale } from "@/lib/i18n"
-import type { Product } from "@/lib/products"
+import { localizeOrigin, type Product } from "@/lib/products"
 import { getAssetPath, cn } from "@/lib/utils"
+import { Cog, FlaskConical, Layers3 } from "lucide-react"
 import {
   Dialog,
   DialogContent,
@@ -14,9 +15,15 @@ import {
 } from "@/components/ui/dialog"
 
 const categoryLabels: Record<string, Record<string, string>> = {
-  chemistry: { ru: "Химия", kz: "Химия", en: "Chemistry" },
-  metals: { ru: "Металлы", kz: "Металдар", en: "Metals" },
-  equipment: { ru: "Оборудование", kz: "Жабдықтар", en: "Equipment" },
+  chemistry: { ru: "Хим. реагенты", kz: "Химиялық реагенттер", en: "Chemical Reagents" },
+  metals: { ru: "Металлы, сплавы", kz: "Металдар, қорытпалар", en: "Metals & Alloys" },
+  equipment: { ru: "Оборудование, комплектующие", kz: "Жабдықтар, құрамдас бөлшектер", en: "Equipment & Components" },
+}
+
+const categoryIcons = {
+  chemistry: FlaskConical,
+  metals: Layers3,
+  equipment: Cog,
 }
 
 const closeBtnClass =
@@ -31,6 +38,7 @@ export function ProductDetailDialog({ product, onOpenChange }: ProductDetailDial
   const { locale, t } = useTranslation()
   const lang = locale as Locale
   const open = product !== null
+  const PlaceholderIcon = product ? categoryIcons[product.category] : FlaskConical
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -56,8 +64,10 @@ export function ProductDetailDialog({ product, onOpenChange }: ProductDetailDial
                   sizes="(max-width: 768px) 100vw, 400px"
                 />
               ) : (
-                <div className="flex h-full min-h-[200px] items-center justify-center bg-zinc-100 text-zinc-400 md:min-h-full">
-                  —
+                <div className="relative flex h-full min-h-[200px] items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_30%_20%,rgba(147,197,253,0.45),transparent_38%),linear-gradient(145deg,#f8fbff_0%,#e8f3ff_100%)] text-[#0756b8] md:min-h-full">
+                  <div className="absolute -bottom-24 -right-20 h-64 w-64 rounded-full border border-blue-200/70" />
+                  <div className="absolute -left-20 -top-24 h-56 w-56 rounded-full border border-white" />
+                  <PlaceholderIcon className="relative h-20 w-20 opacity-50" strokeWidth={1.2} aria-hidden="true" />
                 </div>
               )}
             </div>
@@ -83,6 +93,24 @@ export function ProductDetailDialog({ product, onOpenChange }: ProductDetailDial
                 <DialogDescription className="text-left text-sm leading-relaxed text-zinc-600 sm:text-[15px]">
                   {product.description[lang]}
                 </DialogDescription>
+                <div className="grid gap-3 border-t border-zinc-100 pt-4 sm:grid-cols-2">
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-zinc-400">
+                      {t("products.origin")}
+                    </p>
+                    <p className="mt-1 text-sm font-semibold text-zinc-800">
+                      {product.origin ? localizeOrigin(product.origin, lang) : t("products.on_request")}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-zinc-400">
+                      {t("products.buyer")}
+                    </p>
+                    <p className="mt-1 text-sm font-semibold text-zinc-800">
+                      {product.buyer || t("products.on_request")}
+                    </p>
+                  </div>
+                </div>
               </DialogHeader>
               <div className="flex shrink-0 flex-col gap-2 border-t border-zinc-100 pt-4 sm:flex-row sm:justify-end">
                 <Link

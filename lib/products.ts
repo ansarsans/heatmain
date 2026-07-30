@@ -1,3 +1,5 @@
+import { spreadsheetProducts } from "./spreadsheet-products"
+
 export type Category = "chemistry" | "metals" | "equipment"
 
 export interface Product {
@@ -6,10 +8,12 @@ export interface Product {
   name: { ru: string; kz: string; en: string }
   description: { ru: string; kz: string; en: string }
   formula?: string
+  origin?: string
+  buyer?: string
   image?: string
 }
 
-export const products: Product[] = [
+const baseProducts: Product[] = [
   // === CHEMISTRY (8 items) ===
   {
     id: "chem-1",
@@ -25,7 +29,7 @@ export const products: Product[] = [
       en: "Alkalies for leaching, neutralization, and pH regulation in industry.",
     },
     formula: "NaOH / Na₂CO₃",
-    image: "/images/causticsoda1.jpg",
+    image: "/images/Сода_каустическая_кальцинированная.jpg",
   },
   {
     id: "chem-3",
@@ -41,7 +45,7 @@ export const products: Product[] = [
       en: "For gold sorption processes (CIP/CIL), gas purification, and water treatment.",
     },
     formula: "C",
-    image: "/images/coal1.jpg",
+    image: "/images/Уголь_активированный.jpg",
   },
   {
     id: "chem-6",
@@ -73,7 +77,7 @@ export const products: Product[] = [
       en: "Used in water treatment, chemical industry, and as a flotation reagent.",
     },
     formula: "FeSO₄·7H₂O",
-    image: "/images/Железныйкупорос1.jpg",
+    image: "/images/Железный_купорос.jpg",
   },
   {
     id: "chem-10",
@@ -89,7 +93,7 @@ export const products: Product[] = [
       en: "Reagent-activator for flotation, antiseptic, and raw material for copper compounds.",
     },
     formula: "CuSO₄·5H₂O",
-    image: "/images/Медныйкупорос1.jpg",
+    image: "/images/Медный_купорос.jpg",
   },
   {
     id: "chem-11",
@@ -105,7 +109,7 @@ export const products: Product[] = [
       en: "Reducing agent, preservative, and disinfectant for various industries.",
     },
     formula: "Na₂S₂O₅",
-    image: "/images/метабисульфитнатрия.jpg",
+    image: "/images/Метабисульфит_натрия.jpg",
   },
   {
     id: "chem-18",
@@ -121,7 +125,7 @@ export const products: Product[] = [
       en: "Oxidant for chemical synthesis and production of galvanic cells.",
     },
     formula: "MnO₂",
-    image: "/images/Пероксидмарганца.jpg",
+    image: "/images/Пероксид_марганца.jpg",
   },
   {
     id: "chem-23",
@@ -137,7 +141,7 @@ export const products: Product[] = [
       en: "Oxidant in metallurgy, component of glass mass and pyrotechnics.",
     },
     formula: "NaNO₃",
-    image: "/images/Селитранатриевая.jpg",
+    image: "/images/Селитра_натриевая.jpg",
   },
 
   // === METALS (8 items) ===
@@ -384,6 +388,81 @@ export const products: Product[] = [
     image: "/images/Огнеупорныеизделия.jpg",
   },
 ]
+
+function normalizeProductName(value: string) {
+  return value
+    .trim()
+    .toLocaleLowerCase("ru-RU")
+    .replace(/ё/g, "е")
+    .replace(/[.,;:()'"\-\/]/g, " ")
+    .replace(/\s+/g, " ")
+}
+
+const spreadsheetAliases: Record<string, string> = {
+  [normalizeProductName("сода каустическая")]: "chem-1",
+  [normalizeProductName("нитрат натрия (селитра натриевая)")]: "chem-23",
+  [normalizeProductName("дробь стальная литая")]: "met-12",
+  [normalizeProductName("автошины КГШ")]: "equip-2",
+  [normalizeProductName("буровые штанги СБШ-250, НКР")]: "equip-8",
+  [normalizeProductName("запчасти промышленных мельниц, дробилок, печей, барабанов: шестерни, вал-шестерни, бандажи, цапфы, торцевые стенки, брони, зубчатые колеса")]: "equip-16",
+  [normalizeProductName("чугунные валки")]: "met-8",
+  [normalizeProductName("прокатные валки")]: "met-8",
+}
+
+function mergeProducts(base: Product[], additions: Product[]) {
+  const result = base.map(product => ({ ...product }))
+  const byId = new Map(result.map(product => [product.id, product]))
+  const byName = new Map(result.map(product => [normalizeProductName(product.name.ru), product]))
+
+  for (const addition of additions) {
+    const normalized = normalizeProductName(addition.name.ru)
+    const aliasId = spreadsheetAliases[normalized]
+    const existing = (aliasId ? byId.get(aliasId) : undefined) ?? byName.get(normalized)
+
+    if (existing) {
+      existing.origin = addition.origin
+      existing.buyer = addition.buyer
+      existing.formula ??= addition.formula
+      continue
+    }
+
+    result.push(addition)
+    byName.set(normalized, addition)
+  }
+
+  return result
+}
+
+export const products: Product[] = mergeProducts(baseProducts, spreadsheetProducts)
+
+const originTranslations: Record<string, { kz: string; en: string }> = {
+  "Казахстан": { kz: "Қазақстан", en: "Kazakhstan" },
+  "Узбекистан": { kz: "Өзбекстан", en: "Uzbekistan" },
+  "Вьетнам": { kz: "Вьетнам", en: "Vietnam" },
+  "Франция": { kz: "Франция", en: "France" },
+  "Германия": { kz: "Германия", en: "Germany" },
+  "Украина": { kz: "Украина", en: "Ukraine" },
+  "Швеция": { kz: "Швеция", en: "Sweden" },
+  "Япония": { kz: "Жапония", en: "Japan" },
+  "Корея": { kz: "Оңтүстік Корея", en: "South Korea" },
+  "Африка": { kz: "Африка", en: "Africa" },
+  "Чехия": { kz: "Чехия", en: "Czech Republic" },
+  "Россия": { kz: "Ресей", en: "Russia" },
+  "Китай": { kz: "Қытай", en: "China" },
+  "Индия": { kz: "Үндістан", en: "India" },
+  "РФ": { kz: "Ресей", en: "Russia" },
+}
+
+export function localizeOrigin(origin: string, locale: "ru" | "kz" | "en") {
+  if (locale === "ru") return origin
+
+  const countryPattern = new RegExp(
+    Object.keys(originTranslations).sort((a, b) => b.length - a.length).join("|"),
+    "g",
+  )
+
+  return origin.replace(countryPattern, country => originTranslations[country]?.[locale] ?? country)
+}
 
 export const categoryIcons: Record<Category, string> = {
   chemistry: "flask",

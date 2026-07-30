@@ -6,7 +6,8 @@ import { useTranslation, type Locale } from "@/lib/i18n"
 import { products, type Category, type Product } from "@/lib/products"
 import { ProductCard } from "@/components/product-card"
 import { ProductDetailDialog } from "@/components/product-detail-dialog"
-import { cn } from "@/lib/utils"
+import { cn, getAssetPath } from "@/lib/utils"
+import { Download } from "lucide-react"
 
 const categories: { key: string; value: Category | "all" }[] = [
   { key: "catalog.all", value: "all" },
@@ -14,6 +15,18 @@ const categories: { key: string; value: Category | "all" }[] = [
   { key: "catalog.metals", value: "metals" },
   { key: "catalog.equipment", value: "equipment" },
 ]
+
+const categoryOrder: Record<Category, number> = {
+  chemistry: 0,
+  metals: 1,
+  equipment: 2,
+}
+
+const downloadableLists = [
+  { key: "catalog.list.chemistry", file: "/lists/heatхимия.pdf" },
+  { key: "catalog.list.metals", file: "/lists/heatметаллы.pdf" },
+  { key: "catalog.list.equipment", file: "/lists/heatоборудование1.pdf" },
+] as const
 
 export default function CatalogPage() {
   return (
@@ -61,16 +74,18 @@ function CatalogContent() {
 
   const filtered = useMemo(() => {
     const lang = locale as Locale
-    return products.filter((p) => {
-      const matchesCategory = activeCategory === "all" || p.category === activeCategory
-      if (!matchesCategory) return false
-      if (!search.trim()) return true
-      const q = search.toLowerCase()
-      return (
-        p.name[lang].toLowerCase().includes(q) ||
-        p.description[lang].toLowerCase().includes(q)
-      )
-    })
+    return products
+      .filter((p) => {
+        const matchesCategory = activeCategory === "all" || p.category === activeCategory
+        if (!matchesCategory) return false
+        if (!search.trim()) return true
+        const q = search.toLowerCase()
+        return (
+          p.name[lang].toLowerCase().includes(q) ||
+          p.description[lang].toLowerCase().includes(q)
+        )
+      })
+      .sort((a, b) => categoryOrder[a.category] - categoryOrder[b.category])
   }, [activeCategory, search, locale])
 
   return (
@@ -93,28 +108,44 @@ function CatalogContent() {
             </p>
           </div>
 
-          {/* Search Bar aligned with Title */}
-          <div className="relative w-full sm:w-80">
-            <svg
-              className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500"
-              width="18"
-              height="18"
-              viewBox="0 0 16 16"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M11.742 10.344a6.5 6.5 0 10-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 001.415-1.414l-3.85-3.85a1.007 1.007 0 00-.115-.1zM12 6.5a5.5 5.5 0 11-11 0 5.5 5.5 0 0111 0z"
-                fill="currentColor"
+          {/* Search and downloadable product lists */}
+          <div className="w-full md:max-w-[720px]">
+            <div className="relative ml-auto w-full sm:w-80">
+              <svg
+                className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500"
+                width="18"
+                height="18"
+                viewBox="0 0 16 16"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M11.742 10.344a6.5 6.5 0 10-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 001.415-1.414l-3.85-3.85a1.007 1.007 0 00-.115-.1zM12 6.5a5.5 5.5 0 11-11 0 5.5 5.5 0 0111 0z"
+                  fill="currentColor"
+                />
+              </svg>
+              <input
+                type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder={t("catalog.search")}
+                className="w-full rounded-full border border-zinc-300 bg-transparent py-3 pl-11 pr-4 text-[13px] font-bold text-zinc-900 placeholder:text-zinc-500 focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 transition-all"
               />
-            </svg>
-            <input
-              type="text"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder={t("catalog.search")}
-              className="w-full rounded-full border border-zinc-300 bg-transparent py-3 pl-11 pr-4 text-[13px] font-bold text-zinc-900 placeholder:text-zinc-500 focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 transition-all"
-            />
+            </div>
+
+            <div className="mt-4 grid gap-1.5 sm:grid-cols-3">
+              {downloadableLists.map((item) => (
+                <a
+                  key={item.key}
+                  href={getAssetPath(item.file)}
+                  download
+                  className="group flex min-h-9 items-center justify-between gap-2 rounded-lg border border-blue-100 bg-blue-50/55 px-3 py-1.5 text-[10px] font-bold leading-3.5 text-[#0756b8] transition-[border-color,background-color,transform] hover:border-blue-200 hover:bg-blue-50 active:scale-[0.98]"
+                >
+                  <span>{t(item.key)}</span>
+                  <Download className="h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-y-0.5" strokeWidth={1.8} aria-hidden="true" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
 

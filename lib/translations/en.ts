@@ -17,7 +17,7 @@ export const en: Record<string, string> = {
   // Categories
   "categories.title": "Supply Directions",
   "categories.subtitle": "Three key directions for your production",
-  "cat.chemistry": "Industrial Chemistry",
+  "cat.chemistry": "Chemical Reagents",
   "cat.chemistry.desc": "Alkalis, flotation reagents, xanthates, sodium cyanide, ion exchange resins, vitriols, and specialized reagents for mining and metallurgy.",
   "cat.metals": "Metals & Alloys",
   "cat.metals.desc": "Metal products, steel ropes, ferroalloys, nickel, aluminum, graphite electrodes, and steel modifiers.",
@@ -48,6 +48,9 @@ export const en: Record<string, string> = {
   "home.groups.details": "Learn more",
   "products.learn_more": "Learn more",
   "products.order": "Order",
+  "products.origin": "Country of origin",
+  "products.buyer": "Buyer",
+  "products.on_request": "On request",
   "custom.title": "Products of Any Complexity",
   "custom.text": "We are ready to process products of any complexity given technical parameters.",
 
@@ -73,15 +76,21 @@ export const en: Record<string, string> = {
 
   // Catalog page
   "catalog.title": "Product Catalog",
-  "catalog.subtitle": "Full range of industrial chemicals, metals, and equipment",
+  "catalog.subtitle": "Full range of chemical reagents, metals, and equipment",
   "homepage.products.title": "Our Product Range",
-  "homepage.products.subtitle": "We offer a wide range of industrial chemicals, metals, and specialized equipment.",
+  "homepage.products.subtitle": "We offer a wide range of chemical reagents, metals, and specialized equipment.",
   "catalog.search": "Search catalog...",
+  "catalog.list.chemistry": "Chemical reagents list",
+  "catalog.list.metals": "Metals & alloys list",
+  "catalog.list.equipment": "Equipment & components list",
   "catalog.all": "All",
-  "catalog.chemistry": "Chemistry",
-  "catalog.metals": "Metals",
-  "catalog.equipment": "Equipment",
+  "catalog.chemistry": "Chemical Reagents",
+  "catalog.metals": "Metals & Alloys",
+  "catalog.equipment": "Equipment & Components",
   "catalog.empty": "No products found for your query",
+  "catalog.no_results": "No products found",
+  "catalog.try_another": "Try changing the search query or selecting another category.",
+  "catalog.clear_filters": "Clear filters",
   "catalog.inquire": "Inquire",
 
   // About page
@@ -95,7 +104,7 @@ export const en: Record<string, string> = {
   "about.geography.title": "Geography",
   "about.geography.text": "Primary market is the Republic of Kazakhstan. We cooperate with leading manufacturers from Russia, Kazakhstan, Europe, and other countries to ensure the best supply conditions.",
   "about.page.image_alt": "Industrial production",
-  "about.page.hero.title": "A reliable partner for industrial chemicals and equipment supply",
+  "about.page.hero.title": "A reliable partner for chemical reagents and equipment supply",
   "about.page.hero.description": "We supply enterprises with industrial and technological products, combining direct manufacturer supply, quality control, and integrated logistics solutions.",
   "about.page.expertise.eyebrow": "Expertise",
   "about.page.expertise.title": "How we help your business",
@@ -170,11 +179,11 @@ export const en: Record<string, string> = {
   "whyus.portfolio.title": "Comprehensive Product Portfolio",
   "whyus.portfolio.desc": "Specializing in sulfites, sulfates, and specialty chemicals.",
   "whyus.rd.title": "Research & Development Team",
-  "whyus.rd.desc": "Own professional R&D team with many years of experience in chemistry.",
+  "whyus.rd.desc": "In-house professional R&D team with many years of experience.",
   "whyus.global.title": "Global Market Recognition",
   "whyus.global.desc": "Products sold worldwide in America, Europe, and Southeast Asia.",
 
   // Footer
   "footer.rights": "All rights reserved.",
-  "footer.description": "Supply of industrial chemicals, metals, and equipment for mining and metallurgical industries.",
+  "footer.description": "Supply of chemical reagents, metals, and equipment for mining and metallurgical industries.",
 }

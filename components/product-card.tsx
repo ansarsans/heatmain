@@ -5,6 +5,7 @@ import { useTranslation } from "@/lib/i18n"
 import type { Product } from "@/lib/products"
 import type { Locale } from "@/lib/i18n"
 import { cn, getAssetPath } from "@/lib/utils"
+import { Cog, FlaskConical, Layers3 } from "lucide-react"
 
 import Image from "next/image"
 
@@ -15,9 +16,15 @@ const categoryColors: Record<string, string> = {
 }
 
 const categoryLabels: Record<string, Record<string, string>> = {
-  chemistry: { ru: "Химия", kz: "Химия", en: "Chemistry" },
-  metals: { ru: "Металлы", kz: "Металдар", en: "Metals" },
-  equipment: { ru: "Оборудование", kz: "Жабдықтар", en: "Equipment" },
+  chemistry: { ru: "Хим. реагенты", kz: "Химиялық реагенттер", en: "Chemical Reagents" },
+  metals: { ru: "Металлы, сплавы", kz: "Металдар, қорытпалар", en: "Metals & Alloys" },
+  equipment: { ru: "Оборудование, комплектующие", kz: "Жабдықтар, құрамдас бөлшектер", en: "Equipment & Components" },
+}
+
+const categoryIcons = {
+  chemistry: FlaskConical,
+  metals: Layers3,
+  equipment: Cog,
 }
 
 interface ProductCardProps {
@@ -39,6 +46,7 @@ export function ProductCard({
 }: ProductCardProps) {
   const { locale, t } = useTranslation()
   const lang = locale as Locale
+  const PlaceholderIcon = categoryIcons[product.category]
 
   return (
     <div className="group flex h-full flex-col overflow-hidden transition-all">
@@ -53,20 +61,10 @@ export function ProductCard({
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (
-          <div className="flex h-full items-center justify-center bg-zinc-100">
-            <svg
-              className="text-zinc-300"
-              width="48"
-              height="48"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1"
-            >
-              <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
-              <circle cx="9" cy="9" r="2" />
-              <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
-            </svg>
+          <div className="relative flex h-full items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_28%_20%,rgba(147,197,253,0.42),transparent_36%),linear-gradient(145deg,#f8fbff_0%,#e8f3ff_100%)] text-[#0756b8]">
+            <div className="absolute -bottom-16 -right-12 h-44 w-44 rounded-full border border-blue-200/65" />
+            <div className="absolute -left-12 -top-16 h-36 w-36 rounded-full border border-white/90" />
+            <PlaceholderIcon className="relative h-12 w-12 opacity-55" strokeWidth={1.35} aria-hidden="true" />
           </div>
         )}
         <div className="absolute right-3 top-2 z-10">
