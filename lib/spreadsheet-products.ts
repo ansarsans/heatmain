@@ -68,7 +68,7 @@ export const spreadsheetProducts: Product[] = [
   product("sheet-chem-30", "chemistry", ["Гидразин сернокислый", "Гидразин сульфаты", "Hydrazine sulfate"], "Китай", "АГМК", "N₂H₆SO₄", "/images/гидразин_сернокислый.jpg"),
   product("sheet-chem-31", "chemistry", ["Силикокальций", "Силикокальций", "Calcium silicide alloy"], "Китай", "АГМК, НГМК", "Ca–Si"),
   product("sheet-chem-32", "chemistry", ["Фурфуриловый спирт", "Фурфурил спирті", "Furfuryl alcohol"], "Китай", "АГМК", "C₅H₆O₂"),
-  product("sheet-chem-33", "chemistry", ["Силикагель", "Силикагель", "Silica gel"], "Россия", "АГМК", "SiO₂·nH₂O"),
+  product("sheet-chem-33", "chemistry", ["Силикагель", "Силикагель", "Silica gel"], "Россия", "АГМК", "SiO₂·nH₂O", "/images/Силикагель.jpg"),
   product("sheet-chem-34", "chemistry", ["Лакокрасочная продукция", "Бояу-лак өнімдері", "Paint and coating products"], "Россия", "АГМК", "Смесь"),
   product("sheet-chem-35", "chemistry", ["Триполифосфат натрия", "Натрий триполифосфаты", "Sodium tripolyphosphate"], "Казахстан", "АГМК", "Na₅P₃O₁₀"),
   product("sheet-chem-36", "chemistry", ["Олеиновая кислота", "Олеин қышқылы", "Oleic acid"], "Китай", "АГМК", "C₁₈H₃₄O₂"),

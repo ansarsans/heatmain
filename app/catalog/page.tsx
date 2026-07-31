@@ -159,7 +159,8 @@ function CatalogContent() {
               <div className="relative flex flex-col gap-1 rounded-2xl bg-transparent p-1">
                 {/* Vertical Sliding Pill */}
                 <div 
-                  className="absolute left-1 right-1 rounded-xl bg-stone-200 transition-all duration-300 ease-out z-0"
+                  aria-hidden="true"
+                  className="pointer-events-none absolute left-1 right-1 z-0 rounded-xl bg-stone-200 transition-all duration-300 ease-out"
                   style={{
                     height: '40px',
                     top: `${(categories.findIndex(c => c.value === activeCategory) * 44) + 4}px`,
@@ -167,10 +168,11 @@ function CatalogContent() {
                 />
                 {categories.map((cat) => (
                   <button
+                    type="button"
                     key={cat.value}
                     onClick={() => setActiveCategory(cat.value)}
                     className={cn(
-                      "relative z-10 flex h-10 w-full items-center px-4 text-[13px] font-bold transition-colors duration-300 rounded-xl",
+                      "relative z-10 flex h-10 w-full touch-manipulation select-none items-center rounded-xl px-4 text-[13px] font-bold transition-colors duration-200 [-webkit-tap-highlight-color:transparent]",
                       activeCategory === cat.value
                         ? "text-zinc-900"
                         : "text-zinc-500 hover:text-zinc-800"
@@ -188,12 +190,16 @@ function CatalogContent() {
             {/* Product grid */}
             <style>{`
               @keyframes cardSlideUp {
-                0% { opacity: 0; transform: translateY(30px); filter: blur(4px); }
-                100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+                0% { opacity: 0; transform: translateY(16px); }
+                100% { opacity: 1; transform: translateY(0); }
               }
               .animate-card {
-                animation: cardSlideUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-                opacity: 0;
+                opacity: 1;
+              }
+              @media (min-width: 640px) and (prefers-reduced-motion: no-preference) {
+                .animate-card {
+                  animation: cardSlideUp 0.38s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+                }
               }
             `}</style>
             {filtered.length > 0 ? (
@@ -205,7 +211,7 @@ function CatalogContent() {
                   <div 
                     key={product.id} 
                     className="animate-card h-full" 
-                    style={{ animationDelay: `${index * 60}ms` }}
+                    style={{ animationDelay: `${Math.min(index, 8) * 35}ms` }}
                   >
                     <ProductCard
                       product={product}
