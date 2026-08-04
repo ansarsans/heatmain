@@ -133,6 +133,7 @@ export const spreadsheetProducts: Product[] = [
   product("sheet-equip-8", "equipment", ["Лента конвейерная", "Конвейер таспасы", "Conveyor belt"], "Китай", "АГМК, НГМК", undefined, "/images/Лента_конвейерная.jpg"),
   product("sheet-equip-10", "equipment", ["Шары кованые стальные", "Соғылған болат шарлар", "Forged steel balls"], "Россия/Китай", "АГМК, НГМК", undefined, "/images/Шары_кованые_стальные.jpg"),
   product("sheet-equip-11", "equipment", ["Компрессор воздушный", "Ауа компрессоры", "Air compressor"], "Китай", "АГМК, НГМК", undefined, "/images/Компрессор_воздушный.jpg"),
+  product("added-equip-drilling-machine", "equipment", ["Буровой станок", "Бұрғылау станогы", "Drilling rig"], "", "", undefined, "/images/буровой_станок.jpg"),
   product("sheet-equip-12", "equipment", ["Венцы зубчатые", "Тісті тәждер", "Girth gears"], "Китай", "АГМК, НГМК"),
   product("sheet-equip-14", "equipment", ["Буровые штанги СБШ-250, НКР", "СБШ-250, НКР бұрғылау штангалары", "SBSh-250 and NKR drill rods"], "Китай", "НГМК, АГМК"),
   product("sheet-equip-15", "equipment", ["Бурильные трубы", "Бұрғылау құбырлары", "Drill pipes"], "Китай", "НГМК", undefined, "/images/Бурильные_трубы.jpg"),
