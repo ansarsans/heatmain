@@ -13,18 +13,21 @@ const categoryColors: Record<string, string> = {
   chemistry: "bg-white text-zinc-900 border-zinc-300",
   metals: "bg-white text-zinc-900 border-zinc-300",
   equipment: "bg-white text-zinc-900 border-zinc-300",
+  rubber: "bg-white text-zinc-900 border-zinc-300",
 }
 
 const categoryLabels: Record<string, Record<string, string>> = {
   chemistry: { ru: "Хим. реагенты", kz: "Химиялық реагенттер", en: "Chemical Reagents" },
   metals: { ru: "Металлы, сплавы", kz: "Металдар, қорытпалар", en: "Metals & Alloys" },
   equipment: { ru: "Оборудование, комплектующие", kz: "Жабдықтар, құрамдас бөлшектер", en: "Equipment & Components" },
+  rubber: { ru: "Резинотехника", kz: "Резеңке-техникалық бұйымдар", en: "Rubber Products" },
 }
 
 const categoryIcons = {
   chemistry: FlaskConical,
   metals: Layers3,
   equipment: Cog,
+  rubber: Layers3,
 }
 
 interface ProductCardProps {

@@ -9,23 +9,18 @@ import { ProductDetailDialog } from "@/components/product-detail-dialog"
 import { cn, getAssetPath } from "@/lib/utils"
 import { Download } from "lucide-react"
 
-const categories: { key: string; value: Category | "all" }[] = [
-  { key: "catalog.all", value: "all" },
+const categories: { key: string; value: Category }[] = [
   { key: "catalog.chemistry", value: "chemistry" },
   { key: "catalog.metals", value: "metals" },
   { key: "catalog.equipment", value: "equipment" },
+  { key: "catalog.rubber", value: "rubber" },
 ]
-
-const categoryOrder: Record<Category, number> = {
-  chemistry: 0,
-  metals: 1,
-  equipment: 2,
-}
 
 const downloadableLists = [
   { key: "catalog.list.chemistry", file: "/lists/heatхимия.pdf" },
   { key: "catalog.list.metals", file: "/lists/heatметаллы.pdf" },
   { key: "catalog.list.equipment", file: "/lists/heatоборудование1.pdf" },
+  { key: "catalog.list.rubber", file: "/lists/heatрезинотехника.pdf" },
 ] as const
 
 export default function CatalogPage() {
@@ -62,30 +57,35 @@ function CatalogSkeleton() {
 function CatalogContent() {
   const { t, locale } = useTranslation()
   const searchParams = useSearchParams()
-  const initialCategory = (searchParams.get("category") as Category | null) ?? "all"
+  const initialCategory = searchParams.get("category") as Category | null
 
-  const [activeCategory, setActiveCategory] = useState<Category | "all">(
-    initialCategory === "chemistry" || initialCategory === "metals" || initialCategory === "equipment"
+  const [activeCategory, setActiveCategory] = useState<Category>(
+    initialCategory === "chemistry" || initialCategory === "metals" || initialCategory === "equipment" || initialCategory === "rubber"
       ? initialCategory
-      : "all"
+      : "chemistry"
   )
   const [search, setSearch] = useState("")
   const [detailProduct, setDetailProduct] = useState<Product | null>(null)
 
   const filtered = useMemo(() => {
     const lang = locale as Locale
-    return products
-      .filter((p) => {
-        const matchesCategory = activeCategory === "all" || p.category === activeCategory
-        if (!matchesCategory) return false
+    return products.filter((p) => {
+        if (p.category !== activeCategory) return false
         if (!search.trim()) return true
         const q = search.toLowerCase()
         return (
           p.name[lang].toLowerCase().includes(q) ||
-          p.description[lang].toLowerCase().includes(q)
+          p.description[lang].toLowerCase().includes(q) ||
+          p.specifications?.some((specification) =>
+            specification.name[lang].toLowerCase().includes(q) ||
+            specification.grades[lang].toLowerCase().includes(q) ||
+            specification.supplier.toLowerCase().includes(q),
+          ) ||
+          p.detailTables?.some((table) =>
+            table.rows.some((row) => row.some((cell) => cell[lang].toLowerCase().includes(q))),
+          )
         )
       })
-      .sort((a, b) => categoryOrder[a.category] - categoryOrder[b.category])
   }, [activeCategory, search, locale])
 
   return (
@@ -133,7 +133,7 @@ function CatalogContent() {
               />
             </div>
 
-            <div className="mt-4 grid gap-1.5 sm:grid-cols-3">
+            <div className="mt-4 grid gap-1.5 sm:grid-cols-2 lg:grid-cols-4">
               {downloadableLists.map((item) => (
                 <a
                   key={item.key}
@@ -233,7 +233,6 @@ function CatalogContent() {
                 <p className="mt-1 text-zinc-500">{t("catalog.try_another")}</p>
                 <button
                   onClick={() => {
-                    setActiveCategory("all")
                     setSearch("")
                   }}
                   className="mt-6 font-bold text-[#0241c0] hover:underline"

@@ -18,6 +18,11 @@ const descriptions: Record<Category, Product["description"]> = {
     kz: "Өнеркәсіптік жабдық немесе құрамдас бөлшек. Жинақталуы мен техникалық параметрлері пайдалану жағдайына сай таңдалады.",
     en: "Industrial equipment or component. Configuration and technical parameters are selected for the operating conditions.",
   },
+  rubber: {
+    ru: "Резинотехническая продукция промышленного назначения. Исполнение и параметры подбираются под условия эксплуатации.",
+    kz: "Өнеркәсіптік мақсаттағы резеңке-техникалық өнімдер. Орындалуы мен параметрлері пайдалану жағдайына сай таңдалады.",
+    en: "Industrial rubber products. Configuration and specifications are selected for the operating conditions.",
+  },
 }
 
 function product(
@@ -73,7 +78,6 @@ export const spreadsheetProducts: Product[] = [
   product("sheet-chem-35", "chemistry", ["Триполифосфат натрия", "Натрий триполифосфаты", "Sodium tripolyphosphate"], "Казахстан", "АГМК", "Na₅P₃O₁₀", "/images/Триполифосфат_натрия.jpg"),
   product("sheet-chem-36", "chemistry", ["Олеиновая кислота", "Олеин қышқылы", "Oleic acid"], "Китай", "АГМК", "C₁₈H₃₄O₂", "/images/Олеиновая_кислота.jpg"),
   product("sheet-chem-37", "chemistry", ["Трёхсернистая сурьма", "Сурьма трисульфиді", "Antimony trisulfide"], "Китай/Россия", "АГМК", "Sb₂S₃", "/images/Трёхсернистая_сурьма.jpg"),
-  product("sheet-chem-38", "chemistry", ["Химические реагенты", "Химиялық реагенттер", "Chemical reagents"], "Россия", "АГМК", "Зависит от продукта", "/images/Химические_реагенты.jpg"),
   product("sheet-chem-39", "chemistry", ["Микросфера", "Микросфера", "Microspheres"], "Китай/Франция", "АГМК", "Минеральный состав", "/images/Микросфера.jpg"),
   product("sheet-chem-44", "chemistry", ["Текстолит", "Текстолит", "Textolite laminate"], "Китай/Россия", "АГМК", "Композит", "/images/Текстолит.jpg"),
   product("sheet-chem-45", "chemistry", ["Натрий кремнефтористый", "Натрий кремнийфториді", "Sodium hexafluorosilicate"], "Китай", "АГМК", "Na₂SiF₆", "/images/Натрий_кремнефтористый.jpg"),

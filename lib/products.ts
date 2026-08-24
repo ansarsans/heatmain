@@ -1,16 +1,38 @@
 import { spreadsheetProducts } from "./spreadsheet-products"
+import { rubberProducts } from "./rubber-products"
 
-export type Category = "chemistry" | "metals" | "equipment"
+export type Category = "chemistry" | "metals" | "equipment" | "rubber"
+
+export interface LocalizedText {
+  ru: string
+  kz: string
+  en: string
+}
+
+export interface ProductSpecification {
+  name: LocalizedText
+  grades: LocalizedText
+  width: LocalizedText
+  supplier: string
+}
+
+export interface ProductDetailTable {
+  title?: LocalizedText
+  columns: LocalizedText[]
+  rows: LocalizedText[][]
+}
 
 export interface Product {
   id: string
   category: Category
-  name: { ru: string; kz: string; en: string }
-  description: { ru: string; kz: string; en: string }
+  name: LocalizedText
+  description: LocalizedText
   formula?: string
   origin?: string
   buyer?: string
   image?: string
+  specifications?: ProductSpecification[]
+  detailTables?: ProductDetailTable[]
 }
 
 const baseProducts: Product[] = [
@@ -433,7 +455,7 @@ function mergeProducts(base: Product[], additions: Product[]) {
   return result
 }
 
-export const products: Product[] = mergeProducts(baseProducts, spreadsheetProducts)
+export const products: Product[] = mergeProducts(baseProducts, [...spreadsheetProducts, ...rubberProducts])
 
 const originTranslations: Record<string, { kz: string; en: string }> = {
   "Казахстан": { kz: "Қазақстан", en: "Kazakhstan" },
@@ -468,4 +490,5 @@ export const categoryIcons: Record<Category, string> = {
   chemistry: "flask",
   metals: "layers",
   equipment: "cog",
+  rubber: "layers",
 }
