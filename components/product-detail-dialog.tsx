@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import type { CSSProperties } from "react"
 import { useTranslation, type Locale } from "@/lib/i18n"
 import { localizeOrigin, type Product } from "@/lib/products"
 import { getAssetPath, cn } from "@/lib/utils"
@@ -29,7 +30,7 @@ const categoryIcons = {
 }
 
 const closeBtnClass =
-  "top-4 right-4 z-[110] flex size-10 items-center justify-center rounded-md text-zinc-500 transition-colors hover:bg-zinc-100/80 hover:text-zinc-900 focus-visible:outline-none focus-visible:ring-0 [&_svg]:size-5"
+  "top-2.5 right-2.5 z-[110] flex size-11 items-center justify-center rounded-full bg-white/80 text-zinc-500 backdrop-blur-sm transition-colors hover:bg-zinc-100 hover:text-zinc-900 focus-visible:outline-none focus-visible:ring-0 sm:top-4 sm:right-4 sm:size-10 [&_svg]:size-5"
 
 interface ProductDetailDialogProps {
   product: Product | null
@@ -48,7 +49,7 @@ export function ProductDetailDialog({ product, onOpenChange }: ProductDetailDial
         showCloseButton
         closeButtonClassName={closeBtnClass}
         className={cn(
-          "gap-0 overflow-hidden rounded-xl border-zinc-200 p-0 shadow-xl",
+          "h-[calc(100dvh-1rem)] max-h-none gap-0 overflow-hidden rounded-2xl border-zinc-200 p-0 shadow-xl sm:h-auto sm:max-h-[min(92vh,760px)] sm:rounded-xl",
           product?.category === "rubber"
             ? "max-h-[min(92vh,760px)] w-[min(100vw-1.5rem,calc(100vw-2rem))] max-w-[min(100vw-1.5rem,1040px)] sm:my-6 sm:mx-auto sm:w-[min(100vw-2.5rem,1040px)] lg:max-w-[1040px]"
             : "max-h-[min(92vh,760px)] w-[min(100vw-1.5rem,calc(100vw-2rem))] max-w-[min(100vw-1.5rem,920px)] sm:my-6 sm:mx-auto sm:w-[min(100vw-2.5rem,920px)] lg:max-w-[960px]",
@@ -56,11 +57,11 @@ export function ProductDetailDialog({ product, onOpenChange }: ProductDetailDial
         )}
       >
         {product && (
-          <div className="flex max-h-[min(92vh,760px)] flex-col md:flex-row md:items-stretch">
+          <div className="flex h-full max-h-full min-h-0 flex-col md:max-h-[min(92vh,760px)] md:flex-row md:items-stretch">
             {/* Left: photo only */}
             <div
               className={cn(
-                "relative aspect-[4/3] w-full shrink-0 bg-stone-200 md:aspect-auto md:min-h-[min(420px,55vh)]",
+                "relative h-[clamp(160px,25dvh,205px)] w-full shrink-0 bg-stone-200 sm:h-[230px] md:h-auto md:min-h-[min(420px,55vh)]",
                 product.category === "rubber"
                   ? "overflow-hidden bg-stone-100 md:w-[min(42%,420px)] lg:w-[420px]"
                   : "md:w-[min(42%,360px)] lg:w-[400px]",
@@ -81,7 +82,7 @@ export function ProductDetailDialog({ product, onOpenChange }: ProductDetailDial
                       src={getAssetPath(product.image)}
                       alt={product.name[lang]}
                       fill
-                      className="relative scale-[1.16] object-contain"
+                      className="relative scale-[1.08] object-contain sm:scale-[1.12] md:scale-[1.16]"
                       sizes="(max-width: 768px) 100vw, 420px"
                     />
                   </>
@@ -104,15 +105,15 @@ export function ProductDetailDialog({ product, onOpenChange }: ProductDetailDial
             </div>
 
             {/* Right: badge, title, description, order */}
-            <div className="flex min-h-0 min-w-0 flex-1 flex-col justify-between gap-6 overflow-y-auto p-6 pb-6 pt-14 sm:p-8 sm:pt-16 md:pt-14">
-              <DialogHeader className="space-y-4 text-left">
+            <div className="flex min-h-0 min-w-0 flex-1 overscroll-contain flex-col justify-between gap-5 overflow-y-auto p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-12 sm:gap-6 sm:p-8 sm:pt-16 md:pt-14">
+              <DialogHeader className="space-y-3 text-left sm:space-y-4">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="inline-flex rounded-full border border-zinc-300 bg-zinc-50 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-zinc-900">
                     {categoryLabels[product.category]?.[lang] ?? product.category}
                   </span>
                 </div>
                 <div className="space-y-2">
-                  <DialogTitle className="pr-2 text-xl font-semibold leading-snug text-zinc-900 sm:text-2xl">
+                  <DialogTitle className="break-words pr-7 text-lg font-semibold leading-snug text-zinc-900 sm:pr-2 sm:text-2xl">
                     {product.name[lang]}
                   </DialogTitle>
                   {product.category === "chemistry" && product.formula ? (
@@ -121,7 +122,7 @@ export function ProductDetailDialog({ product, onOpenChange }: ProductDetailDial
                     </p>
                   ) : null}
                 </div>
-                <DialogDescription className="text-left text-sm leading-relaxed text-zinc-600 sm:text-[15px]">
+                <DialogDescription className="text-left text-[13px] leading-6 text-zinc-600 sm:text-[15px] sm:leading-relaxed">
                   {product.description[lang]}
                 </DialogDescription>
                 {product.detailTables?.length ? (
@@ -141,8 +142,8 @@ export function ProductDetailDialog({ product, onOpenChange }: ProductDetailDial
                           ) : null}
                           <div className="overflow-hidden rounded-xl border border-zinc-200">
                             <div
-                              className="hidden gap-3 bg-zinc-50 px-4 py-2.5 text-[9px] font-bold uppercase tracking-[0.1em] text-zinc-500 sm:grid"
-                              style={{ gridTemplateColumns: desktopColumns }}
+                              className="hidden gap-3 bg-zinc-50 px-4 py-2.5 text-[9px] font-bold uppercase tracking-[0.1em] text-zinc-500 sm:grid sm:[grid-template-columns:var(--detail-columns)]"
+                              style={{ "--detail-columns": desktopColumns } as CSSProperties}
                             >
                               {table.columns.map((column, columnIndex) => (
                                 <span key={`${product.id}-table-${tableIndex}-column-${columnIndex}`}>
@@ -154,8 +155,8 @@ export function ProductDetailDialog({ product, onOpenChange }: ProductDetailDial
                               {table.rows.map((row, rowIndex) => (
                                 <div
                                   key={`${product.id}-table-${tableIndex}-row-${rowIndex}`}
-                                  className="grid gap-3 px-4 py-3 text-xs leading-relaxed text-zinc-700 sm:grid"
-                                  style={{ gridTemplateColumns: desktopColumns }}
+                                  className="grid grid-cols-1 gap-3 px-3 py-3 text-xs leading-relaxed text-zinc-700 sm:grid sm:px-4 sm:[grid-template-columns:var(--detail-columns)]"
+                                  style={{ "--detail-columns": desktopColumns } as CSSProperties}
                                 >
                                   {row.map((cell, cellIndex) => (
                                     <div key={`${product.id}-table-${tableIndex}-row-${rowIndex}-cell-${cellIndex}`}>
@@ -246,7 +247,7 @@ export function ProductDetailDialog({ product, onOpenChange }: ProductDetailDial
               <div className="flex shrink-0 flex-col gap-2 border-t border-zinc-100 pt-4 sm:flex-row sm:justify-end">
                 <Link
                   href={`/contacts?product=${encodeURIComponent(product.id)}`}
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0241c0] px-8 py-3 text-sm font-bold text-white transition-colors hover:bg-[#023190] active:scale-[0.98]"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#0241c0] px-8 py-3 text-sm font-bold text-white transition-colors hover:bg-[#023190] active:scale-[0.98] sm:w-auto"
                   onClick={() => onOpenChange(false)}
                 >
                   {t("products.order")}

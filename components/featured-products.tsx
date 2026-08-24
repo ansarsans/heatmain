@@ -17,9 +17,9 @@ export function FeaturedProducts() {
     .sort((a, b) => (order.get(a.id) ?? 0) - (order.get(b.id) ?? 0))
 
   return (
-    <section className="bg-[linear-gradient(180deg,rgba(204,228,253,0.72)_0%,rgba(226,240,255,0.58)_48%,rgba(241,247,253,0.32)_100%)] py-9 lg:py-12">
+    <section className="bg-[linear-gradient(180deg,rgba(204,228,253,0.72)_0%,rgba(226,240,255,0.58)_48%,rgba(241,247,253,0.32)_100%)] py-8 sm:py-9 lg:py-12">
       <div className="mx-auto max-w-6xl px-4 lg:px-8">
-        <div className="mb-7 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div className="mb-6 flex flex-col gap-4 md:mb-7 md:flex-row md:items-end md:justify-between">
           <div>
             <h2 className="text-2xl font-extrabold tracking-tight text-slate-950 lg:text-3xl">
               {t("homepage.products.title")}
@@ -30,7 +30,7 @@ export function FeaturedProducts() {
           </div>
           <Link
             href="/catalog"
-            className="inline-flex w-fit items-center gap-2 rounded-full border border-blue-200 bg-white/75 px-4 py-2 text-[11px] font-bold text-[#0756b8] transition-colors hover:border-blue-300 hover:bg-white"
+            className="inline-flex min-h-11 w-fit items-center gap-2 rounded-full border border-blue-200 bg-white/75 px-4 py-2 text-[11px] font-bold text-[#0756b8] transition-colors hover:border-blue-300 hover:bg-white"
           >
             {t("products.highlights.view_all")}
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

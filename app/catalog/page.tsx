@@ -33,7 +33,7 @@ export default function CatalogPage() {
 
 function CatalogSkeleton() {
   return (
-    <main className="min-h-screen bg-[#f4f2ee] pb-12 pt-24 lg:pb-20 lg:pt-28">
+    <main className="min-h-screen bg-[#f4f2ee] pb-16 pt-20 sm:pt-24 lg:pb-20 lg:pt-28">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <div className="mb-10 max-w-xl">
           <div className="mb-3 h-9 w-48 animate-pulse rounded bg-zinc-200" />
@@ -89,7 +89,7 @@ function CatalogContent() {
   }, [activeCategory, search, locale])
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-white pb-24 pt-24 lg:pb-32 lg:pt-28">
+    <main className="relative min-h-screen overflow-hidden bg-white pb-16 pt-20 sm:pb-24 sm:pt-24 lg:pb-32 lg:pt-28">
       <ProductDetailDialog
         product={detailProduct}
         onOpenChange={(open) => {
@@ -98,12 +98,12 @@ function CatalogContent() {
       />
       <div className="relative z-10 mx-auto max-w-[1500px] px-4 lg:px-8">
         {/* Page header with Search aligned */}
-        <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div>
-            <h1 className="mb-4 text-3xl font-bold tracking-tight text-zinc-900 lg:text-4xl text-balance">
+        <div className="mb-8 flex flex-col gap-5 sm:mb-10 md:mb-12 md:flex-row md:items-end md:justify-between md:gap-6">
+          <div className="min-w-0">
+            <h1 className="mb-3 text-[1.75rem] font-bold tracking-tight text-zinc-900 sm:mb-4 sm:text-3xl lg:text-4xl text-balance">
               {t("catalog.title")}
             </h1>
-            <p className="text-lg text-zinc-600 text-pretty">
+            <p className="text-base leading-6 text-zinc-600 sm:text-lg text-pretty">
               {t("catalog.subtitle")}
             </p>
           </div>
@@ -129,17 +129,17 @@ function CatalogContent() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder={t("catalog.search")}
-                className="w-full rounded-full border border-zinc-300 bg-transparent py-3 pl-11 pr-4 text-[13px] font-bold text-zinc-900 placeholder:text-zinc-500 focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 transition-all"
+                className="min-h-12 w-full rounded-full border border-zinc-300 bg-transparent py-3 pl-11 pr-4 text-[13px] font-bold text-zinc-900 placeholder:text-zinc-500 focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 transition-all"
               />
             </div>
 
-            <div className="mt-4 grid gap-1.5 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-3 grid grid-cols-2 gap-2 sm:mt-4 lg:grid-cols-4 lg:gap-1.5">
               {downloadableLists.map((item) => (
                 <a
                   key={item.key}
                   href={getAssetPath(item.file)}
                   download
-                  className="group flex min-h-9 items-center justify-between gap-2 rounded-lg border border-blue-100 bg-blue-50/55 px-3 py-1.5 text-[10px] font-bold leading-3.5 text-[#0756b8] transition-[border-color,background-color,transform] hover:border-blue-200 hover:bg-blue-50 active:scale-[0.98]"
+                  className="group flex min-h-12 items-center justify-between gap-2 rounded-xl border border-blue-100 bg-blue-50/55 px-3 py-2 text-[9px] font-bold leading-3.5 text-[#0756b8] transition-[border-color,background-color,transform] hover:border-blue-200 hover:bg-blue-50 active:scale-[0.98] sm:text-[10px] lg:min-h-9 lg:rounded-lg lg:py-1.5"
                 >
                   <span>{t(item.key)}</span>
                   <Download className="h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-y-0.5" strokeWidth={1.8} aria-hidden="true" />
@@ -149,18 +149,18 @@ function CatalogContent() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-start">
+        <div className="flex flex-col gap-7 sm:gap-8 lg:flex-row lg:items-start">
           {/* Sidebar - Categories */}
           <aside className="w-full lg:w-64 lg:shrink-0">
-            <div className="sticky top-[120px]">
-              <h2 className="mb-4 text-xs font-bold uppercase tracking-widest text-zinc-400 px-2">
+            <div className="lg:sticky lg:top-[120px]">
+              <h2 className="mb-3 px-1 text-[11px] font-bold uppercase tracking-widest text-zinc-400 sm:px-2 lg:mb-4 lg:text-xs">
                 {locale === 'ru' ? 'Категории' : (locale === 'kz' ? 'Санаттар' : 'Categories')}
               </h2>
-              <div className="relative flex flex-col gap-1 rounded-2xl bg-transparent p-1">
+              <div className="relative grid grid-cols-2 gap-2 rounded-2xl bg-transparent p-0 lg:flex lg:flex-col lg:gap-1 lg:p-1">
                 {/* Vertical Sliding Pill */}
                 <div 
                   aria-hidden="true"
-                  className="pointer-events-none absolute left-1 right-1 z-0 rounded-xl bg-stone-200 transition-all duration-300 ease-out"
+                  className="pointer-events-none absolute left-1 right-1 z-0 hidden rounded-xl bg-stone-200 transition-all duration-300 ease-out lg:block"
                   style={{
                     height: '40px',
                     top: `${(categories.findIndex(c => c.value === activeCategory) * 44) + 4}px`,
@@ -172,9 +172,9 @@ function CatalogContent() {
                     key={cat.value}
                     onClick={() => setActiveCategory(cat.value)}
                     className={cn(
-                      "relative z-10 flex h-10 w-full touch-manipulation select-none items-center rounded-xl px-4 text-[13px] font-bold transition-colors duration-200 [-webkit-tap-highlight-color:transparent]",
+                      "relative z-10 flex min-h-12 w-full touch-manipulation select-none items-center justify-center rounded-xl px-3 py-2 text-center text-[12px] font-bold leading-4 transition-colors duration-200 [-webkit-tap-highlight-color:transparent] lg:h-10 lg:min-h-0 lg:justify-start lg:px-4 lg:py-0 lg:text-left lg:text-[13px]",
                       activeCategory === cat.value
-                        ? "text-zinc-900"
+                        ? "bg-stone-200 text-zinc-900 lg:bg-transparent"
                         : "text-zinc-500 hover:text-zinc-800"
                     )}
                   >
@@ -205,12 +205,12 @@ function CatalogContent() {
             {filtered.length > 0 ? (
               <div 
                 key={activeCategory + search} 
-                className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3"
+                className="grid gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3 lg:gap-12"
               >
                 {filtered.map((product, index) => (
                   <div 
                     key={product.id} 
-                    className="animate-card h-full" 
+                    className="catalog-card animate-card h-full"
                     style={{ animationDelay: `${Math.min(index, 8) * 35}ms` }}
                   >
                     <ProductCard

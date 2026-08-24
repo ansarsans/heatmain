@@ -89,7 +89,7 @@ export default function AboutPage() {
     <main className="min-h-screen bg-[#fcfcfc] overflow-hidden">
       
       {/* 1. Hero Section */}
-      <section className="relative overflow-hidden bg-[#f4f9ff] pb-20 pt-28 sm:pb-24 sm:pt-32 lg:pb-28 lg:pt-36">
+      <section className="relative overflow-hidden bg-[#f4f9ff] pb-16 pt-24 sm:pb-24 sm:pt-32 lg:pb-28 lg:pt-36">
         <div
           className="absolute inset-0"
           style={{
@@ -111,16 +111,16 @@ export default function AboutPage() {
 
         <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-14 px-4 lg:grid-cols-[1.08fr_.92fr] lg:gap-16 lg:px-8">
           <div>
-            <div className="mb-6 inline-flex items-center rounded-full border border-blue-200/80 bg-white/75 px-4 py-2 shadow-sm backdrop-blur-md">
+            <div className="mb-5 inline-flex items-center rounded-full border border-blue-200/80 bg-white/75 px-4 py-2 shadow-sm backdrop-blur-md sm:mb-6">
               <span className="mr-2.5 h-1.5 w-1.5 rounded-full bg-[#0756b8]" />
               <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#0756b8]">{t("about.title")}</span>
             </div>
 
-            <h1 className="max-w-3xl text-[2.1rem] font-extrabold leading-[1.08] tracking-[-0.04em] text-slate-950 text-balance sm:text-[2.6rem] lg:text-[3rem]">
+            <h1 className="max-w-3xl text-[clamp(1.8rem,8vw,2.3rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-slate-950 text-balance sm:text-[2.6rem] lg:text-[3rem]">
               {t("about.page.hero.title")}
             </h1>
 
-            <p className="mt-6 max-w-2xl text-base font-medium leading-7 text-slate-600 text-pretty lg:text-lg">
+            <p className="mt-5 max-w-2xl text-[15px] font-medium leading-6 text-slate-600 text-pretty sm:mt-6 sm:text-base sm:leading-7 lg:text-lg">
               {t("about.page.hero.description")}
             </p>
 
@@ -138,11 +138,11 @@ export default function AboutPage() {
       </section>
 
       {/* 2. Кто мы и чем полезны (Light Section with Glass Dark Cards) */}
-      <section className="relative bg-[#fcfcfc] pb-14 pt-12 lg:pb-20 lg:pt-16">
+      <section className="relative bg-[#fcfcfc] pb-12 pt-10 sm:pb-14 sm:pt-12 lg:pb-20 lg:pt-16">
         <div className="mx-auto max-w-6xl px-4 lg:px-8">
-          <div className="mb-14 max-w-2xl lg:mb-16">
+          <div className="mb-8 max-w-2xl sm:mb-12 lg:mb-16">
             <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.18em] text-[#0756b8]">{t("about.page.expertise.eyebrow")}</span>
-            <h2 className="text-3xl font-extrabold tracking-tight text-slate-950 lg:text-4xl">
+            <h2 className="text-[1.75rem] font-extrabold leading-tight tracking-tight text-slate-950 sm:text-3xl lg:text-4xl">
               {t("about.page.expertise.title")}
             </h2>
           </div>
@@ -156,7 +156,7 @@ export default function AboutPage() {
             ].map((card) => (
               <article
                 key={card.title}
-                className="group relative min-h-[300px] overflow-hidden rounded-[22px] border border-slate-200/90 bg-white p-8 shadow-[0_18px_45px_-36px_rgba(15,67,120,0.65)] transition-[transform,box-shadow,border-color] duration-300 ease-out hover:-translate-y-1.5 hover:border-blue-200 hover:shadow-[0_28px_65px_-38px_rgba(7,86,184,0.55)]"
+                className="group relative min-h-[225px] overflow-hidden rounded-[20px] border border-slate-200/90 bg-white p-6 shadow-[0_18px_45px_-36px_rgba(15,67,120,0.65)] transition-[transform,box-shadow,border-color] duration-300 ease-out hover:border-blue-200 hover:shadow-[0_28px_65px_-38px_rgba(7,86,184,0.55)] sm:min-h-[280px] sm:rounded-[22px] sm:p-7 sm:hover:-translate-y-1.5 lg:min-h-[300px] lg:p-8"
               >
                 <card.icon
                   aria-hidden="true"
@@ -164,7 +164,7 @@ export default function AboutPage() {
                   className="pointer-events-none absolute -bottom-4 -right-4 h-28 w-28 text-[#0756b8] opacity-[0.08] transition-[opacity,transform] duration-300 group-hover:scale-[1.04] group-hover:opacity-[0.12]"
                 />
                 <div className="relative z-10 flex h-full flex-col">
-                  <div className="mb-8 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-blue-100 bg-blue-50/80 text-[#0756b8] transition-colors duration-300 group-hover:border-blue-200 group-hover:bg-blue-50">
+                  <div className="mb-6 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-blue-100 bg-blue-50/80 text-[#0756b8] transition-colors duration-300 group-hover:border-blue-200 group-hover:bg-blue-50 sm:mb-8">
                     <card.icon className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" />
                   </div>
                   <h3 className="mb-4 text-lg font-bold tracking-tight text-slate-950">{card.title}</h3>
@@ -178,7 +178,7 @@ export default function AboutPage() {
 
 
       {/* 5. География */}
-      <section className="relative overflow-hidden bg-[#f7fbff] pb-24 pt-16 lg:pb-32 lg:pt-20">
+      <section className="relative overflow-hidden bg-[#f7fbff] pb-16 pt-12 sm:pb-24 sm:pt-16 lg:pb-32 lg:pt-20">
         {/* Premium ambient background */}
         <div
           className="pointer-events-none absolute inset-0"
@@ -224,23 +224,23 @@ export default function AboutPage() {
           style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
         />
         
-        <div className="mx-auto max-w-7xl px-4 lg:px-8 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+        <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-8 px-4 sm:gap-12 lg:grid-cols-2 lg:gap-16 lg:px-8">
            <div>
              <span className="text-[#0241c0] font-bold tracking-widest uppercase text-[10px] mb-4 block">{t("about.page.geography.eyebrow")}</span>
-             <h2 className="mb-6 text-3xl font-extrabold tracking-tight text-slate-950 text-balance lg:text-4xl">
+             <h2 className="mb-4 text-[1.75rem] font-extrabold leading-tight tracking-tight text-slate-950 text-balance sm:mb-6 sm:text-3xl lg:text-4xl">
                 {t("about.page.geography.title")}
              </h2>
-             <p className="mb-10 text-lg leading-relaxed text-slate-600 text-pretty">
+             <p className="mb-7 text-base leading-7 text-slate-600 text-pretty sm:mb-10 sm:text-lg sm:leading-relaxed">
                {t("about.page.geography.description")}
              </p>
-             <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-2.5 sm:gap-4">
                 {[
                   { name: t("about.page.region.kazakhstan"), dot: "bg-[#6eb0ff]" },
                   { name: t("about.page.region.china"), dot: "bg-[#0241c0]" },
                   { name: t("about.page.region.europe"), dot: "bg-[#0241c0]" },
                   { name: t("about.page.region.uzbekistan"), dot: "bg-[#0241c0]" },
                 ].map(({ name, dot }) => (
-                  <span key={name} className="flex cursor-default items-center gap-2 rounded-full border border-blue-200/80 bg-white/75 px-6 py-2.5 text-sm font-semibold text-slate-800 shadow-sm transition-colors hover:border-blue-300 hover:bg-white">
+                  <span key={name} className="flex min-h-10 cursor-default items-center gap-2 rounded-full border border-blue-200/80 bg-white/75 px-4 py-2 text-xs font-semibold text-slate-800 shadow-sm transition-colors hover:border-blue-300 hover:bg-white sm:px-6 sm:py-2.5 sm:text-sm">
                     <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${dot}`} />
                     {name}
                   </span>
@@ -249,7 +249,7 @@ export default function AboutPage() {
            </div>
            
            {/* Globe: wireframe + markers from lat/lon (orthographic) */}
-           <div className="relative aspect-square lg:aspect-auto lg:h-[400px] w-full flex items-center justify-center">
+            <div className="relative mx-auto flex aspect-square w-full max-w-[330px] items-center justify-center sm:max-w-[390px] lg:h-[400px] lg:max-w-none lg:aspect-auto">
              <div className="pointer-events-none absolute left-1/2 top-1/2 h-[88%] w-[88%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-300/20 blur-[90px]" />
              <div className="pointer-events-none absolute left-[16%] top-[15%] h-32 w-32 rounded-full bg-cyan-100/35 blur-[50px]" />
              <div className="pointer-events-none absolute bottom-[8%] right-[10%] h-40 w-40 rounded-full bg-blue-200/25 blur-[65px]" />
@@ -343,16 +343,16 @@ export default function AboutPage() {
 
 
       {/* 7. Реквизиты (Light, Minimalist Block) */}
-      <section className="py-12 bg-[#fcfcfc] border-y border-zinc-100">
+      <section className="border-y border-zinc-100 bg-[#fcfcfc] py-10 sm:py-12">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          <div className="rounded-3xl border border-zinc-200 bg-white p-8 lg:p-12 shadow-sm">
-            <h2 className="mb-8 text-2xl font-bold tracking-tight text-zinc-900">{t("about.page.details.company")}</h2>
-            <div className="grid lg:grid-cols-5 gap-12">
+          <div className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm sm:rounded-3xl sm:p-8 lg:p-12">
+            <h2 className="mb-6 text-xl font-bold tracking-tight text-zinc-900 sm:mb-8 sm:text-2xl">{t("about.page.details.company")}</h2>
+            <div className="grid gap-8 sm:gap-10 lg:grid-cols-5 lg:gap-12">
                <div className="lg:col-span-2">
                   <h3 className="mb-4 text-[10px] font-bold uppercase tracking-widest text-[#0241c0]">{t("about.page.details.requisites")}</h3>
                   <div className="space-y-3 text-sm text-zinc-800">
                     <p className="flex justify-between border-b border-zinc-100 pb-2"><span className="text-zinc-500">{t("about.page.details.bin")}:</span> <span className="font-semibold">240240013512</span></p>
-                    <p className="flex justify-between border-b border-zinc-100 pb-2"><span className="text-zinc-500">{t("about.page.details.iban")}:</span> <span className="font-semibold">KZ33601A871023954571 <span className="text-zinc-400 font-medium">KZT</span></span></p>
+                    <p className="flex flex-col gap-1 border-b border-zinc-100 pb-2 sm:flex-row sm:justify-between"><span className="text-zinc-500">{t("about.page.details.iban")}:</span> <span className="break-all font-semibold">KZ33601A871023954571 <span className="font-medium text-zinc-400">KZT</span></span></p>
                     <p className="flex justify-between border-b border-zinc-100 pb-2"><span className="text-zinc-500">{t("about.page.details.bic")}:</span> <span className="font-semibold">HSBKKZKX</span></p>
                     <p className="flex flex-col gap-1 border-b border-zinc-100 pb-2"><span className="text-zinc-500">{t("about.page.details.bank")}:</span> <span className="font-semibold">{t("about.page.details.bank_name")}</span></p>
                   </div>
@@ -360,7 +360,7 @@ export default function AboutPage() {
                
                <div className="lg:col-span-3">
                  <h3 className="mb-4 text-[10px] font-bold uppercase tracking-widest text-[#0241c0]">{t("about.page.details.addresses_title")}</h3>
-                 <div className="grid sm:grid-cols-2 gap-8 text-sm text-zinc-800 bg-zinc-50 p-6 rounded-2xl border border-zinc-100">
+                  <div className="grid gap-6 rounded-2xl border border-zinc-100 bg-zinc-50 p-4 text-sm text-zinc-800 sm:grid-cols-2 sm:gap-8 sm:p-6">
                     <div>
                       <span className="block text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-2">{t("about.page.details.legal_address")}</span>
                       <span className="font-medium">{t("about.page.details.legal_address_value")}</span>
@@ -373,8 +373,8 @@ export default function AboutPage() {
                     <div className="sm:col-span-2 pt-4 border-t border-zinc-200/60">
                        <span className="block text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-3">{t("about.page.details.activity_code")}</span>
                        <div className="space-y-2">
-                         <p className="flex gap-2 items-start"><span className="font-bold whitespace-nowrap">46.90.9</span> <span className="text-zinc-600">— {t("about.page.details.activity_wholesale")}</span></p>
-                         <p className="flex gap-2 items-start"><span className="font-bold whitespace-nowrap">33.12.2</span> <span className="text-zinc-600">— {t("about.page.details.activity_repair")}</span></p>
+                          <p className="flex flex-col gap-1 sm:flex-row sm:items-start sm:gap-2"><span className="whitespace-nowrap font-bold">46.90.9</span> <span className="text-zinc-600">— {t("about.page.details.activity_wholesale")}</span></p>
+                          <p className="flex flex-col gap-1 sm:flex-row sm:items-start sm:gap-2"><span className="whitespace-nowrap font-bold">33.12.2</span> <span className="text-zinc-600">— {t("about.page.details.activity_repair")}</span></p>
                        </div>
                     </div>
                  </div>
@@ -385,10 +385,10 @@ export default function AboutPage() {
       </section>
 
       {/* 8. Final CTA */}
-      <section className="py-24 bg-[#fcfcfc]">
+      <section className="bg-[#fcfcfc] py-12 sm:py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
            <div
-              className="relative overflow-hidden rounded-[2.5rem] border border-slate-300/80 bg-[#f4f9ff] px-8 py-20 text-center shadow-[0_24px_70px_-46px_rgba(7,86,184,0.5)] lg:px-16 lg:py-28"
+              className="relative overflow-hidden rounded-2xl border border-slate-300/80 bg-[#f4f9ff] px-5 py-12 text-center shadow-[0_24px_70px_-46px_rgba(7,86,184,0.5)] sm:rounded-[2.5rem] sm:px-8 sm:py-16 lg:px-16 lg:py-28"
               style={{
                 backgroundImage: [
                   "radial-gradient(circle at 10% 18%, rgba(110,176,255,0.52), transparent 28%)",
@@ -405,16 +405,16 @@ export default function AboutPage() {
                 style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
               ></div>
               <div className="relative z-10 flex flex-col items-center">
-                 <h2 className="mb-6 max-w-3xl text-[1.7rem] font-bold tracking-tight text-slate-950 text-balance lg:text-[2.65rem]">
+                 <h2 className="mb-4 max-w-3xl text-[1.55rem] font-bold leading-tight tracking-tight text-slate-950 text-balance sm:mb-6 sm:text-[1.7rem] lg:text-[2.65rem]">
                     {t("about.page.cta.title")}
                  </h2>
-                 <p className="mb-12 max-w-xl text-lg leading-relaxed text-slate-600 text-pretty">
+                 <p className="mb-8 max-w-xl text-base leading-7 text-slate-600 text-pretty sm:mb-12 sm:text-lg sm:leading-relaxed">
                     {t("about.page.cta.description")}
                  </p>
                  
                  <Link
                     href="/contacts"
-                    className="inline-flex items-center justify-center rounded-full bg-[#0241c0] px-12 py-5 text-sm font-bold uppercase tracking-widest text-white transition-colors hover:bg-[#023190]"
+                    className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#0241c0] px-6 py-3 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#023190] sm:w-auto sm:px-12 sm:py-5 sm:text-sm sm:tracking-widest"
                  >
                     {t("about.page.cta.button")}
                  </Link>

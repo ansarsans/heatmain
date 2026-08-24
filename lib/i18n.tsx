@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useContext, useState, useCallback, type ReactNode } from "react"
+import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from "react"
 import { ru } from "@/lib/translations/ru"
 import { kz } from "@/lib/translations/kz"
 import { en } from "@/lib/translations/en"
@@ -18,13 +18,12 @@ interface I18nContextType {
 const I18nContext = createContext<I18nContextType | null>(null)
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("hec-locale") as Locale | null
-      if (saved && translations[saved]) return saved
-    }
-    return "ru"
-  })
+  const [locale, setLocaleState] = useState<Locale>("ru")
+
+  useEffect(() => {
+    const saved = localStorage.getItem("hec-locale") as Locale | null
+    if (saved && translations[saved]) setLocaleState(saved)
+  }, [])
 
   const setLocale = useCallback((newLocale: Locale) => {
     setLocaleState(newLocale)

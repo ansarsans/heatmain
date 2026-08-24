@@ -50,8 +50,8 @@ export function Footer() {
 
   return (
     <footer id="footer" className="border-t border-[#193b5e] bg-[linear-gradient(135deg,#071421_0%,#0a2035_58%,#0a2b48_100%)] text-white">
-      <div className="mx-auto max-w-6xl px-4 py-10 lg:px-8 lg:py-12">
-        <div className="grid gap-8 border-b border-white/10 pb-8 lg:grid-cols-[1.15fr_.65fr_1fr_1.15fr] lg:gap-8 lg:pb-10">
+      <div className="mx-auto max-w-6xl px-4 py-8 sm:py-10 lg:px-8 lg:py-12">
+        <div className="grid gap-7 border-b border-white/10 pb-8 sm:grid-cols-2 lg:grid-cols-[1.15fr_.65fr_1fr_1.15fr] lg:gap-8 lg:pb-10">
           {/* Brand & Description */}
           <div>
             <Link href="/" className="flex items-center gap-3">
@@ -138,7 +138,7 @@ export function Footer() {
                 value={phone}
                 onChange={e => setPhone(e.target.value)}
                 placeholder={t("contacts.phone_label")}
-                className="w-full rounded-md border border-white/15 bg-white/[0.08] px-3 py-2.5 text-xs text-white outline-none transition-colors placeholder:text-slate-400 focus:border-blue-300 focus:bg-white/[0.11] focus:ring-0"
+                className="min-h-11 w-full rounded-md border border-white/15 bg-white/[0.08] px-3 py-2.5 text-base text-white outline-none transition-colors placeholder:text-slate-400 focus:border-blue-300 focus:bg-white/[0.11] focus:ring-0 sm:text-xs"
               />
               <input
                 id="footer-email"
@@ -149,7 +149,7 @@ export function Footer() {
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 placeholder={t("contacts.email_label")}
-                className="w-full rounded-md border border-white/15 bg-white/[0.08] px-3 py-2.5 text-xs text-white outline-none transition-colors placeholder:text-slate-400 focus:border-blue-300 focus:bg-white/[0.11] focus:ring-0"
+                className="min-h-11 w-full rounded-md border border-white/15 bg-white/[0.08] px-3 py-2.5 text-base text-white outline-none transition-colors placeholder:text-slate-400 focus:border-blue-300 focus:bg-white/[0.11] focus:ring-0 sm:text-xs"
               />
               <textarea
                 id="footer-message"
@@ -159,7 +159,7 @@ export function Footer() {
                 onChange={e => setMessage(e.target.value)}
                 placeholder={t("contacts.message_label")}
                 rows={2}
-                className="w-full resize-none rounded-md border border-white/15 bg-white/[0.08] px-3 py-2.5 text-xs text-white outline-none transition-colors placeholder:text-slate-400 focus:border-blue-300 focus:bg-white/[0.11] focus:ring-0"
+                className="w-full resize-y rounded-md border border-white/15 bg-white/[0.08] px-3 py-2.5 text-base text-white outline-none transition-colors placeholder:text-slate-400 focus:border-blue-300 focus:bg-white/[0.11] focus:ring-0 sm:resize-none sm:text-xs"
               />
               {hint ? <p className="text-[11px] text-red-300">{hint}</p> : null}
               {status === "ok" ? (
@@ -168,7 +168,7 @@ export function Footer() {
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="w-full rounded-md bg-white px-4 py-2.5 text-xs font-bold text-[#081625] transition-colors hover:bg-blue-50 active:scale-[0.98] disabled:opacity-60"
+                className="min-h-11 w-full rounded-md bg-white px-4 py-2.5 text-xs font-bold text-[#081625] transition-colors hover:bg-blue-50 active:scale-[0.98] disabled:opacity-60"
               >
                 {status === "sending" ? t("feedback.sending") : t("contacts.send_button")}
               </button>

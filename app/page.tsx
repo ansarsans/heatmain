@@ -18,7 +18,7 @@ export default function HomePage() {
       <FeaturedProducts />
 
       {/* Product Highlights / Groups */}
-      <section className="border-y border-white/70 bg-white/40 py-10 backdrop-blur-[2px] lg:py-14">
+      <section className="border-y border-white/70 bg-white/40 py-9 backdrop-blur-[2px] sm:py-10 lg:py-14">
         <div className="mx-auto max-w-6xl px-4 lg:px-8">
           <div className="mb-7 max-w-2xl">
             <h2 className="text-2xl font-extrabold tracking-tight text-slate-950 lg:text-3xl">
@@ -38,11 +38,11 @@ export default function HomePage() {
             ].map((group, index) => (
               <article
                 key={group.key}
-                className="group relative flex min-h-[270px] flex-col overflow-hidden rounded-[18px] border border-slate-200/90 bg-white p-6 shadow-[0_12px_28px_-22px_rgba(15,23,42,0.35)] transition-all duration-300 ease-out hover:-translate-y-2 hover:border-blue-200 hover:shadow-[0_24px_44px_-24px_rgba(15,23,42,0.34)] lg:p-7"
+                className="group relative flex min-h-0 flex-col overflow-hidden rounded-[18px] border border-slate-200/90 bg-white p-5 shadow-[0_12px_28px_-22px_rgba(15,23,42,0.35)] transition-all duration-300 ease-out hover:border-blue-200 hover:shadow-[0_24px_44px_-24px_rgba(15,23,42,0.34)] sm:min-h-[270px] sm:p-6 sm:hover:-translate-y-2 lg:p-7"
               >
                 <div className="absolute inset-x-0 top-0 h-1 bg-[#0756b8] transition-colors duration-300 group-hover:bg-[#0241c0]" />
 
-                <div className="mb-5 flex items-start justify-between gap-4">
+                <div className="mb-4 flex items-start justify-between gap-4 sm:mb-5">
                   <group.icon aria-hidden="true" strokeWidth={1.35} className="h-7 w-7 text-[#0756b8]" />
                   <span className="select-none text-4xl font-light leading-none tracking-[-0.06em] text-[#c8dcf5]">
                     {String(index + 1).padStart(2, "0")}
@@ -52,13 +52,13 @@ export default function HomePage() {
                 <h3 className="text-lg font-bold leading-tight tracking-[-0.015em] text-slate-950">
                   {group.title}
                 </h3>
-                <p className="mt-2.5 line-clamp-3 min-h-[3.75rem] text-[13px] leading-5 text-slate-500">
+                <p className="mt-2.5 line-clamp-3 text-[13px] leading-5 text-slate-500 sm:min-h-[3.75rem]">
                   {group.description}
                 </p>
 
                 <div className="my-4 h-px bg-slate-200" />
 
-                <ul className="mb-4 flex-grow space-y-2.5 text-[13px] leading-5 text-slate-600">
+                <ul className="mb-3 flex-grow space-y-2.5 text-[13px] leading-5 text-slate-600 sm:mb-4">
                   {group.items.map(item => (
                     <li key={item} className="flex items-start gap-2.5">
                       <span className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#0756b8]" />
@@ -85,7 +85,7 @@ export default function HomePage() {
       {/* Custom Order CTA */}
       <section className="py-8 lg:py-10">
         <div className="mx-auto max-w-6xl px-4 lg:px-8">
-          <div className="relative overflow-hidden rounded-xl border border-blue-100/90 bg-white/95 px-6 py-7 shadow-[0_14px_36px_-28px_rgba(15,67,120,0.6)] sm:px-8 lg:flex lg:items-center lg:justify-between lg:gap-10 lg:px-9 lg:py-8">
+          <div className="relative overflow-hidden rounded-xl border border-blue-100/90 bg-white/95 px-5 py-6 shadow-[0_14px_36px_-28px_rgba(15,67,120,0.6)] sm:px-8 sm:py-7 lg:flex lg:items-center lg:justify-between lg:gap-10 lg:px-9 lg:py-8">
             <div className="absolute inset-y-0 left-0 w-1 bg-[#0756b8]" />
             <div className="max-w-2xl">
               <h2 className="text-xl font-bold tracking-tight text-slate-950 lg:text-2xl">
@@ -98,7 +98,7 @@ export default function HomePage() {
             <div className="mt-5 shrink-0 lg:mt-0">
               <Link
                 href="/contacts"
-                className="inline-flex items-center gap-2 rounded-full bg-[#0756b8] px-5 py-2.5 text-xs font-bold text-white transition-colors hover:bg-[#064a9d] active:scale-95"
+                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[#0756b8] px-5 py-2.5 text-xs font-bold text-white transition-colors hover:bg-[#064a9d] active:scale-95 sm:w-auto"
               >
                 {t("hero.contact")}
                 <span aria-hidden="true">→</span>
@@ -109,7 +109,7 @@ export default function HomePage() {
       </section>
 
       {/* About Preview */}
-      <section id="about-preview" className="border-t border-white/80 bg-white/50 py-12 backdrop-blur-[2px] lg:py-16">
+      <section id="about-preview" className="border-t border-white/80 bg-white/50 py-10 backdrop-blur-[2px] sm:py-12 lg:py-16">
         <div className="mx-auto max-w-6xl px-4 lg:px-8">
           <div className="grid gap-8 lg:grid-cols-[.9fr_1.1fr] lg:items-center lg:gap-12">
             <div>
@@ -139,7 +139,7 @@ export default function HomePage() {
                 <Link
                   key={item.icon}
                   href="/about"
-                  className="group relative min-h-[120px] overflow-hidden bg-white/95 p-5 transition-colors hover:bg-white active:scale-[0.99]"
+                  className="group relative min-h-[108px] overflow-hidden bg-white/95 p-4 transition-colors hover:bg-white active:scale-[0.99] sm:min-h-[120px] sm:p-5"
                 >
                   <item.decoration
                     aria-hidden="true"

@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
 import { useTranslation } from "@/lib/i18n"
 import { LanguageSwitcher } from "@/components/language-switcher"
@@ -22,12 +22,30 @@ export function Header() {
   
   const [mobileOpen, setMobileOpen] = useState(false)
 
+  useEffect(() => {
+    setMobileOpen(false)
+  }, [pathname])
+
+  useEffect(() => {
+    if (!mobileOpen) return
+    const previousOverflow = document.body.style.overflow
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileOpen(false)
+    }
+    document.body.style.overflow = "hidden"
+    window.addEventListener("keydown", closeOnEscape)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener("keydown", closeOnEscape)
+    }
+  }, [mobileOpen])
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-blue-100/80 bg-white/95 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
+      <div className="relative z-20 mx-auto flex h-16 max-w-7xl items-center justify-between px-4 lg:h-[68px] lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3" onClick={() => setMobileOpen(false)}>
-          <BrandLogo size={44} priority={isHome} className="bg-white" />
+          <BrandLogo size={42} priority={isHome} className="bg-white sm:h-11 sm:w-11" />
           <div className="hidden sm:block">
             <span className="text-base font-semibold tracking-tight text-slate-900">
               Heat Energy Capital
@@ -69,10 +87,11 @@ export function Header() {
 
           {/* Mobile hamburger */}
           <button
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-blue-100 bg-white xl:hidden"
+            className="flex h-11 w-11 touch-manipulation items-center justify-center rounded-full border border-blue-100 bg-white transition-colors active:bg-blue-50 xl:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle navigation menu"
             aria-expanded={mobileOpen}
+            aria-controls="mobile-navigation"
           >
             <svg
               width="18"
@@ -96,35 +115,44 @@ export function Header() {
         </div>
 
       {/* Mobile Nav */}
-      <div
-        className={cn(
-          "overflow-hidden transition-all duration-300 xl:hidden",
-          mobileOpen ? "max-h-[500px] border-t border-blue-100 bg-white" : "max-h-0"
-        )}
-      >
-        <nav className="flex flex-col gap-1 px-4 py-3" aria-label="Mobile navigation">
-          {navLinks.map((link) => (
-            <Link
-              key={link.key}
-              href={link.href}
-              onClick={() => setMobileOpen(false)}
-              className="rounded-md px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-blue-50 hover:text-[#0756b8]"
-            >
-              {t(link.key)}
-            </Link>
-          ))}
-          <div className="mt-2 flex flex-col gap-3 border-t border-blue-100 pt-4 pb-2">
-            <LanguageSwitcher />
-            <Link
-              href="/contacts?type=inquiry"
-              onClick={() => setMobileOpen(false)}
-              className="flex items-center justify-center rounded-md bg-[#0241c0] py-3 text-sm font-bold text-white"
-            >
-              {t("nav.inquiry")}
-            </Link>
-          </div>
-        </nav>
-      </div>
+      {mobileOpen ? (
+        <button
+          type="button"
+          aria-label="Close navigation menu"
+          className="fixed inset-x-0 bottom-0 top-16 z-0 bg-slate-950/20 backdrop-blur-[1px] xl:hidden"
+          onClick={() => setMobileOpen(false)}
+        />
+      ) : null}
+
+      {mobileOpen ? (
+        <div
+          id="mobile-navigation"
+          className="fixed inset-x-0 top-16 z-10 max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-blue-100 bg-white shadow-[0_18px_40px_-26px_rgba(15,23,42,.45)] xl:hidden"
+        >
+          <nav className="flex flex-col gap-1 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3" aria-label="Mobile navigation">
+            {navLinks.map((link) => (
+              <Link
+                key={link.key}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className="flex min-h-12 items-center rounded-xl px-4 text-[15px] font-semibold text-slate-700 transition-colors hover:bg-blue-50 hover:text-[#0756b8] active:bg-blue-100/70"
+              >
+                {t(link.key)}
+              </Link>
+            ))}
+            <div className="mt-2 flex flex-col gap-3 border-t border-blue-100 pb-2 pt-4">
+              <LanguageSwitcher />
+              <Link
+                href="/contacts?type=inquiry"
+                onClick={() => setMobileOpen(false)}
+                className="flex min-h-12 items-center justify-center rounded-xl bg-[#0241c0] py-3 text-sm font-bold text-white"
+              >
+                {t("nav.inquiry")}
+              </Link>
+            </div>
+          </nav>
+        </div>
+      ) : null}
     </header>
   )
 }

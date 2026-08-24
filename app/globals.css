@@ -84,12 +84,18 @@
   html {
     scroll-behavior: smooth;
     background: #f8fbff;
+    overflow-x: clip;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply min-w-[320px] bg-background text-foreground;
+    overflow-x: clip;
+    text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: transparent;
   }
   ::selection {
     background: #dbeafe;
@@ -112,6 +118,25 @@
       radial-gradient(circle at 88% 34%, rgba(186, 230, 253, 0.92), transparent 31%),
       radial-gradient(circle at 18% 78%, rgba(191, 219, 254, 0.82), transparent 28%),
       linear-gradient(180deg, #ffffff 0%, #e5f1ff 32%, #f8fbfd 62%, #e1eefb 100%);
+  }
+
+  .catalog-card {
+    content-visibility: auto;
+    contain-intrinsic-size: 340px;
+  }
+}
+
+@media (max-width: 639px) {
+  button,
+  a,
+  input,
+  textarea {
+    touch-action: manipulation;
+  }
+
+  .mobile-map-frame {
+    height: 320px !important;
+    min-height: 320px !important;
   }
 }
 

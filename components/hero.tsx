@@ -27,12 +27,12 @@ function WorldMapBackdrop() {
   ]
 
   return (
-    <div className="pointer-events-none absolute -right-[160px] top-24 z-[1] aspect-[3/2] w-[660px] sm:-right-[70px] sm:top-16 sm:w-[820px] lg:right-16 lg:top-4 lg:w-[1020px] xl:right-24 xl:top-0 xl:w-[1120px]">
+    <div className="pointer-events-none absolute -right-[210px] top-28 z-[1] aspect-[3/2] w-[560px] sm:-right-[70px] sm:top-16 sm:w-[820px] lg:right-16 lg:top-4 lg:w-[1020px] xl:right-24 xl:top-0 xl:w-[1120px]">
       <img
         src={getAssetPath("/images/worldmap.svg")}
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-contain opacity-[0.18] sm:opacity-[0.25] lg:opacity-[0.34]"
+        className="absolute inset-0 h-full w-full object-contain opacity-[0.13] sm:opacity-[0.25] lg:opacity-[0.34]"
         style={{
           filter: "brightness(0) saturate(100%) invert(24%) sepia(98%) saturate(2850%) hue-rotate(211deg) brightness(66%) contrast(118%) blur(0.3px)",
           maskImage:
@@ -72,9 +72,10 @@ function WorldMapBackdrop() {
 
 export function Hero() {
   const { t } = useTranslation()
+  const titleParts = t("hero.title").split("\u00A0")
 
   return (
-    <section className="relative overflow-hidden bg-transparent pb-20 pt-28 sm:pb-24 sm:pt-32 lg:pb-28 lg:pt-40">
+    <section className="relative overflow-hidden bg-transparent pb-14 pt-24 sm:pb-24 sm:pt-32 lg:pb-28 lg:pt-40">
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.62)_0%,rgba(238,247,255,0.22)_68%,rgba(248,251,255,0)_100%)]" />
       <div
         className="pointer-events-none absolute inset-0 opacity-40"
@@ -89,27 +90,37 @@ export function Hero() {
       <div className="pointer-events-none absolute -right-44 -top-36 h-[32rem] w-[32rem] rounded-full bg-blue-200/25 blur-3xl" />
       <WorldMapBackdrop />
 
-      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-8 px-4 lg:grid-cols-[1.15fr_.85fr] lg:gap-12 lg:px-8">
-        <div className="max-w-2xl">
-          <h1 className="text-[2.1rem] font-extrabold leading-[1.08] tracking-[-0.04em] text-slate-950 sm:text-[2.7rem] lg:text-[3.1rem] xl:text-[3.35rem]">
-            {t("hero.title")}
+      <div className="relative z-10 mx-auto grid min-w-0 max-w-6xl items-center gap-8 px-4 lg:grid-cols-[1.15fr_.85fr] lg:gap-12 lg:px-8">
+        <div className="min-w-0 max-w-2xl">
+          <h1 className="max-w-full text-[clamp(1.78rem,8vw,2.35rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-slate-950 sm:text-[2.7rem] lg:text-[3.1rem] xl:text-[3.35rem]">
+            {titleParts.map((part, index) => (
+              <span key={`${part}-${index}`}>
+                {index > 0 ? (
+                  <>
+                    <span className="sm:hidden"> </span>
+                    <span className="hidden sm:inline">&nbsp;</span>
+                  </>
+                ) : null}
+                {part}
+              </span>
+            ))}
           </h1>
 
-          <p className="mt-5 max-w-xl text-[15px] font-medium leading-7 text-slate-600 sm:text-base lg:text-lg">
+          <p className="mt-4 max-w-xl text-[15px] font-medium leading-6 text-slate-600 sm:mt-5 sm:text-base sm:leading-7 lg:text-lg">
             {t("hero.subtitle")}
           </p>
 
-          <div className="mt-7 flex w-full flex-col gap-2.5 sm:w-auto sm:flex-row">
+          <div className="mt-6 flex w-full flex-col gap-2.5 sm:mt-7 sm:w-auto sm:flex-row">
             <Link
               href="/catalog"
-              className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-[#0756b8] px-6 py-3 text-xs font-bold text-white shadow-[0_12px_28px_-17px_rgba(7,86,184,0.75)] transition-colors hover:bg-[#064a9d]"
+              className="group inline-flex min-h-12 items-center justify-center gap-2.5 rounded-full bg-[#0756b8] px-6 py-3 text-xs font-bold text-white shadow-[0_12px_28px_-17px_rgba(7,86,184,0.75)] transition-colors hover:bg-[#064a9d]"
             >
               {t("hero.cta")}
               <span className="transition-transform group-hover:translate-x-1"><ArrowIcon /></span>
             </Link>
             <Link
               href="/contacts"
-              className="inline-flex items-center justify-center rounded-full border border-blue-200 bg-white/75 px-6 py-3 text-xs font-bold text-slate-800 backdrop-blur-sm transition-colors hover:border-blue-300 hover:bg-white hover:text-[#0756b8]"
+              className="inline-flex min-h-12 items-center justify-center rounded-full border border-blue-200 bg-white/75 px-6 py-3 text-xs font-bold text-slate-800 backdrop-blur-sm transition-colors hover:border-blue-300 hover:bg-white hover:text-[#0756b8]"
             >
               {t("hero.contact")}
             </Link>

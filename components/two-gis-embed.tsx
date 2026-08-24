@@ -41,7 +41,7 @@ export function TwoGisEmbed({
     <iframe
       title="Карта: Астана, ул. Әлихан Бөкейхан 27/1"
       src={buildGoogleMapsEmbedSrc(OFFICE_LAT, OFFICE_LON, locale)}
-      className="block w-full border-0"
+      className="mobile-map-frame block w-full border-0"
       style={
         {
           height,

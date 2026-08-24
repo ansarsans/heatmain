@@ -60,6 +60,8 @@ export function ProductCard({
             src={getAssetPath(product.image)}
             alt={product.name[lang]}
             fill
+            loading="lazy"
+            decoding="async"
             className="object-cover transition-transform duration-700 group-hover:scale-[1.025]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
@@ -70,10 +72,10 @@ export function ProductCard({
             <PlaceholderIcon className="relative h-12 w-12 opacity-55" strokeWidth={1.35} aria-hidden="true" />
           </div>
         )}
-        <div className="absolute right-3 top-2 z-10">
+        <div className="absolute right-2 top-2 z-10 max-w-[calc(100%-1rem)] sm:right-3">
           <span
             className={cn(
-              "inline-block rounded-full border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider",
+              "block max-w-full truncate rounded-full border px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider sm:text-[10px]",
               variant === 'light' 
                 ? "border-blue-100 bg-white/90 text-[#0756b8] backdrop-blur-sm" 
                 : "bg-zinc-900/80 border-white/20 text-white backdrop-blur-sm"
@@ -92,7 +94,7 @@ export function ProductCard({
       >
         <h3
           className={cn(
-            "font-semibold leading-tight transition-colors",
+            "break-words font-semibold leading-tight transition-colors",
             hideDescription ? "mb-4 text-base sm:text-[17px]" : compact ? "mb-1.5 text-base" : "mb-2 text-xl",
             variant === "light" ? "text-zinc-900" : "text-white",
           )}
@@ -109,13 +111,13 @@ export function ProductCard({
             {product.description[lang]}
           </p>
         )}
-        <div className="mt-auto flex items-center justify-end gap-2">
+        <div className="mt-auto flex flex-wrap items-center justify-end gap-2">
           {onDetailsClick ? (
             <button
               type="button"
               onClick={() => onDetailsClick(product)}
               className={cn(
-                "inline-flex cursor-pointer items-center rounded-full border px-4 py-2 text-[11px] font-bold transition-all active:scale-95",
+                "inline-flex min-h-11 cursor-pointer items-center justify-center rounded-full border px-4 py-2 text-[11px] font-bold transition-all active:scale-95 sm:min-h-0",
                 variant === "light"
                   ? "border-zinc-300 bg-transparent text-zinc-900 hover:bg-zinc-100"
                   : "border-white/20 bg-white/5 text-white hover:bg-white/10",
@@ -128,8 +130,8 @@ export function ProductCard({
           <Link
             href={`/contacts?product=${encodeURIComponent(product.id)}`}
             className={cn(
-              "inline-flex items-center gap-1.5 rounded-full font-bold text-white transition-all active:scale-95",
-              compact ? "px-3.5 py-1.5 text-[10px]" : "px-4 py-2 text-[11px]",
+              "inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full font-bold text-white transition-all active:scale-95 sm:min-h-0",
+              compact ? "px-4 py-2 text-[10px]" : "px-4 py-2 text-[11px]",
               variant === "light"
                 ? "bg-[#0756b8] hover:bg-[#064a9d]"
                 : "bg-[#0241c0] hover:bg-[#0241c0]/80",
