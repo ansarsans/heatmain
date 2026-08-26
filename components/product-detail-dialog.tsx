@@ -30,7 +30,7 @@ const categoryIcons = {
 }
 
 const closeBtnClass =
-  "top-2.5 right-2.5 z-[110] flex size-11 items-center justify-center rounded-full bg-white/80 text-zinc-500 backdrop-blur-sm transition-colors hover:bg-zinc-100 hover:text-zinc-900 focus-visible:outline-none focus-visible:ring-0 sm:top-4 sm:right-4 sm:size-10 [&_svg]:size-5"
+  "top-2.5 right-2.5 z-[110] flex size-12 items-center justify-center rounded-full border-2 border-slate-300 bg-white text-slate-900 shadow-[0_5px_18px_rgba(15,23,42,0.3)] transition-[background-color,border-color,transform] hover:border-slate-400 hover:bg-slate-50 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0756b8] focus-visible:ring-offset-2 sm:top-4 sm:right-4 sm:size-10 sm:border sm:shadow-md [&_svg]:size-6 [&_svg]:stroke-[2.6] sm:[&_svg]:size-5 sm:[&_svg]:stroke-2"
 
 interface ProductDetailDialogProps {
   product: Product | null
@@ -125,6 +125,11 @@ export function ProductDetailDialog({ product, onOpenChange }: ProductDetailDial
                 <DialogDescription className="text-left text-[13px] leading-6 text-zinc-600 sm:text-[15px] sm:leading-relaxed">
                   {product.description[lang]}
                 </DialogDescription>
+                {product.category === "rubber" ? (
+                  <p className="rounded-xl border border-blue-100 bg-blue-50/70 px-4 py-3 text-left text-xs font-medium leading-5 text-[#0756b8] sm:text-[13px]">
+                    {t("products.rubber.custom_note")}
+                  </p>
+                ) : null}
                 {product.detailTables?.length ? (
                   <div className="space-y-5 border-t border-zinc-100 pt-4">
                     {product.detailTables.map((table, tableIndex) => {
@@ -224,21 +229,13 @@ export function ProductDetailDialog({ product, onOpenChange }: ProductDetailDial
                     </div>
                   </div>
                 ) : (
-                  <div className="grid gap-3 border-t border-zinc-100 pt-4 sm:grid-cols-2">
+                  <div className="border-t border-zinc-100 pt-4">
                     <div>
                       <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-zinc-400">
                         {t("products.origin")}
                       </p>
                       <p className="mt-1 text-sm font-semibold text-zinc-800">
                         {product.origin ? localizeOrigin(product.origin, lang) : t("products.on_request")}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-zinc-400">
-                        {t("products.buyer")}
-                      </p>
-                      <p className="mt-1 text-sm font-semibold text-zinc-800">
-                        {product.buyer || t("products.on_request")}
                       </p>
                     </div>
                   </div>

@@ -51,6 +51,7 @@ export const en: Record<string, string> = {
   "products.origin": "Country of origin",
   "products.buyer": "Buyer",
   "products.on_request": "On request",
+  "products.rubber.custom_note": "Custom manufacturing is available to individual dimensions and the customer's technical specifications.",
   "products.specifications": "Range and specifications",
   "products.specification.name": "Belt type",
   "products.specification.grades": "Grades / sizes",

@@ -50,41 +50,61 @@ export function ProductCard({
   const { locale, t } = useTranslation()
   const lang = locale as Locale
   const PlaceholderIcon = categoryIcons[product.category]
+  const imageContainerClassName = cn(
+    "relative aspect-video w-full overflow-hidden bg-stone-200 text-left",
+    compact ? "rounded-xl" : "rounded-[1.15rem]",
+    onDetailsClick && "cursor-pointer touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0756b8] focus-visible:ring-offset-2",
+  )
+
+  const imageContent = (
+    <>
+      {product.image ? (
+        <Image
+          src={getAssetPath(product.image)}
+          alt={product.name[lang]}
+          fill
+          loading="lazy"
+          decoding="async"
+          className="object-cover transition-transform duration-700 group-hover:scale-[1.025]"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+      ) : (
+        <div className="relative flex h-full items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_28%_20%,rgba(147,197,253,0.42),transparent_36%),linear-gradient(145deg,#f8fbff_0%,#e8f3ff_100%)] text-[#0756b8]">
+          <div className="absolute -bottom-16 -right-12 h-44 w-44 rounded-full border border-blue-200/65" />
+          <div className="absolute -left-12 -top-16 h-36 w-36 rounded-full border border-white/90" />
+          <PlaceholderIcon className="relative h-12 w-12 opacity-55" strokeWidth={1.35} aria-hidden="true" />
+        </div>
+      )}
+      <div className="pointer-events-none absolute right-2 top-2 z-10 max-w-[calc(100%-1rem)] sm:right-3">
+        <span
+          className={cn(
+            "block max-w-full truncate rounded-full border px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider sm:text-[10px]",
+            variant === "light"
+              ? "border-blue-100 bg-white/90 text-[#0756b8] backdrop-blur-sm"
+              : "border-white/20 bg-zinc-900/80 text-white backdrop-blur-sm",
+          )}
+        >
+          {categoryLabels[product.category]?.[lang] ?? product.category}
+        </span>
+      </div>
+    </>
+  )
 
   return (
     <div className="group flex h-full flex-col overflow-hidden transition-all">
       {/* Image Container */}
-      <div className={cn("relative aspect-video overflow-hidden bg-stone-200", compact ? "rounded-xl" : "rounded-[1.15rem]")}>
-        {product.image ? (
-          <Image
-            src={getAssetPath(product.image)}
-            alt={product.name[lang]}
-            fill
-            loading="lazy"
-            decoding="async"
-            className="object-cover transition-transform duration-700 group-hover:scale-[1.025]"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-        ) : (
-          <div className="relative flex h-full items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_28%_20%,rgba(147,197,253,0.42),transparent_36%),linear-gradient(145deg,#f8fbff_0%,#e8f3ff_100%)] text-[#0756b8]">
-            <div className="absolute -bottom-16 -right-12 h-44 w-44 rounded-full border border-blue-200/65" />
-            <div className="absolute -left-12 -top-16 h-36 w-36 rounded-full border border-white/90" />
-            <PlaceholderIcon className="relative h-12 w-12 opacity-55" strokeWidth={1.35} aria-hidden="true" />
-          </div>
-        )}
-        <div className="absolute right-2 top-2 z-10 max-w-[calc(100%-1rem)] sm:right-3">
-          <span
-            className={cn(
-              "block max-w-full truncate rounded-full border px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider sm:text-[10px]",
-              variant === 'light' 
-                ? "border-blue-100 bg-white/90 text-[#0756b8] backdrop-blur-sm" 
-                : "bg-zinc-900/80 border-white/20 text-white backdrop-blur-sm"
-            )}
-          >
-            {categoryLabels[product.category]?.[lang] ?? product.category}
-          </span>
-        </div>
-      </div>
+      {onDetailsClick ? (
+        <button
+          type="button"
+          onClick={() => onDetailsClick(product)}
+          className={imageContainerClassName}
+          aria-label={`${t("products.learn_more")}: ${product.name[lang]}`}
+        >
+          {imageContent}
+        </button>
+      ) : (
+        <div className={imageContainerClassName}>{imageContent}</div>
+      )}
 
       <div
         className={cn(

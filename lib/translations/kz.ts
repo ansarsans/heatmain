@@ -51,6 +51,7 @@ export const kz: Record<string, string> = {
   "products.origin": "Шығарылған ел",
   "products.buyer": "Сатып алушы",
   "products.on_request": "Сұраныс бойынша",
+  "products.rubber.custom_note": "Жеке өлшемдер мен тапсырыс берушінің техникалық тапсырмасы бойынша тапсырыспен дайындауға болады.",
   "products.specifications": "Ассортименті мен сипаттамалары",
   "products.specification.name": "Таспа түрі",
   "products.specification.grades": "Маркалар / типтік өлшемдер",

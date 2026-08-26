@@ -51,6 +51,7 @@ export const ru: Record<string, string> = {
   "products.origin": "Страна происхождения",
   "products.buyer": "Покупатель",
   "products.on_request": "По запросу",
+  "products.rubber.custom_note": "Доступно изготовление на заказ по индивидуальным размерам и техническому заданию заказчика.",
   "products.specifications": "Ассортимент и характеристики",
   "products.specification.name": "Тип ленты",
   "products.specification.grades": "Марки / типоразмеры",
