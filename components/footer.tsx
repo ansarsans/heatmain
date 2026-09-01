@@ -102,9 +102,12 @@ export function Footer() {
                 <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
                   {t("contacts.phone")}
                 </span>
-                <span className="font-semibold text-white">
+                <a
+                  href="tel:+77017734444"
+                  className="w-fit font-semibold text-white transition-colors hover:text-blue-200"
+                >
                   {t("contacts.phone_placeholder")}
-                </span>
+                </a>
               </div>
               <div className="flex flex-col gap-1.5">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">

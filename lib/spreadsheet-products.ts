@@ -1,6 +1,16 @@
-import type { Category, Product } from "./products"
+import type { Category, LocalizedText, Product, ProductDetailTable } from "./products"
 
 type LocalizedName = [ru: string, kz: string, en: string]
+
+const localized = (ru: string, kz: string, en: string): LocalizedText => ({ ru, kz, en })
+
+const technical = (value: string): LocalizedText => localized(value, value, value)
+
+const detailTable = (
+  title: LocalizedText,
+  columns: LocalizedText[],
+  rows: LocalizedText[][],
+): ProductDetailTable => ({ title, columns, rows })
 
 const descriptions: Record<Category, Product["description"]> = {
   chemistry: {
@@ -176,7 +186,255 @@ export const spreadsheetProducts: Product[] = [
   product("sheet-equip-59", "equipment", ["Станок для навязки пожарных рукавов", "Өрт сөндіру жеңдерін байлау станогы", "Fire-hose coupling machine"], "Китай", "НГМК", undefined, "/images/Станок_для_навязки_пожарных_рукавов.jpg"),
   product("sheet-equip-60", "equipment", ["Шаровая мельница", "Шарлы диірмен", "Ball mill"], "Китай", "АГМК", undefined, "/images/Шаровая_мельница.jpg"),
   product("sheet-equip-61", "equipment", ["Пресс гидравлический насадочный", "Гидравликалық отырғызу пресі", "Hydraulic mounting press"], "Китай", "НГМК", undefined, "/images/Пресс_гидравлический_насадочный.jpg"),
-  product("sheet-equip-65", "equipment", ["Конусная дробилка", "Конусты ұсатқыш", "Cone crusher"], "Китай", "АГМК, НГМК", undefined, "/images/Конусная_дробилка.jpg"),
+  {
+    id: "sheet-equip-65",
+    category: "equipment",
+    name: localized("Конусная дробилка", "Конусты ұсатқыш", "Cone crusher"),
+    description: localized(
+      "Промышленная конусная дробилка для вторичного и третичного дробления горных пород и минерального сырья. Модель и параметры подбираются под требуемую производительность и фракцию готового материала.",
+      "Тау жыныстары мен минералдық шикізатты екінші және үшінші сатылы ұсақтауға арналған өнеркәсіптік конусты ұсатқыш. Үлгісі мен параметрлері қажетті өнімділікке және дайын материал фракциясына сәйкес таңдалады.",
+      "Industrial cone crusher for secondary and tertiary crushing of rock and mineral raw materials. The model and parameters are selected for the required capacity and final product size.",
+    ),
+    origin: "Китай",
+    buyer: "АГМК, НГМК",
+    image: "/images/Конусная_дробилка.jpg",
+    detailTables: [
+      detailTable(
+        localized(
+          "Одноцилиндровая конусная дробилка серии GPL",
+          "GPL сериялы бір цилиндрлі конусты ұсатқыш",
+          "GPL Series Single-Cylinder Cone Crusher",
+        ),
+        [
+          localized("Модель", "Үлгі", "Model"),
+          localized(
+            "Максимальный размер подаваемого материала (мм)",
+            "Берілетін материалдың ең үлкен өлшемі (мм)",
+            "Maximum feed size (mm)",
+          ),
+          localized(
+            "Размер выходного отверстия (мм)",
+            "Шығару саңылауының өлшемі (мм)",
+            "Discharge opening size (mm)",
+          ),
+          localized(
+            "Мощность (кВт)",
+            "Қуаты (кВт)",
+            "Power (kW)",
+          ),
+        ],
+        [
+          [technical("GPL100S"), technical("210"), technical("20–45"), technical("90")],
+          [technical("GPL200S"), technical("290"), technical("25–50"), technical("160")],
+          [technical("GPL300S"), technical("330"), technical("25–50"), technical("250")],
+          [technical("GPL500S"), technical("440"), technical("45–80"), technical("355")],
+          [technical("GPL100"), technical("135"), technical("7–25"), technical("90")],
+          [technical("GPL200"), technical("180"), technical("8–35"), technical("160")],
+          [technical("GPL300"), technical("190"), technical("8–35"), technical("250")],
+          [technical("GPL550"), technical("235"), technical("10–45"), technical("400")],
+        ],
+      ),
+      detailTable(
+        localized(
+          "Многоцилиндровая конусная дробилка серии HPL",
+          "HPL сериялы көп цилиндрлі конусты ұсатқыш",
+          "HPL Series Multi-Cylinder Cone Crusher",
+        ),
+        [
+          localized("Модель дробилки", "Ұсатқыш үлгісі", "Crusher model"),
+          localized(
+            "Диаметр конуса (мм)",
+            "Конустың диаметрі (мм)",
+            "Head diameter (mm)",
+          ),
+          localized(
+            "Мощность главного электродвигателя (кВт)",
+            "Негізгі электр қозғалтқышының қуаты (кВт)",
+            "Main motor power (kW)",
+          ),
+          localized("Масса (т)", "Массасы (т)", "Weight (t)"),
+        ],
+        [
+          [technical("HPL100"), technical("735"), technical("90"), technical("6.4")],
+          [technical("HPL200"), technical("940"), technical("132"), technical("12.1")],
+          [technical("HPL300"), technical("1120"), technical("220"), technical("18.1")],
+          [technical("HPL400"), technical("1320"), technical("315"), technical("25.6")],
+          [technical("HPL500"), technical("1520"), technical("355"), technical("37")],
+          [technical("HPL800"), technical("1650"), technical("600"), technical("64.1")],
+        ],
+      ),
+      detailTable(
+        localized(
+          "Одноцилиндровая конусная дробилка серии CHL–CSL",
+          "CHL–CSL сериялы бір цилиндрлі конусты ұсатқыш",
+          "CHL–CSL Series Single-Cylinder Cone Crusher",
+        ),
+        [
+          localized("Модель", "Үлгі", "Model"),
+          localized(
+            "Максимальный размер загрузочного материала (мм)",
+            "Жүктелетін материалдың ең үлкен өлшемі (мм)",
+            "Maximum feed size (mm)",
+          ),
+          localized(
+            "Размер выходного отверстия (мм)",
+            "Шығару саңылауының өлшемі (мм)",
+            "Discharge opening size (mm)",
+          ),
+          localized(
+            "Мощность (кВт)",
+            "Қуаты (кВт)",
+            "Power (kW)",
+          ),
+        ],
+        [
+          [technical("CSL420"), technical("267"), technical("16–38"), technical("90")],
+          [technical("CSL430"), technical("400"), technical("16–83"), technical("132")],
+          [technical("CSL440"), technical("500"), technical("29–83"), technical("220")],
+          [technical("CSL660"), technical("622"), technical("35–83"), technical("315")],
+          [technical("CHL420"), technical("155"), technical("4–32"), technical("90")],
+          [technical("CHL430"), technical("214"), technical("4–70"), technical("132")],
+          [technical("CHL440"), technical("250"), technical("4–44"), technical("220")],
+          [technical("CHL660"), technical("321"), technical("13–70"), technical("315")],
+          [technical("CHL860i"), technical("315"), technical("13–51"), technical("500")],
+          [technical("CHL870i"), technical("350"), technical("10–70"), technical("600")],
+        ],
+      ),
+      detailTable(
+        localized(
+          "Пружинная конусная дробилка",
+          "Серіппелі конусты ұсатқыш",
+          "Spring Cone Crusher",
+        ),
+        [
+          localized("Модель", "Үлгі", "Model"),
+          localized(
+            "Диаметр дробящего конуса (мм)",
+            "Ұсатқыш конустың диаметрі (мм)",
+            "Crushing cone diameter (mm)",
+          ),
+          localized(
+            "Максимальный размер подаваемого материала (мм)",
+            "Берілетін материалдың ең үлкен өлшемі (мм)",
+            "Maximum feed size (mm)",
+          ),
+          localized(
+            "Мощность электродвигателя (кВт)",
+            "Электр қозғалтқышының қуаты (кВт)",
+            "Electric motor power (kW)",
+          ),
+        ],
+        [
+          [technical("PYB900"), technical("900"), technical("115"), technical("55")],
+          [technical("PYZ900"), technical("900"), technical("60"), technical("55")],
+          [technical("PYD900"), technical("900"), technical("50"), technical("55")],
+          [technical("PYB1200"), technical("1200"), technical("145"), technical("110")],
+          [technical("PYZ1200"), technical("1200"), technical("100"), technical("110")],
+          [technical("PYD1200"), technical("1200"), technical("50"), technical("110")],
+          [technical("PYB1200"), technical("1200"), technical("100"), technical("160")],
+          [technical("PYZ1750"), technical("1750"), technical("185"), technical("160")],
+          [technical("PYD1750"), technical("1750"), technical("85"), technical("160")],
+          [technical("PYB2200"), technical("2200"), technical("300"), technical("280")],
+          [technical("PYD2200"), technical("2200"), technical("100"), technical("280")],
+        ],
+      ),
+    ],
+  },
+  {
+    id: "added-equip-jaw-crusher",
+    category: "equipment",
+    name: localized("Щековая дробилка", "Жақты ұсатқыш", "Jaw crusher"),
+    description: localized(
+      "Промышленная щековая дробилка для первичного и вторичного дробления горных пород и минерального сырья. Модель и технические параметры подбираются под требуемую производительность.",
+      "Тау жыныстары мен минералдық шикізатты бастапқы және қайталама ұсақтауға арналған өнеркәсіптік жақты ұсатқыш. Үлгісі мен техникалық параметрлері қажетті өнімділікке сәйкес таңдалады.",
+      "Industrial jaw crusher for primary and secondary crushing of rock and mineral raw materials. The model and technical parameters are selected for the required capacity.",
+    ),
+    image: "/images/Щековая_дробилка.jpg",
+    detailTables: [
+      detailTable(
+        localized(
+          "Щековая дробилка серии CL",
+          "CL сериялы жақты ұсатқыш",
+          "CL Series Jaw Crusher",
+        ),
+        [
+          localized("Модель", "Үлгі", "Model"),
+          localized(
+            "Размер приёмного отверстия (мм×мм)",
+            "Қабылдау саңылауының өлшемі (мм×мм)",
+            "Feed opening size (mm×mm)",
+          ),
+          localized(
+            "Планируемый максимальный размер подаваемого материала (мм)",
+            "Берілетін материалдың жоспарлы ең үлкен өлшемі (мм)",
+            "Planned maximum feed size (mm)",
+          ),
+          localized(
+            "Производительность (Mtph)",
+            "Өнімділігі (Mtph)",
+            "Capacity (Mtph)",
+          ),
+        ],
+        [
+          [technical("CL80"), technical("800×510"), technical("410"), technical("245")],
+          [technical("CL96"), technical("930×580"), technical("460"), technical("310")],
+          [technical("CL106"), technical("1060×700"), technical("560"), technical("395")],
+          [technical("CL110"), technical("1100×850"), technical("680"), technical("430")],
+          [technical("CL120"), technical("1200×870"), technical("700"), technical("395")],
+          [technical("CL125"), technical("1250×950"), technical("760"), technical("590")],
+          [technical("CL130"), technical("1300×1000"), technical("800"), technical("605")],
+          [technical("CL145"), technical("1400×1100"), technical("870"), technical("625")],
+          [technical("CL150"), technical("1400×1200"), technical("960"), technical("640")],
+          [technical("CL160"), technical("1600×1200"), technical("960"), technical("815")],
+          [technical("CL200"), technical("2000×1500"), technical("1200"), technical("1015")],
+        ],
+      ),
+      detailTable(
+        localized(
+          "Щековая дробилка серии PE",
+          "PE сериялы жақты ұсатқыш",
+          "PE Series Jaw Crusher",
+        ),
+        [
+          localized("Модель", "Үлгі", "Model"),
+          localized(
+            "Размер входного отверстия (мм×мм)",
+            "Кіріс саңылауының өлшемі (мм×мм)",
+            "Feed opening size (mm×mm)",
+          ),
+          localized(
+            "Максимальный размер загружаемого материала (мм)",
+            "Жүктелетін материалдың ең үлкен өлшемі (мм)",
+            "Maximum feed size (mm)",
+          ),
+          localized(
+            "Производительность (т/ч)",
+            "Өнімділігі (т/сағ)",
+            "Capacity (t/h)",
+          ),
+        ],
+        [
+          [technical("PE-150×250"), technical("150×250"), technical("130"), technical("1–5")],
+          [technical("PE-250×400"), technical("250×400"), technical("210"), technical("5–20")],
+          [technical("PE-250×750"), technical("250×750"), technical("210"), technical("13–35")],
+          [technical("PE-250×1000"), technical("250×1000"), technical("210"), technical("16–52")],
+          [technical("PE-250×1200"), technical("250×1200"), technical("210"), technical("20–60")],
+          [technical("PE-300×500"), technical("300×500"), technical("250"), technical("5–20")],
+          [technical("PE-300×1300"), technical("300×1300"), technical("250"), technical("16–104")],
+          [technical("PE-400×600"), technical("400×600"), technical("340"), technical("16–65")],
+          [technical("PE-500×700"), technical("500×700"), technical("425"), technical("45–100")],
+          [technical("PE-600×900"), technical("600×900"), technical("500"), technical("50–120")],
+          [technical("PE-750×1060"), technical("750×1060"), technical("630"), technical("52–208")],
+          [technical("PE-800×1060"), technical("800×1060"), technical("650"), technical("85–228")],
+          [technical("PE-870×1060"), technical("870×1060"), technical("670"), technical("181–280")],
+          [technical("PE-900×1200"), technical("900×1200"), technical("750"), technical("140–320")],
+          [technical("PE-1000×1200"), technical("1000×1200"), technical("850"), technical("160–350")],
+          [technical("PE-1200×1500"), technical("1200×1500"), technical("1020"), technical("300–800")],
+          [technical("PE-1500×1800"), technical("1500×1800"), technical("1200"), technical("430–1000")],
+        ],
+      ),
+    ],
+  },
   product("sheet-equip-66", "equipment", ["Запчасти для автогрейдеров, тракторов и бульдозеров", "Автогрейдерлерге, тракторлар мен бульдозерлерге арналған қосалқы бөлшектер", "Spare parts for motor graders, tractors, and bulldozers"], "Россия/Китай", "АГМК, НГМК", undefined, "/images/Запчасти_для_автогрейдеров_тракторов_и_бульдозеров.jpg"),
   product("sheet-equip-67", "equipment", ["Запчасти к станкам и автотехнике", "Станоктар мен автотехникаға арналған қосалқы бөлшектер", "Spare parts for machine tools and vehicles"], "Россия/Китай", "АГМК, НГМК", undefined, "/images/Запчасти_к_станкам_и_автотехнике.jpg"),
   product("sheet-equip-68", "equipment", ["Запчасти промышленных мельниц, дробилок, печей и барабанов", "Өнеркәсіптік диірмендерге, ұсатқыштарға, пештер мен барабандарға арналған қосалқы бөлшектер", "Spare parts for industrial mills, crushers, furnaces, and drums"], "Китай", "НГМК, АГМК", undefined, "/images/Запчасти_промышленных_мельниц_дробилок_печей_и_барабанов.jpg"),

@@ -18,7 +18,7 @@ import {
 const categoryLabels: Record<string, Record<string, string>> = {
   chemistry: { ru: "Хим. реагенты", kz: "Химиялық реагенттер", en: "Chemical Reagents" },
   metals: { ru: "Металлы, сплавы", kz: "Металдар, қорытпалар", en: "Metals & Alloys" },
-  equipment: { ru: "Оборудование, комплектующие", kz: "Жабдықтар, құрамдас бөлшектер", en: "Equipment & Components" },
+  equipment: { ru: "Оборудование, комплектующие и расход. материалы", kz: "Жабдықтар, құрамдас бөлшектер және шығыс материалдары", en: "Equipment, Components & Consumables" },
   rubber: { ru: "Резинотехника", kz: "Резеңке-техникалық бұйымдар", en: "Rubber Products" },
 }
 
@@ -42,6 +42,10 @@ export function ProductDetailDialog({ product, onOpenChange }: ProductDetailDial
   const lang = locale as Locale
   const open = product !== null
   const PlaceholderIcon = product ? categoryIcons[product.category] : FlaskConical
+  const hasWideProductLayout =
+    product?.category === "rubber" ||
+    product?.id === "added-equip-jaw-crusher" ||
+    product?.id === "sheet-equip-65"
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -50,7 +54,7 @@ export function ProductDetailDialog({ product, onOpenChange }: ProductDetailDial
         closeButtonClassName={closeBtnClass}
         className={cn(
           "h-[calc(100dvh-1rem)] max-h-none gap-0 overflow-hidden rounded-2xl border-zinc-200 p-0 shadow-xl sm:h-auto sm:max-h-[min(92vh,760px)] sm:rounded-xl",
-          product?.category === "rubber"
+          hasWideProductLayout
             ? "max-h-[min(92vh,760px)] w-[min(100vw-1.5rem,calc(100vw-2rem))] max-w-[min(100vw-1.5rem,1040px)] sm:my-6 sm:mx-auto sm:w-[min(100vw-2.5rem,1040px)] lg:max-w-[1040px]"
             : "max-h-[min(92vh,760px)] w-[min(100vw-1.5rem,calc(100vw-2rem))] max-w-[min(100vw-1.5rem,920px)] sm:my-6 sm:mx-auto sm:w-[min(100vw-2.5rem,920px)] lg:max-w-[960px]",
           "translate-x-[-50%] translate-y-[-50%]",
@@ -62,13 +66,13 @@ export function ProductDetailDialog({ product, onOpenChange }: ProductDetailDial
             <div
               className={cn(
                 "relative h-[clamp(160px,25dvh,205px)] w-full shrink-0 bg-stone-200 sm:h-[230px] md:h-auto md:min-h-[min(420px,55vh)]",
-                product.category === "rubber"
+                hasWideProductLayout
                   ? "overflow-hidden bg-stone-100 md:w-[min(42%,420px)] lg:w-[420px]"
                   : "md:w-[min(42%,360px)] lg:w-[400px]",
               )}
             >
               {product.image ? (
-                product.category === "rubber" ? (
+                hasWideProductLayout ? (
                   <>
                     <Image
                       src={getAssetPath(product.image)}

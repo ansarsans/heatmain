@@ -19,7 +19,7 @@ const categoryColors: Record<string, string> = {
 const categoryLabels: Record<string, Record<string, string>> = {
   chemistry: { ru: "Хим. реагенты", kz: "Химиялық реагенттер", en: "Chemical Reagents" },
   metals: { ru: "Металлы, сплавы", kz: "Металдар, қорытпалар", en: "Metals & Alloys" },
-  equipment: { ru: "Оборудование, комплектующие", kz: "Жабдықтар, құрамдас бөлшектер", en: "Equipment & Components" },
+  equipment: { ru: "Оборудование, комплектующие и расход. материалы", kz: "Жабдықтар, құрамдас бөлшектер және шығыс материалдары", en: "Equipment, Components & Consumables" },
   rubber: { ru: "Резинотехника", kz: "Резеңке-техникалық бұйымдар", en: "Rubber Products" },
 }
 

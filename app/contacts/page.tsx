@@ -33,7 +33,7 @@ export default function ContactsPage() {
       icon: <Phone className="h-5 w-5" />,
       label: t("contacts.phone"),
       value: t("contacts.phone_placeholder"),
-      href: undefined,
+      href: "tel:+77017734444",
     },
     {
       icon: <MapPin className="h-5 w-5" />,
