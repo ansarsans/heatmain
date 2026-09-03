@@ -8,22 +8,20 @@ const _inter = Inter({
   variable: "--font-inter",
 })
 
-const iconBase = process.env.NODE_ENV === "production" ? "/heatmain" : ""
-
 export const metadata: Metadata = {
-  metadataBase: new URL('https://ansarsans.github.io/heatmain'),
+  metadataBase: new URL('https://heatenergycapital.kz'),
   title: 'Heat Energy Capital | Industrial Supply',
   description: 'Reliable supplier of chemical reagents, metals, alloys, and equipment for mining, metallurgical, and processing industries.',
   keywords: ['industrial supply', 'mining chemicals', 'ferroalloys', 'mining equipment', 'Kazakhstan', 'B2B'],
   icons: {
     icon: [
-      { url: `${iconBase}/logo.jpg`, type: "image/jpeg", sizes: "any" },
-      { url: `${iconBase}/icon.svg`, type: "image/svg+xml" },
+      { url: "/logo.jpg", type: "image/jpeg", sizes: "any" },
+      { url: "/icon.svg", type: "image/svg+xml" },
     ],
-    apple: `${iconBase}/logo.jpg`,
+    apple: "/logo.jpg",
   },
   openGraph: {
-    images: [{ url: `${iconBase}/logo.jpg`, alt: "Heat Energy Capital" }],
+    images: [{ url: "/logo.jpg", alt: "Heat Energy Capital" }],
   },
 }
 
