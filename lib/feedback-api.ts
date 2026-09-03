@@ -6,6 +6,8 @@ export type FeedbackPayload = {
   message: string
   phone?: string
   email?: string
+  privacyAccepted: boolean
+  marketingAccepted: boolean
 }
 
 export type FeedbackResponse = {
@@ -18,6 +20,19 @@ export async function submitFeedback(payload: FeedbackPayload): Promise<Feedback
   const phone = (payload.phone ?? "").trim()
   const email = (payload.email ?? "").trim()
   const message = (payload.message ?? "").trim()
+  const submittedAt = new Date().toISOString()
+
+  if (!payload.privacyAccepted) {
+    return { ok: false, error: "Privacy consent is required" }
+  }
+
+  const consentRecord = [
+    "---",
+    "Согласие на обработку и трансграничную передачу: да",
+    "Версия политики: 04.09.2026",
+    `Согласие на информационные и рекламные сообщения: ${payload.marketingAccepted ? "да" : "нет"}`,
+    `Дата и время отправки (UTC): ${submittedAt}`,
+  ].join("\n")
 
   const res = await fetch(FEEDBACK_WEBHOOK_URL, {
     method: "POST",
@@ -25,7 +40,11 @@ export async function submitFeedback(payload: FeedbackPayload): Promise<Feedback
     body: JSON.stringify({
       client_phone: phone,
       email,
-      additional_info: message,
+      additional_info: `${message}\n\n${consentRecord}`,
+      privacy_accepted: true,
+      marketing_accepted: payload.marketingAccepted,
+      privacy_policy_version: "2026-09-04",
+      submitted_at: submittedAt,
     }),
   })
 

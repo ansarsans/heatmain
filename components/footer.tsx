@@ -6,6 +6,7 @@ import { useTranslation } from "@/lib/i18n"
 import { TWO_GIS_GEO_PAGE } from "@/components/two-gis-embed"
 import { submitFeedback } from "@/lib/feedback-api"
 import { BrandLogo } from "@/components/brand-logo"
+import { PrivacyConsent } from "@/components/privacy-consent"
 
 export function Footer() {
   const { t } = useTranslation()
@@ -13,6 +14,8 @@ export function Footer() {
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
   const [message, setMessage] = useState("")
+  const [privacyAccepted, setPrivacyAccepted] = useState(false)
+  const [marketingAccepted, setMarketingAccepted] = useState(false)
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "err">("idle")
   const [hint, setHint] = useState("")
 
@@ -26,18 +29,26 @@ export function Footer() {
       setHint(t("contacts.form_hint"))
       return
     }
+    if (!privacyAccepted) {
+      setHint(t("privacy.form.required_error"))
+      return
+    }
     setStatus("sending")
     try {
       const res = await submitFeedback({
         message: m,
         phone: p || undefined,
         email: em || undefined,
+        privacyAccepted,
+        marketingAccepted,
       })
       if (res.ok) {
         setStatus("ok")
         setMessage("")
         setPhone("")
         setEmail("")
+        setPrivacyAccepted(false)
+        setMarketingAccepted(false)
       } else {
         setStatus("err")
         setHint(res.error ?? t("feedback.fail"))
@@ -164,6 +175,13 @@ export function Footer() {
                 rows={2}
                 className="w-full resize-y rounded-md border border-white/15 bg-white/[0.08] px-3 py-2.5 text-base text-white outline-none transition-colors placeholder:text-slate-400 focus:border-blue-300 focus:bg-white/[0.11] focus:ring-0 sm:resize-none sm:text-xs"
               />
+              <PrivacyConsent
+                privacyAccepted={privacyAccepted}
+                onPrivacyAcceptedChange={setPrivacyAccepted}
+                marketingAccepted={marketingAccepted}
+                onMarketingAcceptedChange={setMarketingAccepted}
+                variant="dark"
+              />
               {hint ? <p className="text-[11px] text-red-300">{hint}</p> : null}
               {status === "ok" ? (
                 <p className="text-[11px] font-medium text-emerald-300">{t("feedback.sent_ok")}</p>
@@ -183,6 +201,9 @@ export function Footer() {
           <p className="text-[11px] font-medium text-slate-400">
             © {year} Heat Energy Capital. {t("footer.rights")}
           </p>
+          <Link href="/privacy" className="w-fit text-[11px] font-medium text-slate-400 transition-colors hover:text-white">
+            {t("privacy.link")}
+          </Link>
         </div>
       </div>
     </footer>

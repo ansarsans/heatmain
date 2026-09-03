@@ -5,12 +5,15 @@ import { useTranslation } from "@/lib/i18n"
 import { TwoGisEmbed, TWO_GIS_GEO_PAGE } from "@/components/two-gis-embed"
 import { Mail, MapPin, Clock, ExternalLink, Phone, Send } from "lucide-react"
 import { submitFeedback } from "@/lib/feedback-api"
+import { PrivacyConsent } from "@/components/privacy-consent"
 
 export default function ContactsPage() {
   const { t, locale } = useTranslation()
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
   const [message, setMessage] = useState("")
+  const [privacyAccepted, setPrivacyAccepted] = useState(false)
+  const [marketingAccepted, setMarketingAccepted] = useState(false)
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "err">("idle")
   const [hint, setHint] = useState("")
 
@@ -59,18 +62,26 @@ export default function ContactsPage() {
       setHint(t("contacts.form_hint"))
       return
     }
+    if (!privacyAccepted) {
+      setHint(t("privacy.form.required_error"))
+      return
+    }
     setStatus("sending")
     try {
       const res = await submitFeedback({
         message: m,
         phone: p || undefined,
         email: em || undefined,
+        privacyAccepted,
+        marketingAccepted,
       })
       if (res.ok) {
         setStatus("ok")
         setMessage("")
         setPhone("")
         setEmail("")
+        setPrivacyAccepted(false)
+        setMarketingAccepted(false)
       } else {
         setStatus("err")
         setHint(res.error ?? t("feedback.fail"))
@@ -134,6 +145,13 @@ export default function ContactsPage() {
                   placeholder={t("contacts.message_label")}
                 />
               </div>
+
+              <PrivacyConsent
+                privacyAccepted={privacyAccepted}
+                onPrivacyAcceptedChange={setPrivacyAccepted}
+                marketingAccepted={marketingAccepted}
+                onMarketingAcceptedChange={setMarketingAccepted}
+              />
 
               {hint ? <p className="text-xs text-red-600">{hint}</p> : null}
               {status === "ok" ? (
