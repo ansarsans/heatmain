@@ -9,6 +9,7 @@ import { PrivacyConsent } from "@/components/privacy-consent"
 
 export default function ContactsPage() {
   const { t, locale } = useTranslation()
+  const [fullName, setFullName] = useState("")
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
   const [message, setMessage] = useState("")
@@ -56,11 +57,12 @@ export default function ContactsPage() {
     e.preventDefault()
     setHint("")
     const form = e.currentTarget as HTMLFormElement
+    const name = fullName.trim()
     const m = message.trim()
     const p = phone.trim()
     const em = email.trim()
     const website = String(new FormData(form).get("website") ?? "")
-    if (!m || (!p && !em)) {
+    if (!name || !m || (!p && !em)) {
       setHint(t("contacts.form_hint"))
       return
     }
@@ -71,6 +73,7 @@ export default function ContactsPage() {
     setStatus("sending")
     try {
       const res = await submitFeedback({
+        fullName: name,
         message: m,
         phone: p || undefined,
         email: em || undefined,
@@ -80,6 +83,7 @@ export default function ContactsPage() {
       })
       if (res.ok) {
         setStatus("ok")
+        setFullName("")
         setMessage("")
         setPhone("")
         setEmail("")
@@ -117,6 +121,20 @@ export default function ContactsPage() {
               <div className="absolute -left-[10000px] h-px w-px overflow-hidden" aria-hidden="true">
                 <label htmlFor="contact-website">Website</label>
                 <input id="contact-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  name="fullName"
+                  aria-label={t("contacts.full_name_label")}
+                  autoComplete="name"
+                  required
+                  value={fullName}
+                  onChange={e => setFullName(e.target.value)}
+                  maxLength={200}
+                  className="min-h-12 w-full rounded-lg border border-border/60 bg-white px-4 py-3 text-base outline-none transition-colors focus:border-[#1a1c21] focus:ring-1 focus:ring-[#1a1c21]/10 sm:text-sm"
+                  placeholder={t("contacts.full_name_label")}
+                />
               </div>
               <div>
                 <input

@@ -34,6 +34,7 @@ const content: Record<Locale, PrivacyContent> = {
       {
         title: "2. Какие данные мы собираем",
         items: [
+          "фамилия, имя и отчество (при наличии);",
           "номер телефона и адрес электронной почты;",
           "текст обращения, сведения о выбранном товаре и иная информация, добровольно указанная пользователем;",
           "факт и параметры согласия, версия Политики, дата и время отправки формы;",
@@ -62,7 +63,7 @@ const content: Record<Locale, PrivacyContent> = {
       {
         title: "5. Сроки хранения",
         paragraphs: [
-          "Данные, полученные через формы сайта, хранятся до достижения целей обработки, но не более 5 лет с даты последнего взаимодействия с пользователем. Данные, необходимые для исполнения договоров и требований законодательства, хранятся в течение установленных законодательством сроков. Контактные данные для информационных и рекламных рассылок обрабатываются до отзыва согласия пользователем.",
+          "Данные, полученные через формы сайта, хранятся до завершения обработки заявки, но не более одного года с даты её получения, если больший срок не требуется законодательством Республики Казахстан или договором. Контактные данные для информационных и рекламных сообщений обрабатываются до отзыва отдельного согласия пользователем.",
         ],
       },
       {
@@ -70,6 +71,7 @@ const content: Record<Locale, PrivacyContent> = {
         paragraphs: [
           "Сайт, обработчик обращений и корпоративная электронная почта размещаются на инфраструктуре PS.kz в Республике Казахстан. Данные формы передаются по защищённому соединению непосредственно на сервер сайта и доставляются в корпоративный почтовый ящик info@heatenergycapital.kz.",
           "Исходный код сайта может храниться в системе контроля версий GitHub, однако данные, введённые посетителями в формы сайта, туда не передаются. Ссылка на 2GIS открывается только по инициативе пользователя; после перехода обработка данных осуществляется по правилам соответствующего внешнего сервиса.",
+          "Трансграничная передача персональных данных, полученных через формы сайта, не осуществляется. Распространение таких данных в общедоступных источниках не осуществляется.",
           "Мы не продаём персональные данные и не передаём их третьим лицам для самостоятельных целей, кроме случаев, предусмотренных законодательством Республики Казахстан.",
         ],
       },
@@ -120,6 +122,7 @@ const content: Record<Locale, PrivacyContent> = {
       {
         title: "2. Қандай деректерді жинаймыз",
         items: [
+          "тегі, аты және әкесінің аты (бар болса);",
           "телефон нөмірі және электрондық пошта мекенжайы;",
           "өтініш мәтіні, таңдалған өнім туралы мәліметтер және пайдаланушы ерікті түрде көрсеткен өзге ақпарат;",
           "келісім фактісі мен параметрлері, Саясат нұсқасы, нысанды жіберу күні мен уақыты;",
@@ -148,7 +151,7 @@ const content: Record<Locale, PrivacyContent> = {
       {
         title: "5. Сақтау мерзімдері",
         paragraphs: [
-          "Сайт нысандары арқылы алынған деректер өңдеу мақсаттарына жеткенге дейін, бірақ пайдаланушымен соңғы өзара әрекеттескен күннен бастап 5 жылдан аспайтын мерзімде сақталады. Шарттарды орындау және заңнама талаптарын сақтау үшін қажетті деректер заңнамада белгіленген мерзімдер бойы сақталады. Ақпараттық және жарнамалық таратылымдарға арналған байланыс деректері пайдаланушы келісімін кері қайтарып алғанға дейін өңделеді.",
+          "Сайт нысандары арқылы алынған деректер өтінішті өңдеу аяқталғанға дейін, бірақ Қазақстан Республикасының заңнамасында немесе шартта ұзағырақ мерзім талап етілмесе, оны алған күннен бастап бір жылдан аспайтын мерзімде сақталады. Ақпараттық және жарнамалық хабарламаларға арналған байланыс деректері пайдаланушы бөлек келісімін кері қайтарып алғанға дейін өңделеді.",
         ],
       },
       {
@@ -156,6 +159,7 @@ const content: Record<Locale, PrivacyContent> = {
         paragraphs: [
           "Сайт, өтініштерді өңдеуші және корпоративтік электрондық пошта Қазақстан Республикасындағы PS.kz инфрақұрылымында орналасады. Нысан деректері қорғалған байланыс арқылы тікелей сайт серверіне жіберіліп, info@heatenergycapital.kz корпоративтік пошта жәшігіне жеткізіледі.",
           "Сайттың бастапқы коды GitHub нұсқаларды басқару жүйесінде сақталуы мүмкін, алайда келушілер нысандарға енгізген деректер ол жаққа берілмейді. 2GIS сілтемесі пайдаланушының бастамасымен ғана ашылады; өткеннен кейін деректер тиісті сыртқы сервистің ережелеріне сәйкес өңделеді.",
+          "Сайт нысандары арқылы алынған дербес деректерді трансшекаралық беру жүзеге асырылмайды. Мұндай деректерді жалпыға қолжетімді көздерде тарату жүзеге асырылмайды.",
           "Біз дербес деректерді сатпаймыз және Қазақстан Республикасының заңнамасында көзделген жағдайларды қоспағанда, оларды үшінші тұлғалардың дербес мақсаттарына бермейміз.",
         ],
       },
@@ -206,6 +210,7 @@ const content: Record<Locale, PrivacyContent> = {
       {
         title: "2. Data we collect",
         items: [
+          "surname, first name, and patronymic where applicable;",
           "telephone number and email address;",
           "the inquiry text, selected product details, and other information voluntarily provided by the user;",
           "consent status and parameters, Policy version, and form submission date and time;",
@@ -234,7 +239,7 @@ const content: Record<Locale, PrivacyContent> = {
       {
         title: "5. Retention periods",
         paragraphs: [
-          "Data submitted through website forms is retained until the processing purposes are achieved, but no longer than five years from the user's last interaction. Data required to perform contracts or comply with legal obligations is retained for the periods prescribed by law. Contact details used for informational and promotional communications are processed until the user withdraws consent.",
+          "Data submitted through website forms is retained until the inquiry has been processed, but no longer than one year from receipt unless a longer period is required by the laws of the Republic of Kazakhstan or by contract. Contact details used for informational and promotional communications are processed until the user withdraws the separate consent.",
         ],
       },
       {
@@ -242,6 +247,7 @@ const content: Record<Locale, PrivacyContent> = {
         paragraphs: [
           "The website, inquiry handler, and corporate email are hosted on PS.kz infrastructure in the Republic of Kazakhstan. Form data is transmitted over an encrypted connection directly to the website server and delivered to the corporate mailbox info@heatenergycapital.kz.",
           "The website source code may be stored in the GitHub version-control service, but information entered by visitors into website forms is not transmitted there. The 2GIS link opens only at the user's initiative; after navigation, data is processed under the external service's rules.",
+          "Personal data submitted through website forms is not transferred across national borders and is not disseminated through publicly accessible sources.",
           "We do not sell personal data or disclose it for third parties' independent purposes except where required by the laws of the Republic of Kazakhstan.",
         ],
       },

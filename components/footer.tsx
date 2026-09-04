@@ -11,6 +11,7 @@ import { PrivacyConsent } from "@/components/privacy-consent"
 export function Footer() {
   const { t } = useTranslation()
   const year = new Date().getFullYear()
+  const [fullName, setFullName] = useState("")
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
   const [message, setMessage] = useState("")
@@ -23,11 +24,12 @@ export function Footer() {
     e.preventDefault()
     setHint("")
     const form = e.currentTarget as HTMLFormElement
+    const name = fullName.trim()
     const m = message.trim()
     const p = phone.trim()
     const em = email.trim()
     const website = String(new FormData(form).get("website") ?? "")
-    if (!m || (!p && !em)) {
+    if (!name || !m || (!p && !em)) {
       setHint(t("contacts.form_hint"))
       return
     }
@@ -38,6 +40,7 @@ export function Footer() {
     setStatus("sending")
     try {
       const res = await submitFeedback({
+        fullName: name,
         message: m,
         phone: p || undefined,
         email: em || undefined,
@@ -47,6 +50,7 @@ export function Footer() {
       })
       if (res.ok) {
         setStatus("ok")
+        setFullName("")
         setMessage("")
         setPhone("")
         setEmail("")
@@ -150,6 +154,19 @@ export function Footer() {
                 <label htmlFor="footer-website">Website</label>
                 <input id="footer-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
               </div>
+              <input
+                id="footer-full-name"
+                type="text"
+                name="fullName"
+                aria-label={t("contacts.full_name_label")}
+                autoComplete="name"
+                required
+                value={fullName}
+                onChange={e => setFullName(e.target.value)}
+                maxLength={200}
+                placeholder={t("contacts.full_name_label")}
+                className="min-h-11 w-full rounded-md border border-white/15 bg-white/[0.08] px-3 py-2.5 text-base text-white outline-none transition-colors placeholder:text-slate-400 focus:border-blue-300 focus:bg-white/[0.11] focus:ring-0 sm:text-xs"
+              />
               <input
                 id="footer-phone"
                 type="tel"

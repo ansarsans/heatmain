@@ -2,6 +2,7 @@
 export const FEEDBACK_ENDPOINT = "/api/contact.php"
 
 export type FeedbackPayload = {
+  fullName: string
   message: string
   phone?: string
   email?: string
@@ -17,6 +18,7 @@ export type FeedbackResponse = {
 }
 
 export async function submitFeedback(payload: FeedbackPayload): Promise<FeedbackResponse> {
+  const fullName = payload.fullName.trim()
   const phone = (payload.phone ?? "").trim()
   const email = (payload.email ?? "").trim()
   const message = (payload.message ?? "").trim()
@@ -37,14 +39,13 @@ export async function submitFeedback(payload: FeedbackPayload): Promise<Feedback
         Accept: "application/json",
       },
       body: JSON.stringify({
+        fullName,
         phone,
         email,
         message,
         website: payload.website ?? "",
         privacyAccepted: true,
         marketingAccepted: payload.marketingAccepted,
-        privacyPolicyVersion: "2026-09-04-kz",
-        submittedAt: new Date().toISOString(),
       }),
       signal: controller.signal,
     })
