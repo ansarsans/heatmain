@@ -175,12 +175,12 @@ export const en: Record<string, string> = {
   "feedback.sent_ok": "Message sent.",
   "feedback.fail": "Could not send. Please try again later.",
   "privacy.link": "Privacy Policy",
-  "privacy.form.required": "I consent to the collection and processing of personal data, including cross-border transfers, in accordance with the",
-  "privacy.form.marketing": "I consent to receiving informational and promotional messages. Consent may be withdrawn by contacting heatenergy@inbox.ru.",
+  "privacy.form.required": "I consent to the collection and processing of personal data in accordance with the",
+  "privacy.form.marketing": "I consent to receiving informational and promotional messages. Consent may be withdrawn by contacting info@heatenergycapital.kz.",
   "privacy.form.required_error": "Consent to personal data processing is required to submit the inquiry.",
   "contacts.location_title": "Location",
   "contacts.map_embed_note":
-    "The map shows a pin at the address. Directions and the building card — in 2GIS via the button below.",
+    "To protect your data, the map is not loaded automatically. Directions and the building card open in 2GIS via the button below.",
   "contacts.view_map": "Open in 2GIS",
 
   // Why Us

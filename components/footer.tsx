@@ -22,9 +22,11 @@ export function Footer() {
   async function onInquirySubmit(e: FormEvent) {
     e.preventDefault()
     setHint("")
+    const form = e.currentTarget as HTMLFormElement
     const m = message.trim()
     const p = phone.trim()
     const em = email.trim()
+    const website = String(new FormData(form).get("website") ?? "")
     if (!m || (!p && !em)) {
       setHint(t("contacts.form_hint"))
       return
@@ -41,6 +43,7 @@ export function Footer() {
         email: em || undefined,
         privacyAccepted,
         marketingAccepted,
+        website,
       })
       if (res.ok) {
         setStatus("ok")
@@ -103,10 +106,10 @@ export function Footer() {
                   {t("contacts.email")}
                 </span>
                 <a
-                  href="mailto:heatenergy@inbox.ru"
+                  href="mailto:info@heatenergycapital.kz"
                   className="w-fit font-semibold text-white transition-colors hover:text-blue-200"
                 >
-                  heatenergy@inbox.ru
+                  info@heatenergycapital.kz
                 </a>
               </div>
               <div className="flex flex-col gap-1.5">
@@ -143,6 +146,10 @@ export function Footer() {
             </h4>
             <p className="mb-3 text-[11px] leading-5 text-slate-300">{t("contacts.form_hint")}</p>
             <form className="space-y-2.5" onSubmit={onInquirySubmit}>
+              <div className="absolute -left-[10000px] h-px w-px overflow-hidden" aria-hidden="true">
+                <label htmlFor="footer-website">Website</label>
+                <input id="footer-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+              </div>
               <input
                 id="footer-phone"
                 type="tel"
@@ -151,6 +158,7 @@ export function Footer() {
                 autoComplete="tel"
                 value={phone}
                 onChange={e => setPhone(e.target.value)}
+                maxLength={50}
                 placeholder={t("contacts.phone_label")}
                 className="min-h-11 w-full rounded-md border border-white/15 bg-white/[0.08] px-3 py-2.5 text-base text-white outline-none transition-colors placeholder:text-slate-400 focus:border-blue-300 focus:bg-white/[0.11] focus:ring-0 sm:text-xs"
               />
@@ -162,6 +170,7 @@ export function Footer() {
                 autoComplete="email"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
+                maxLength={254}
                 placeholder={t("contacts.email_label")}
                 className="min-h-11 w-full rounded-md border border-white/15 bg-white/[0.08] px-3 py-2.5 text-base text-white outline-none transition-colors placeholder:text-slate-400 focus:border-blue-300 focus:bg-white/[0.11] focus:ring-0 sm:text-xs"
               />
@@ -171,6 +180,7 @@ export function Footer() {
                 aria-label={t("contacts.message_label")}
                 value={message}
                 onChange={e => setMessage(e.target.value)}
+                maxLength={3000}
                 placeholder={t("contacts.message_label")}
                 rows={2}
                 className="w-full resize-y rounded-md border border-white/15 bg-white/[0.08] px-3 py-2.5 text-base text-white outline-none transition-colors placeholder:text-slate-400 focus:border-blue-300 focus:bg-white/[0.11] focus:ring-0 sm:resize-none sm:text-xs"
