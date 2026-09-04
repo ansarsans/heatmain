@@ -27,6 +27,22 @@ function one_line(string $value): string
     return is_string($value) ? preg_replace('/\s+/u', ' ', $value) ?? '' : '';
 }
 
+function format_utc_plus_five(string $value): string
+{
+    if ($value === '') {
+        return 'не указано';
+    }
+
+    try {
+        $date = new DateTimeImmutable($value);
+        return $date
+            ->setTimezone(new DateTimeZone('+05:00'))
+            ->format('Y-m-d\TH:i:sP');
+    } catch (Throwable $error) {
+        return 'не указано';
+    }
+}
+
 function rate_limit_allows(string $clientIp): bool
 {
     $windowSeconds = 600;
@@ -155,6 +171,8 @@ $recipient = 'info@heatenergycapital.kz';
 $sender = 'website@heatenergycapital.kz';
 $subjectText = 'Новая заявка с heatenergycapital.kz [' . $requestId . ']';
 $subject = '=?UTF-8?B?' . base64_encode($subjectText) . '?=';
+$receivedAtUtcPlusFive = (new DateTimeImmutable('now', new DateTimeZone('+05:00')))
+    ->format('Y-m-d\TH:i:sP');
 
 $body = implode("\n", [
     'Новая заявка с сайта heatenergycapital.kz',
@@ -169,8 +187,8 @@ $body = implode("\n", [
     'Согласие на обработку персональных данных: да',
     'Согласие на информационные и рекламные сообщения: ' . ($marketingAccepted ? 'да' : 'нет'),
     'Версия политики: ' . ($policyVersion !== '' ? $policyVersion : 'не указана'),
-    'Время отправки клиентом (UTC): ' . ($submittedAt !== '' ? $submittedAt : 'не указано'),
-    'Время приёма сервером (UTC): ' . gmdate('c'),
+    'Время отправки клиентом (UTC+5): ' . format_utc_plus_five($submittedAt),
+    'Время приёма сервером (UTC+5): ' . $receivedAtUtcPlusFive,
 ]);
 
 $headers = [
@@ -192,4 +210,3 @@ if (!$sent) {
 }
 
 respond(200, ['ok' => true, 'message' => 'Sent', 'requestId' => $requestId]);
-
