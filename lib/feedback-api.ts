@@ -1,6 +1,5 @@
-/** DigitalOcean Serverless — отправка заявок на email */
-export const FEEDBACK_WEBHOOK_URL =
-  "https://faas-fra1-afec6ce7.doserverless.co/api/v1/web/fn-a58468d6-3418-4e73-9aff-b9949a1efe5d/openai/ansar_send_mail_ansar"
+/** Обработчик размещается на том же домене в казахстанском дата-центре. */
+export const FEEDBACK_ENDPOINT = "/api/contact.php"
 
 export type FeedbackPayload = {
   message: string
@@ -8,6 +7,7 @@ export type FeedbackPayload = {
   email?: string
   privacyAccepted: boolean
   marketingAccepted: boolean
+  website?: string
 }
 
 export type FeedbackResponse = {
@@ -20,43 +20,47 @@ export async function submitFeedback(payload: FeedbackPayload): Promise<Feedback
   const phone = (payload.phone ?? "").trim()
   const email = (payload.email ?? "").trim()
   const message = (payload.message ?? "").trim()
-  const submittedAt = new Date().toISOString()
-
   if (!payload.privacyAccepted) {
     return { ok: false, error: "Privacy consent is required" }
   }
 
-  const consentRecord = [
-    "---",
-    "Согласие на обработку и трансграничную передачу: да",
-    "Версия политики: 04.09.2026",
-    `Согласие на информационные и рекламные сообщения: ${payload.marketingAccepted ? "да" : "нет"}`,
-    `Дата и время отправки (UTC): ${submittedAt}`,
-  ].join("\n")
+  const controller = new AbortController()
+  const timeout = window.setTimeout(() => controller.abort(), 12_000)
 
-  const res = await fetch(FEEDBACK_WEBHOOK_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      client_phone: phone,
-      email,
-      additional_info: `${message}\n\n${consentRecord}`,
-      privacy_accepted: true,
-      marketing_accepted: payload.marketingAccepted,
-      privacy_policy_version: "2026-09-04",
-      submitted_at: submittedAt,
-    }),
-  })
+  let res: Response
+  try {
+    res = await fetch(FEEDBACK_ENDPOINT, {
+      method: "POST",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        phone,
+        email,
+        message,
+        website: payload.website ?? "",
+        privacyAccepted: true,
+        marketingAccepted: payload.marketingAccepted,
+        privacyPolicyVersion: "2026-09-04-kz",
+        submittedAt: new Date().toISOString(),
+      }),
+      signal: controller.signal,
+    })
+  } finally {
+    window.clearTimeout(timeout)
+  }
 
   let data: FeedbackResponse
   try {
     data = (await res.json()) as FeedbackResponse
   } catch {
-    return { ok: false, error: "Invalid response" }
+    return { ok: false }
   }
 
-  if (!res.ok) {
-    return { ok: false, error: data.error ?? res.statusText }
+  if (!res.ok || !data.ok) {
+    return { ok: false }
   }
   return data
 }

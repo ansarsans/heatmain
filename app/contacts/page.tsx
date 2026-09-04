@@ -29,8 +29,8 @@ export default function ContactsPage() {
     {
       icon: <Mail className="h-5 w-5" />,
       label: t("contacts.email"),
-      value: "heatenergy@inbox.ru",
-      href: "mailto:heatenergy@inbox.ru",
+      value: "info@heatenergycapital.kz",
+      href: "mailto:info@heatenergycapital.kz",
     },
     {
       icon: <Phone className="h-5 w-5" />,
@@ -55,9 +55,11 @@ export default function ContactsPage() {
   async function onSubmit(e: FormEvent) {
     e.preventDefault()
     setHint("")
+    const form = e.currentTarget as HTMLFormElement
     const m = message.trim()
     const p = phone.trim()
     const em = email.trim()
+    const website = String(new FormData(form).get("website") ?? "")
     if (!m || (!p && !em)) {
       setHint(t("contacts.form_hint"))
       return
@@ -74,6 +76,7 @@ export default function ContactsPage() {
         email: em || undefined,
         privacyAccepted,
         marketingAccepted,
+        website,
       })
       if (res.ok) {
         setStatus("ok")
@@ -111,6 +114,10 @@ export default function ContactsPage() {
             </div>
 
             <form className="flex flex-1 flex-col space-y-5" onSubmit={onSubmit}>
+              <div className="absolute -left-[10000px] h-px w-px overflow-hidden" aria-hidden="true">
+                <label htmlFor="contact-website">Website</label>
+                <input id="contact-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+              </div>
               <div>
                 <input
                   type="email"
@@ -118,6 +125,7 @@ export default function ContactsPage() {
                   autoComplete="email"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
+                  maxLength={254}
                   className="min-h-12 w-full rounded-lg border border-border/60 bg-white px-4 py-3 text-base outline-none transition-colors focus:border-[#1a1c21] focus:ring-1 focus:ring-[#1a1c21]/10 sm:text-sm"
                   placeholder={t("contacts.email_label")}
                 />
@@ -130,6 +138,7 @@ export default function ContactsPage() {
                   autoComplete="tel"
                   value={phone}
                   onChange={e => setPhone(e.target.value)}
+                  maxLength={50}
                   className="min-h-12 w-full rounded-lg border border-border/60 bg-white px-4 py-3 text-base outline-none transition-colors focus:border-[#1a1c21] focus:ring-1 focus:ring-[#1a1c21]/10 sm:text-sm"
                   placeholder={t("contacts.phone_label")}
                 />
@@ -141,6 +150,7 @@ export default function ContactsPage() {
                   required
                   value={message}
                   onChange={e => setMessage(e.target.value)}
+                  maxLength={3000}
                   className="min-h-[140px] w-full flex-1 resize-y rounded-lg border border-border/60 bg-white px-4 py-3 text-base outline-none transition-colors focus:border-[#1a1c21] focus:ring-1 focus:ring-[#1a1c21]/10 sm:min-h-[120px] sm:resize-none sm:text-sm"
                   placeholder={t("contacts.message_label")}
                 />

@@ -28,7 +28,7 @@ const content: Record<Locale, PrivacyContent> = {
         paragraphs: [
           "Оператором персональных данных является ТОО «Heat Energy Capital», БИН 240240013512.",
           "Юридический адрес: Республика Казахстан, г. Астана, район Есиль, ул. Әлихан Бөкейхан, д. 11, н.п. 1. Фактический адрес: г. Астана, район Есиль, ул. Әлихан Бөкейхан, д. 27/1, н.п. 10.",
-          "По вопросам обработки данных и для отзыва согласия можно обратиться по адресу heatenergy@inbox.ru или телефону 8 701 773 44 44.",
+          "По вопросам обработки данных и для отзыва согласия можно обратиться по адресу info@heatenergycapital.kz или телефону 8 701 773 44 44.",
         ],
       },
       {
@@ -68,21 +68,21 @@ const content: Record<Locale, PrivacyContent> = {
       {
         title: "6. Внешние сервисы и передача данных",
         paragraphs: [
-          "Для работы сайта и обработки обращений могут использоваться следующие сервисы: DigitalOcean Serverless — передача и техническая обработка заявок; Inbox.ru — получение заявок по электронной почте; GitHub Pages — размещение сайта и обработка технических запросов; Google Maps — отображение встроенной карты; 2GIS — переход к карточке местоположения.",
-          "Поставщики этих сервисов могут обрабатывать технические данные и данные заявок в соответствии со своими условиями и политиками. Часть инфраструктуры может находиться за пределами Республики Казахстан, поэтому обработка может включать трансграничную передачу данных. Отправляя форму и отмечая обязательное согласие, пользователь соглашается с такой передачей в объёме, необходимом для обработки обращения.",
-          "Мы не продаём персональные данные и не передаём их третьим лицам для самостоятельных целей, кроме случаев, предусмотренных законом или необходимых для оказания указанных технических услуг.",
+          "Сайт, обработчик обращений и корпоративная электронная почта размещаются на инфраструктуре PS.kz в Республике Казахстан. Данные формы передаются по защищённому соединению непосредственно на сервер сайта и доставляются в корпоративный почтовый ящик info@heatenergycapital.kz.",
+          "Исходный код сайта может храниться в системе контроля версий GitHub, однако данные, введённые посетителями в формы сайта, туда не передаются. Ссылка на 2GIS открывается только по инициативе пользователя; после перехода обработка данных осуществляется по правилам соответствующего внешнего сервиса.",
+          "Мы не продаём персональные данные и не передаём их третьим лицам для самостоятельных целей, кроме случаев, предусмотренных законодательством Республики Казахстан.",
         ],
       },
       {
         title: "7. Рассылки",
         paragraphs: [
-          "Информационные и рекламные сообщения направляются только пользователям, отдельно согласившимся на их получение. Такое согласие не является обязательным условием отправки заявки. Пользователь может отказаться от рассылки в любое время, написав на heatenergy@inbox.ru.",
+          "Информационные и рекламные сообщения направляются только пользователям, отдельно согласившимся на их получение. Такое согласие не является обязательным условием отправки заявки. Пользователь может отказаться от рассылки в любое время, написав на info@heatenergycapital.kz.",
         ],
       },
       {
         title: "8. Файлы cookie и локальное хранилище",
         paragraphs: [
-          "Сайт сохраняет выбранный язык в localStorage браузера. Встроенная карта Google Maps и иные внешние сервисы могут применять собственные cookie-файлы и аналогичные технологии. Мы не используем на сайте собственные рекламные или аналитические cookie-файлы.",
+          "Сайт сохраняет выбранный язык в localStorage браузера. Мы не используем собственные рекламные или аналитические cookie-файлы и не загружаем сторонние карты без действия пользователя.",
         ],
       },
       {
@@ -114,7 +114,7 @@ const content: Record<Locale, PrivacyContent> = {
         paragraphs: [
           "Дербес деректер операторы — БСН 240240013512 «Heat Energy Capital» ЖШС.",
           "Заңды мекенжайы: Қазақстан Республикасы, Астана қ., Есіл ауданы, Әлихан Бөкейхан көш., 11 үй, т.е.б. 1. Нақты мекенжайы: Астана қ., Есіл ауданы, Әлихан Бөкейхан көш., 27/1 үй, т.е.б. 10.",
-          "Деректерді өңдеу мәселелері және келісімді кері қайтарып алу бойынша heatenergy@inbox.ru мекенжайына немесе 8 701 773 44 44 телефонына хабарласуға болады.",
+          "Деректерді өңдеу мәселелері және келісімді кері қайтарып алу бойынша info@heatenergycapital.kz мекенжайына немесе 8 701 773 44 44 телефонына хабарласуға болады.",
         ],
       },
       {
@@ -154,21 +154,21 @@ const content: Record<Locale, PrivacyContent> = {
       {
         title: "6. Сыртқы сервистер және деректерді беру",
         paragraphs: [
-          "Сайттың жұмысы және өтініштерді өңдеу үшін мына сервистер пайдаланылуы мүмкін: DigitalOcean Serverless — өтініштерді беру және техникалық өңдеу; Inbox.ru — өтініштерді электрондық пошта арқылы алу; GitHub Pages — сайтты орналастыру және техникалық сұрауларды өңдеу; Google Maps — кірістірілген картаны көрсету; 2GIS — орналасқан жер карточкасына өту.",
-          "Бұл сервистердің жеткізушілері техникалық деректер мен өтініш деректерін өз шарттары мен саясаттарына сәйкес өңдей алады. Инфрақұрылымның бір бөлігі Қазақстан Республикасынан тыс орналасуы мүмкін, сондықтан өңдеу деректерді трансшекаралық беруді қамтуы ықтимал. Нысанды жіберіп, міндетті келісімді белгілей отырып, пайдаланушы өтінішті өңдеуге қажетті көлемде осындай беруге келіседі.",
-          "Біз дербес деректерді сатпаймыз және заңда көзделген немесе аталған техникалық қызметтерді көрсету үшін қажетті жағдайларды қоспағанда, оларды үшінші тұлғалардың дербес мақсаттарына бермейміз.",
+          "Сайт, өтініштерді өңдеуші және корпоративтік электрондық пошта Қазақстан Республикасындағы PS.kz инфрақұрылымында орналасады. Нысан деректері қорғалған байланыс арқылы тікелей сайт серверіне жіберіліп, info@heatenergycapital.kz корпоративтік пошта жәшігіне жеткізіледі.",
+          "Сайттың бастапқы коды GitHub нұсқаларды басқару жүйесінде сақталуы мүмкін, алайда келушілер нысандарға енгізген деректер ол жаққа берілмейді. 2GIS сілтемесі пайдаланушының бастамасымен ғана ашылады; өткеннен кейін деректер тиісті сыртқы сервистің ережелеріне сәйкес өңделеді.",
+          "Біз дербес деректерді сатпаймыз және Қазақстан Республикасының заңнамасында көзделген жағдайларды қоспағанда, оларды үшінші тұлғалардың дербес мақсаттарына бермейміз.",
         ],
       },
       {
         title: "7. Таратылымдар",
         paragraphs: [
-          "Ақпараттық және жарнамалық хабарламалар оларды алуға бөлек келісім берген пайдаланушыларға ғана жіберіледі. Бұл келісім өтініш жіберудің міндетті шарты емес. Пайдаланушы heatenergy@inbox.ru мекенжайына жазу арқылы кез келген уақытта таратылымнан бас тарта алады.",
+          "Ақпараттық және жарнамалық хабарламалар оларды алуға бөлек келісім берген пайдаланушыларға ғана жіберіледі. Бұл келісім өтініш жіберудің міндетті шарты емес. Пайдаланушы info@heatenergycapital.kz мекенжайына жазу арқылы кез келген уақытта таратылымнан бас тарта алады.",
         ],
       },
       {
         title: "8. Cookie және жергілікті сақтау",
         paragraphs: [
-          "Сайт таңдалған тілді браузердің localStorage қоймасында сақтайды. Кірістірілген Google Maps картасы және басқа сыртқы сервистер өздерінің cookie файлдарын және ұқсас технологияларын қолдануы мүмкін. Біз сайтта өзіміздің жарнамалық немесе аналитикалық cookie файлдарын пайдаланбаймыз.",
+          "Сайт таңдалған тілді браузердің localStorage қоймасында сақтайды. Біз өзіміздің жарнамалық немесе аналитикалық cookie файлдарын пайдаланбаймыз және пайдаланушы әрекетінсіз сыртқы карталарды жүктемейміз.",
         ],
       },
       {
@@ -200,7 +200,7 @@ const content: Record<Locale, PrivacyContent> = {
         paragraphs: [
           "The personal data operator is Heat Energy Capital LLP, BIN 240240013512.",
           "Registered address: 11 Älihan Bökeyhan St., premises 1, Yesil district, Astana, Republic of Kazakhstan. Business address: 27/1 Älihan Bökeyhan St., premises 10, Yesil district, Astana.",
-          "For questions about data processing or to withdraw consent, contact heatenergy@inbox.ru or +7 701 773 44 44.",
+          "For questions about data processing or to withdraw consent, contact info@heatenergycapital.kz or +7 701 773 44 44.",
         ],
       },
       {
@@ -240,21 +240,21 @@ const content: Record<Locale, PrivacyContent> = {
       {
         title: "6. External services and data transfers",
         paragraphs: [
-          "The following services may be used to operate the website and process inquiries: DigitalOcean Serverless for transmitting and technically processing inquiries; Inbox.ru for receiving inquiries by email; GitHub Pages for website hosting and technical requests; Google Maps for the embedded map; and 2GIS for links to location details.",
-          "These providers may process technical and inquiry data under their own terms and policies. Some infrastructure may be located outside the Republic of Kazakhstan, so processing may involve cross-border data transfers. By submitting a form and selecting the required consent, the user agrees to such transfers to the extent necessary to process the inquiry.",
-          "We do not sell personal data or disclose it for third parties' independent purposes, except where required by law or necessary to provide the technical services listed above.",
+          "The website, inquiry handler, and corporate email are hosted on PS.kz infrastructure in the Republic of Kazakhstan. Form data is transmitted over an encrypted connection directly to the website server and delivered to the corporate mailbox info@heatenergycapital.kz.",
+          "The website source code may be stored in the GitHub version-control service, but information entered by visitors into website forms is not transmitted there. The 2GIS link opens only at the user's initiative; after navigation, data is processed under the external service's rules.",
+          "We do not sell personal data or disclose it for third parties' independent purposes except where required by the laws of the Republic of Kazakhstan.",
         ],
       },
       {
         title: "7. Marketing communications",
         paragraphs: [
-          "Informational and promotional messages are sent only to users who separately consent to receiving them. This consent is not required to submit an inquiry. Users may unsubscribe at any time by contacting heatenergy@inbox.ru.",
+          "Informational and promotional messages are sent only to users who separately consent to receiving them. This consent is not required to submit an inquiry. Users may unsubscribe at any time by contacting info@heatenergycapital.kz.",
         ],
       },
       {
         title: "8. Cookies and local storage",
         paragraphs: [
-          "The website stores the selected language in the browser's localStorage. Embedded Google Maps and other external services may use their own cookies and similar technologies. We do not use our own advertising or analytics cookies on the website.",
+          "The website stores the selected language in the browser's localStorage. We do not use our own advertising or analytics cookies and do not load third-party maps without user action.",
         ],
       },
       {

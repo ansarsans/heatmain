@@ -1,5 +1,3 @@
-"use client"
-
 import type { CSSProperties } from "react"
 import type { Locale } from "@/lib/i18n"
 
@@ -10,26 +8,25 @@ export const OFFICE_LON = 71.42848
 export const TWO_GIS_GEO_PAGE =
   "https://2gis.kz/astana/geo/70030076171543666"
 
-function mapsHl(locale: Locale): string {
-  if (locale === "en") return "en"
-  if (locale === "kz") return "kk"
-  return "ru"
+const mapLabels: Record<Locale, { city: string; address: string; note: string }> = {
+  ru: {
+    city: "Астана",
+    address: "ул. Әлихан Бөкейхан, 27/1",
+    note: "Карта откроется в 2ГИС только после нажатия кнопки ниже",
+  },
+  kz: {
+    city: "Астана",
+    address: "Әлихан Бөкейхан көшесі, 27/1",
+    note: "Карта төмендегі түймені басқаннан кейін ғана 2ГИС-те ашылады",
+  },
+  en: {
+    city: "Astana",
+    address: "27/1 Alikhan Bokeikhan Street",
+    note: "The map opens in 2GIS only after you select the button below",
+  },
 }
 
-/** Интерактивная карта с меткой по координатам (без API-ключа). */
-function buildGoogleMapsEmbedSrc(lat: number, lon: number, locale: Locale): string {
-  const params = new URLSearchParams({
-    q: `${lat},${lon}`,
-    z: "17",
-    output: "embed",
-    hl: mapsHl(locale),
-  })
-  return `https://www.google.com/maps?${params.toString()}`
-}
-
-/**
- * Карта с пином. 2ГИС-виджет на сайте нестабилен; карточка здания — TWO_GIS_GEO_PAGE.
- */
+/** Локальная заглушка карты: сторонние сервисы не загружаются без действия пользователя. */
 export function TwoGisEmbed({
   height = 400,
   locale = "ru",
@@ -37,20 +34,29 @@ export function TwoGisEmbed({
   height?: number
   locale?: Locale
 }) {
+  const label = mapLabels[locale]
+
   return (
-    <iframe
-      title="Карта: Астана, ул. Әлихан Бөкейхан 27/1"
-      src={buildGoogleMapsEmbedSrc(OFFICE_LAT, OFFICE_LON, locale)}
-      className="mobile-map-frame block w-full border-0"
+    <div
+      role="img"
+      aria-label={`${label.city}, ${label.address}`}
+      className="relative flex w-full items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_center,#dbeafe_0,#eff6ff_38%,#f8fafc_72%)] px-6 text-center"
       style={
         {
           height,
           minHeight: height,
         } as CSSProperties
       }
-      loading="lazy"
-      referrerPolicy="no-referrer-when-downgrade"
-      allowFullScreen
-    />
+    >
+      <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(#94a3b8_1px,transparent_1px),linear-gradient(90deg,#94a3b8_1px,transparent_1px)] [background-size:32px_32px]" />
+      <div className="relative max-w-sm rounded-2xl border border-blue-200 bg-white/95 px-6 py-7 shadow-lg">
+        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#0756b8] text-xl text-white shadow-md" aria-hidden="true">
+          ●
+        </div>
+        <p className="mt-4 text-lg font-bold text-slate-950">{label.city}</p>
+        <p className="mt-1 text-sm font-medium text-slate-700">{label.address}</p>
+        <p className="mt-3 text-xs leading-5 text-slate-500">{label.note}</p>
+      </div>
+    </div>
   )
 }

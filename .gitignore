@@ -8,3 +8,5 @@ out/
 
 # Local backup of original catalog images (do not deploy or commit)
 image-originals/
+heatenergycapital-pskz-*.zip
+heatenergycapital-pskz-*.tar.gz
